@@ -53,3 +53,22 @@ footer {
     text-align: center;
     padding: 1rem;
 }
+
+.banner-text {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
+
+.img-boxes {
+    height: 250px;
+    width: 250px;
+}
+
+.banner {
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.womenfitness.net%2Fwp%2Fwp-content%2Fuploads%2F2016%2F10%2FEco-friendly-Fashion.jpg&f=1&nofb=1&ipt=0c36a35f1ba0804afa743d9c7e33846ff279d51076a4e2eafdf80a1dead57c50&ipo=images");
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 380px;
+
+}

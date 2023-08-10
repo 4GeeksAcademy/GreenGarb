@@ -1,0 +1,18 @@
+input{
+    width: 100px;
+}
+
+#message {
+    width: 200px;
+}
+
+.contact{
+    /* padding-left: 100px; */
+    justify-content: center;
+    display: flex;
+   
+}
+
+.send{
+    margin-left: 100px;
+}

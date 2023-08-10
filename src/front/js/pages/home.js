@@ -10,7 +10,7 @@ export const Home = () => {
 		<div className="text-center">
 			
 			<div className="container banner mt-5">
-				<div className="col-12 banner-text mx-0">
+				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
 					<h1>Bootstrap big banner picture</h1>
 					<p>jumbotron home page banner with big picture</p>
 				</div>
@@ -18,42 +18,50 @@ export const Home = () => {
 
 			<div className="catalog mt-5 mb-5">
 				<div>
-					<h2>Catalog</h2>
+					<h2 className="section-titles rounded container">Catalog</h2>
 				</div>
-				<div className="d-inline-flex row justify-content-around">
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
+					<div className="d-inline-flex row justify-content-around">
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Womens</p>
+						</div>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Mens</p>
+						</div>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Shoes</p>
+						</div>
 					</div>
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
-					</div>
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
-					</div>
-				</div>
 
 				<div className="popular-finds mt-5 mb-5">
 				<div>
-					<h2>Popular Finds</h2>
+					<h2 className="section-titles rounded container">Popular Finds</h2>
 				</div>
 				<div className="d-inline-flex row justify-content-around">
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Recycled Clothing</p>
+						</div>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Organic Fibers</p>
+						</div>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Hemp</p>
+						</div>
+						<div className="col-3 img-boxes rounded">
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">Sustainably Made</p>
+						</div>
 					</div>
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
-					</div>
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
-					</div>
-					<div className="col-3">
-						<img src="https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg" className="img-boxes rounded" alt="..."></img>
-					</div>
-				</div>
 				</div>
 
 				<div className="featured-sellers mt-5 mb-5">
-					<h2>Featured Shops</h2>
+					<h2 className="section-titles rounded container">Featured Shops</h2>
+				</div>
+				<div className="row container">
+					<div className="shop-boxes">
+						<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text">shop name</p>
+					</div>
+						<div className="sub-boxes">
+							<div className="puc"></div>
+						</div>
 				</div>
 
 

@@ -38,7 +38,7 @@ class Products(Base):
     color = Column (String(50), nullable=True)
     size = Column(String(50), nullable=False)
     seller_id = Column(Integer, ForeignKey('User.id'))
-    status = db.Column(db.Boolean(), unique=False, nullable=False)
+    # status = Column(Boolean(), unique=False, nullable=False)
     date_created = Column(Integer, nullable=False)
     date_expired = Column(Integer, nullable=False)
 

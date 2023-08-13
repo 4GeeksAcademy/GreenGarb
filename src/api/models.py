@@ -54,3 +54,6 @@ class Products(db.model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+
+render_er(db.model, 'diagram.png')

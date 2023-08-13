@@ -8,6 +8,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('/src/front/img/greenGarb.png');
+    /* if i use other urls it works */
     height: 50px;
     width: 100px;
 }
@@ -19,4 +20,9 @@
 
 input {
     margin: auto;
+}
+
+.lower-nav {
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

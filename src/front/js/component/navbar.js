@@ -7,6 +7,7 @@ import "../../styles/navbar.css"
 
 export const Navbar = () => {
 	return (
+		<div>
 		<nav className="navbar navbar-light nav-color p-0">
 			<div className="container-fluid justify-content-between align-middle">
 				<div className="navbar-brand">
@@ -35,5 +36,48 @@ export const Navbar = () => {
 				</div>
 			</div>
 		</nav>
+
+
+			{/*------------catalog menu---------------------------------------------------- */}
+
+
+		<nav className="navbar navbar-light bg-light lower-nav">
+			<div class="dropdown">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Mens
+			</button>
+			<div class="dropdown-menu" aria-labelledby="MensDropDown">
+				<a class="dropdown-item" href="#">Tops</a>
+				<a class="dropdown-item" href="#">Bottoms</a>
+			</div>
+			</div>
+
+
+			
+			<div class="dropdown">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Womens
+			</button>
+			<div class="dropdown-menu" aria-labelledby="WomensDropDown">
+				<a class="dropdown-item" href="#">Tops</a>
+				<a class="dropdown-item" href="#">Bottoms</a>
+			</div>
+			</div>
+
+
+			<div class="dropdown">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Shoes
+			</button>
+			<div class="dropdown-menu" aria-labelledby="ShoesDropDown">
+				<a class="dropdown-item" href="#">Sneakers</a>
+				<a class="dropdown-item" href="#">Boots</a>
+				<a class="dropdown-item" href="#">Sandals</a>
+			</div>
+			</div>
+			{/* dropdown are not dropping */}
+		</nav>
+		
+		</div>
 	);
 };

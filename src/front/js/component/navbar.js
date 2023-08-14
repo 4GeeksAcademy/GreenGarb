@@ -41,8 +41,9 @@ export const Navbar = () => {
 			{/*------------catalog menu---------------------------------------------------- */}
 
 
-		<nav className="navbar navbar-light bg-light lower-nav">
-			<div class="dropdown">
+		<nav className="navbar navbar-light bg-light lower-nav justify-content-start">
+
+			<div class="dropdown ms-5 me-3">
 			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Mens
 			</button>
@@ -54,7 +55,7 @@ export const Navbar = () => {
 
 
 			
-			<div class="dropdown">
+			<div class="dropdown me-3">
 			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Womens
 			</button>
@@ -65,7 +66,7 @@ export const Navbar = () => {
 			</div>
 
 
-			<div class="dropdown">
+			<div class="dropdown me-3">
 			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Shoes
 			</button>

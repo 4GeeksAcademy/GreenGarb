@@ -20,7 +20,7 @@ export const Navbar = () => {
 				</div>
 
 				<div className="align-middle input-div col-5">
-					<input classname="align-middle w-100" type="text" placeholder="search"></input>
+					<input classname="align-middle w-100 nav-input" type="text" placeholder="search"></input>
 				</div>
 
 				<div className="icons position-absolute end-0 me-5 justify-content-between">

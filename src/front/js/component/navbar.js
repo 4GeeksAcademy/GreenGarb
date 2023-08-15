@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css"
+import greenGarb from "../../img/greenGarb.png"
 
 
 
@@ -12,7 +13,9 @@ export const Navbar = () => {
 			<div className="container-fluid justify-content-between align-middle">
 				<div className="navbar-brand">
 					<Link to="/">
-						<div className="nav-logo">greengarb</div>
+						<div className="nav-logo">
+							<img className="logo" src={greenGarb}></img>
+						</div>
 					</Link>
 				</div>
 

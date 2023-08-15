@@ -2,13 +2,20 @@
     background-color: green !important;
 } */
 
+
+
 .nav-logo {
     background-size: cover;
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/src/front/img/greenGarb.png');
+    /* background-image: url('../../img/greenGarb.png'); */
     /* if i use other urls it works */
+    height: 50px;
+    width: 100px;
+}
+
+.logo {
     height: 50px;
     width: 100px;
 }

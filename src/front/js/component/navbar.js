@@ -10,7 +10,7 @@ export const Navbar = () => {
 	return (
 		<div>
 		<nav className="navbar navbar-light nav-color p-0">
-			<div className="container-fluid justify-content-between align-middle">
+			<div className="container-fluid justify-content-around align-middle">
 				<div className="navbar-brand">
 					<Link to="/">
 						<div className="nav-logo">
@@ -47,7 +47,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light lower-nav justify-content-start">
 
 			<div class="dropdown ms-5 me-3">
-			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Mens
 			</button>
 			<div class="dropdown-menu" aria-labelledby="MensDropDown">
@@ -59,7 +59,7 @@ export const Navbar = () => {
 
 			
 			<div class="dropdown me-3">
-			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Womens
 			</button>
 			<div class="dropdown-menu" aria-labelledby="WomensDropDown">
@@ -70,7 +70,7 @@ export const Navbar = () => {
 
 
 			<div class="dropdown me-3">
-			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Shoes
 			</button>
 			<div class="dropdown-menu" aria-labelledby="ShoesDropDown">
@@ -79,7 +79,6 @@ export const Navbar = () => {
 				<a class="dropdown-item" href="#">Sandals</a>
 			</div>
 			</div>
-			{/* dropdown are not dropping */}
 		</nav>
 		
 		</div>

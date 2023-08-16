@@ -39,7 +39,7 @@ textarea {
 }
 
 button {
-    background-color: #333;
+    background-color: green;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -48,7 +48,7 @@ button {
 }
 
 footer {
-    background-color: #333;
+    background-color: green;
     color: #fff;
     text-align: center;
     padding: 1rem;

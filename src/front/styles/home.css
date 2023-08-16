@@ -47,9 +47,75 @@ button {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 footer {
     background-color: #3aab09;
     color: #fff;
     text-align: center;
     padding: 1rem;
+=======
+
+
+.banner-text {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
+
+.homePtags {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+>>>>>>> refs/remotes/origin/main
+}
+
+.img-boxes {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg");
+}
+
+.banner {
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.womenfitness.net%2Fwp%2Fwp-content%2Fuploads%2F2016%2F10%2FEco-friendly-Fashion.jpg&f=1&nofb=1&ipt=0c36a35f1ba0804afa743d9c7e33846ff279d51076a4e2eafdf80a1dead57c50&ipo=images");
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 380px;
+
+}
+
+.section-titles {
+    background-color: beige;
+}
+
+.shop-boxes {
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('https://images.unsplash.com/photo-1599309329365-0a9ed45a1da3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZhc2hpb24lMjBtb2RlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    height:350px;
+    width: 450px;
+}
+
+.sub-boxes {
+    position: relative;
+    height: 70%;
+}
+
+.shop-bottom {
+    position: relative;
+    height: 30%;
+}
+
+.img-box {
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('https://images.pexels.com/photos/4340918/pexels-photo-4340918.jpeg?auto=compress&cs=tinysrgb&w=600');
+    width: 100%;
+    height: 100%;
 }

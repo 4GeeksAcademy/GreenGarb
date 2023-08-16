@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+<<<<<<< HEAD
 export const Footer = () => (
 	<footer className="footer mt-5 text-center">
 		<p>
@@ -8,3 +9,15 @@ export const Footer = () => (
 		</p>
 	</footer>
 );
+=======
+export const Footer = () => {
+	const year = new Date().getFullYear();
+
+	return (<footer className="footer text-center">{`Copyright © Upbeat Code ${year}`}</footer>)
+};
+
+
+
+
+
+>>>>>>> refs/remotes/origin/main

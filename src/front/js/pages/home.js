@@ -69,8 +69,7 @@ export const Home = () => {
 				<div className="container featured-seller ">
 					<div className="d-flex h-100">
 						<div className="shop-img col-6">
-							<img className="shop-image" src="https://images.pexels.com/photos/4904569/pexels-photo-4904569.jpeg?auto=compress&cs=tinysrgb&w=600"/>
-							{/* <p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">shop name</p> */}
+							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">shop name</p>
 						</div>
 
 							<div className="col-6 right-side-shop">

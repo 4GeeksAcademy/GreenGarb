@@ -64,14 +64,14 @@ def signup():
         print(error)
         return jsonify({"error": "Error creating user"}), 400
     
-@api.route('/login', methods=['POST'])
+@api.route('/login', methods=["POST", "GET"])
 def login():
     username = request.json["username"]
     password = request.json["password"]
 
     user = User.query.filter_by(username=username).first()
     if user and bcrypt.check_password_hash(user.password, password):
-        access_token = create_access_token(identity=user.username)
+        access_token = create_access_token(identity=user.id)
         return jsonify({"access_token": access_token}), 200
     else:
         return jsonify({"error": "Invalid credentials"}), 401
@@ -82,32 +82,28 @@ def logout():
     resp = jsonify({"msg": "Logout successful"})
     unset_jwt_cookies(resp)
     return resp, 200
-@api.route('/sellers', methods=['POST'])
+@api.route('/sellers', methods=['PUT'])
 @jwt_required()
 def create_seller():
-    try:
-        data = request.json
-
-        # Extract seller data from the request
-        shopName = data['shopName']
-        description = data['description']
-        email = data["email"]
-        address = data['address']
-
-        # Get the user_id from the JWT token
-
-        # Create a new seller instance
-        new_seller = Seller(shopName=shopName, description=description, email=email, address=address)
-
+    username=get_jwt_identity()
+    user = User.query.filter_by(username=username).first()
+    data = request.get_json() 
+    new_seller = Seller(
+        shopName = data['shopName'],
+        description = data['description'],
+        email = data["email"],
+        address = data['address'],
+        user_id=user.id)
+  
         # Add the seller to the database
-        db.session.add(new_seller)
-        db.session.commit()
+    db.session.add(new_seller)
+    db.session.commit()
 
-        return jsonify({'message': 'Seller created successfully', 'seller_id': new_seller.id}), 201
+    return jsonify({'message': 'Seller created successfully', 'seller_id': new_seller.id}), 201
 
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({'error': str(e)}), 400
+    # except Exception as e:
+    #     db.session.rollback()
+    #     return jsonify({'error': str(e)}), 400
 
 
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])

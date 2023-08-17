@@ -49,8 +49,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		
 				  if (response.status === 200) {
 					// Login successful
-					const access_token = response.data.access_token;
-					return { access_token };
+					const data = response.data;
+					console.log(data)
+					sessionStorage.setItem('token', data.access_token)
+					sessionStorage.setItem('user', data.username )
+					sessionStorage.setItem('idUser', data.id )
+					setStore({ token: data.access_token, user: data.user, idUser: data.idUser });
 				  } else {
 					// Login failed, return the error message
 					const error = response.data.error;
@@ -62,20 +66,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			  },
 		
-			logout: async () => {
-				try {
-				  const response = await axios.post(process.env.BACKEND_URL + '/api/logout');
-				  if (response.status === 200) {
-					return { success: true };
-				  } else {
-					const error = response.data.error;
-					return { error };
-				  }
-				} catch (error) {
-				  console.error('Error during logout:', error);
-				  return { error: 'An error occurred during logout' };
-				}
-			  },
+			  logout: () => {
+				sessionStorage.removeItem('token');
+				sessionStorage.removeItem('user');
+				sessionStorage.removeItem('idUser');
+				setStore({
+					token: null,
+					user: null,
+					idUser: null
+				});
+			},
 
 			getMessage: async () => {
 				try{

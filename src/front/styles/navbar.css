@@ -16,6 +16,7 @@
 .logo {
     height: 50px;
     width: 160px;
+    object-fit: contain;
 }
 
 .nav-color {

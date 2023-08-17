@@ -1,59 +1,108 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy import create_engine
-from eralchemy2 import render_er
+from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime, JSON
+from datetime import datetime
 
 db = SQLAlchemy()
 
-
-class User(db.model):
-    __tablename__ = 'User'
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), nullable=False)
-    email = db.Column(db.String(250), nullable=False, unique=True)
-    user_name = db.Column(db.String(250), nullable=False, unique=True)
-    password = db.Column(db.String(250), nullable=False, unique=False)
-    address = db.Column(db.String(500), nullable=False)
-    shop_name = db.Column(db.String(50), nullable=True)
-    # reviews = db.Column(S)
-    # transactions = db.Column()
-
-
-# class Favorites(db.model):
-#     __tablename__= 'Favorites'
-#     user_id = Column(Integer, ForeignKey('User.id'))
-#     favorites = relationship(User)
-
-
-class Products(db.model):
-    __tablename__= 'Products'
-    id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(200), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String(250), nullable=False)
-    image = db.Column(db.String(500), nullable=False)
-    condition = db.Column(db.String(50), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
-    color = db.Column (db.String(50), nullable=True)
-    size = db.Column(db.String(50), nullable=False)
-    seller_id = db.Column(db.Integer, ForeignKey('User.id'))
-    status = db.db.Column(db.Boolean(), unique=False, nullable=False)
-    date_created = db.Column(db.Integer, nullable=False)
-    date_expired = db.Column(db.Integer, nullable=False)
-
-
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    name = db.Column(db.String(250))
+    reviews = db.Column(db.Text)
+    address = db.Column(db.String(120))
+    pictures = db.Column(db.String(255))
+    transactions = db.Column(db.String(255))
+    favorites = db.Column(db.Boolean())
+    seller = db.relationship('Seller', back_populates='user')
+    def __init__(self, username,email, password):
+        self.email=email
+        self.username = username
+        self.password = password
+       
     def __repr__(self):
-        return f'<User {self.email}>'
-
+        return f'<User {self.username}>'
     def serialize(self):
         return {
             "id": self.id,
+            "username": self.username,
+            "name": self.name,
             "email": self.email,
-            # do not serialize the password, its a security breach
+            "address": self.address,
         }
+    
+class Seller(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id= db.Column(db.Integer, ForeignKey('user.id'))
+    user = db.relationship("User", back_populates="seller")
+    shopName = db.Column(db.String(250), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    img = db.Column(db.String(255))
+    address = db.Column(db.String(120))
+    products = db.relationship('Product', back_populates='seller', lazy=True)
+    
+    
+    def __init__(self, shopName, email):
+        self.shopName = shopName
+        self.email = email
+    
+    def __repr__(self):
+        return f'<Seller {self.shopName}>'
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "shopName": self.shopName,
+            "email": self.email,
+            # Include other attributes you want to serialize here
+        }
+    
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    category = db.Column(db.String(50), nullable=False)  # Store the category name as a string
+    quantity = db.Column(db.Integer, nullable=False)
+    condition = db.Column(db.String(50), nullable=False)
+    color = db.Column(db.String(50))
+    size = db.Column(db.String(50))
+    imageset = db.relationship('Imageset', back_populates='product', lazy=True, uselist=True)
+    seller_id = db.Column(db.Integer, ForeignKey('seller.id'), nullable=False)
+    seller = db.relationship('Seller', back_populates='products')
+    buyer_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
+    status = db.Column(db.String(50), nullable=False)
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "price": self.price,
+            "category": self.category,
+            "quantity": self.quantity,
+            "condition": self.condition,
+            "color": self.color,
+            "size": self.size,
+            "img": self.img,
+            "seller_id": self.seller_id,
+            "buyer_id": self.buyer_id,
+            "status": self.status,
+            # Add other attributes you want to serialize here
 
-
-render_er(db.model, 'diagram.png')
+        }
+    
+class Imageset(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String(120), nullable=False)
+    product_id = db.Column(db.Integer, ForeignKey('product.id'), nullable=False)
+    product = db.relationship("Product", back_populates="imageset")
+    def serialize(self):
+        return {
+            "id": self.id,
+        }

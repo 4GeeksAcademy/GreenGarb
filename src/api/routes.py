@@ -10,6 +10,7 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import unset_jwt_cookies
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import set_access_cookies
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
@@ -84,51 +85,30 @@ def logout():
 @api.route('/sellers', methods=['POST'])
 @jwt_required()
 def create_seller():
-    current_user = get_jwt_identity()  # Get the current user from JWT
-    user_id = current_user.get('id')  # Assuming you have the 'id' field in the JWT payload
-
-    data = request.json
-    shopName = data.get('shopName')
-    description = data.get('description')
-    email = data.get('email')
-    address = data.get('address')
-    img = data.get('img')
-
-    new_seller = Seller(
-        user_id=user_id,
-        shopName=shopName,
-        description=description,
-        email=email,
-        address=address,
-        img=img
-    )
-
     try:
+        data = request.json
+
+        # Extract seller data from the request
+        shopName = data['shopName']
+        description = data['description']
+        email = data["email"]
+        address = data['address']
+
+        # Get the user_id from the JWT token
+
+        # Create a new seller instance
+        new_seller = Seller(shopName=shopName, description=description, email=email, address=address)
+
+        # Add the seller to the database
         db.session.add(new_seller)
         db.session.commit()
-        return jsonify({"message": "Seller created successfully"}), 201
-    except Exception as error:
+
+        return jsonify({'message': 'Seller created successfully', 'seller_id': new_seller.id}), 201
+
+    except Exception as e:
         db.session.rollback()
-        print(error)
-        return jsonify({"error": "Error creating seller"}), 400
-@api.route('/sellers/<int:seller_id>', methods=['PUT'])
-@jwt_required()
-def update_seller(seller_id):
-    seller = Seller.query.get(seller_id)
-    if not seller:
-        return jsonify({"error": "Seller not found"}), 404
-    
-    data = request.json
+        return jsonify({'error': str(e)}), 400
 
-    shopName = data.get('shopName')
-    email = data.get('email')
-
-    seller.shopName = shopName
-    seller.email = email
-
-    db.session.commit()
-
-    return jsonify({"message": "Seller updated successfully"}), 200
 
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])
 @jwt_required()

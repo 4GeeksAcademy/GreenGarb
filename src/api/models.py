@@ -48,19 +48,19 @@ class Seller(db.Model):
     products = db.relationship('Product', back_populates='seller', lazy=True)
     
     
-    def __init__(self, shopName, email):
-        self.shopName = shopName
-        self.email = email
-    
     def __repr__(self):
         return f'<Seller {self.shopName}>'
     
     def serialize(self):
-        return {
-            "id": self.id,
-            "shopName": self.shopName,
-            "email": self.email,
-            # Include other attributes you want to serialize here
+       return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'shopName': self.shopName,
+            'description': self.description,
+            'email': self.email,
+            'img': self.img,
+            'address': self.address,
+            'products': [product.serialize() for product in self.products]
         }
     
 class Product(db.Model):
@@ -89,12 +89,10 @@ class Product(db.Model):
             "condition": self.condition,
             "color": self.color,
             "size": self.size,
-            "img": self.img,
+            "imageset": [image.serialize() for image in self.imageset],
             "seller_id": self.seller_id,
             "buyer_id": self.buyer_id,
-            "status": self.status,
-            # Add other attributes you want to serialize here
-
+            "status": self.status
         }
     
 class Imageset(db.Model):
@@ -104,5 +102,7 @@ class Imageset(db.Model):
     product = db.relationship("Product", back_populates="imageset")
     def serialize(self):
         return {
-            "id": self.id,
+            'id': self.id,
+            'image': self.image,
+            'product_id': self.product_id
         }

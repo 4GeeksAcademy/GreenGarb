@@ -66,15 +66,21 @@ def signup():
     
 @api.route('/login', methods=["POST", "GET"])
 def login():
-    username = request.json["username"]
-    password = request.json["password"]
+    try:
+        username = request.json["username"]
+        password = request.json["password"]
 
-    user = User.query.filter_by(username=username).first()
-    if user and bcrypt.check_password_hash(user.password, password):
+        user = User.query.filter_by(username=username).first()
+        if not user or not bcrypt.check_password_hash(user.password, password):
+            return jsonify({"error": "Invalid email or password"}), 401
+
         access_token = create_access_token(identity=user.id)
-        return jsonify({"access_token": access_token}), 200
-    else:
-        return jsonify({"error": "Invalid credentials"}), 401
+        response = jsonify({"access_token": access_token})
+        set_access_cookies(response, access_token)
+        return response, 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
 
 @api.route('/logout', methods=['POST'])
 @jwt_required()
@@ -82,28 +88,38 @@ def logout():
     resp = jsonify({"msg": "Logout successful"})
     unset_jwt_cookies(resp)
     return resp, 200
-@api.route('/sellers', methods=['PUT'])
+@api.route('/sellers', methods=['POST'])
 @jwt_required()
 def create_seller():
-    username=get_jwt_identity()
-    user = User.query.filter_by(username=username).first()
-    data = request.get_json() 
-    new_seller = Seller(
-        shopName = data['shopName'],
-        description = data['description'],
-        email = data["email"],
-        address = data['address'],
-        user_id=user.id)
-  
-        # Add the seller to the database
-    db.session.add(new_seller)
-    db.session.commit()
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
 
-    return jsonify({'message': 'Seller created successfully', 'seller_id': new_seller.id}), 201
+    if user.seller:
+        return jsonify({"error": "User is already a seller"}), 400
+    try:
+        data = request.json
+        shop_name = data["shopName"]
+        description = data["description"]
+        email = data["email"]
+        address = data["address"]
 
-    # except Exception as e:
-    #     db.session.rollback()
-    #     return jsonify({'error': str(e)}), 400
+        new_seller = Seller(
+            user=user,
+            shopName=shop_name,
+            description=description,
+            email=email,
+            address=address,
+        )
+
+        db.session.add(new_seller)
+        db.session.commit()
+
+        return jsonify({"message": "Seller created successfully"}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
 
 
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])
@@ -133,19 +149,47 @@ def private():
 @api.route('/products', methods=['POST'])
 @jwt_required()
 def create_product():
-    # Assuming you receive the product data in the request JSON
-    data = request.json
-    imageset_data = data.pop('imageset', [])
+    try:
+        current_user_id = get_jwt_identity()
+        seller = Seller.query.filter_by(user_id=current_user_id).first()
 
-    new_product = Product(**data)
-    db.session.add(new_product)
-    db.session.commit()
-    for imageset in imageset_data:
-        new_imageset = Imageset(**imageset, product=new_product)
-        db.session.add(new_imageset)
+        if not seller:
+            return jsonify({"error": "User is not a seller"}), 400
+        
+        data = request.json
+        title = data["title"]
+        description = data["description"]
+        price = data["price"]
+        category = data["category"]
+        quantity = data["quantity"]
+        condition = data["condition"]
+        color = data["color"]
+        size = data["size"]
+        images = data.get("imageset", [])  # List of image URLs
+    
+        new_product = Product(
+            title=title,
+            description=description,
+            price=price,
+            category=category,
+            quantity=quantity,
+            condition=condition,
+            color=color,
+            size=size,
+            seller_id=seller.id,
+            status="available"  # Set the initial status
+        )
+        db.session.add(new_product)
+        db.session.commit()
+        for image_url in images:
+            new_imageset = Imageset(image=image_url, product=new_product)
+            db.session.add(new_imageset)
+        db.session.commit()
 
-    db.session.commit()
-    return jsonify({"message": "Product created successfully"}), 201
+        return jsonify({"message": "Product added successfully"}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
 
 @api.route('/products/<int:product_id>', methods=['PUT'])
 @jwt_required()

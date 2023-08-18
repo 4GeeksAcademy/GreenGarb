@@ -1,6 +1,9 @@
 .footer{
-    background-color: darkgreen;
+    background-color: rgba(7, 146, 7, 0.921);
     display: flex;
     justify-content: center;
     width: auto;
+}
+.shop{
+    justify-content: center;
 }

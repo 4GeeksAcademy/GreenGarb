@@ -4,65 +4,41 @@ import "../../styles/footer.css"
 export const Footer = () => {
 	const year = new Date().getFullYear();
 
-	return (<footer className="footer mt-auto py-3 text-center">
-		<div class="shop">
-			<div class="card-header">
-				Shop
-			</div>
-			<div class="card-body">
+	return (
+		<div class="footer content">
 
-				<p>site map</p>
-				<p>register</p>
-
-
-			</div>
+			<footer>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-sm-4 col-md-3 item">
+							<h3>Shop</h3>
+							<ul>
+								<li><a href="#">Register</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-md-3 item">
+							<h3>Sell</h3>
+							<ul>
+								<li><a href="#">Start Selling</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-md-3 item">
+							<h3>About</h3>
+							<ul>
+								<li><a href="#">Our Ethical Approach</a>                              </li>
+							</ul>
+						</div>
+						<div class="col-sm-4 col-md-3 item">
+							<h3>Help</h3>
+							<ul>
+								<li><a href="#">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
-		<div class="shop">
-			<div class="card-header">
-				Sell
-			</div>
-			<div class="card-body">
-				<p>
-					seller faq
-				</p>
-
-				<p>start selling</p>
-
-			</div>
-		</div>
-
-
-		<div class="shop">
-			<div class="card-header">
-				about
-			</div>
-			<div class="card-body">
-				<p>
-					about us
-				</p>
-
-				<p>our ethical approach</p>
-
-			</div>
-		</div>
-		<div class="shop">
-			<div class="card-header">
-				Help
-			</div>
-			<div class="card-body">
-				<p>
-					contact us
-				</p>
-
-			</div>
-		</div>
-		{/* <div>
-			<p>All Rights Reserved</p>
-
-		</div> */}
-
-
-	</footer>)
+	)
 };
 
 

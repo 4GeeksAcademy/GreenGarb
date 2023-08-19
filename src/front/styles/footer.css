@@ -1,9 +1,36 @@
 .footer{
-    background-color: rgba(7, 146, 7, 0.921);
+    background-color: rgba(128, 255, 0, 0.871);
     display: flex;
     justify-content: center;
     width: auto;
+    margin-bottom: -20px -3em;
+    bottom: -20px;
+
+    min-height: 100%;
 }
 .shop{
     justify-content: center;
+}
+.flex-container{
+    display:flex;
+}
+.copyright{
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+}
+footer{
+    background-color: rgba(128, 255, 0, 0.871);
+     bottom: 0;
+    height: 100px;
+}
+content{
+    max-height: 250px;
+}
+
+li{
+    font-size: smaller;
+}
+h3{
+    font-size: medium;
 }

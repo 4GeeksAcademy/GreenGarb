@@ -44,7 +44,7 @@ export const Navbar = () => {
 			{/*------------catalog menu---------------------------------------------------- */}
 
 
-		<nav className="navbar navbar-light bg-light lower-nav justify-content-start">
+		<nav className="navbar navbar-light bg-light lower-nav justify-content-start mb-5">
 
 			<div class="dropdown ms-5 me-3">
 			<button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

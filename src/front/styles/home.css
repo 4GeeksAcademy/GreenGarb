@@ -129,3 +129,14 @@ height: 70%;
     max-height: 100%;
     object-fit: cover;
 }
+
+
+.product-specs {
+    position: relative;
+    height: 60%;
+}
+
+.product-actions {
+    position: relative;
+    height: 40%;
+}

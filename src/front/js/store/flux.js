@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -21,6 +23,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			signup: async (email, username, password, name) => {
+				try {
+				  const response = await axios.post(process.env.BACKEND_URL + '/api/signup', {
+					email,
+					username,
+					password,
+					name,
+				  });
+				  if (response.status === 200) {
+					
+				  }
+				} catch (error) {
+					console.log(error)
+				  // Handle errors and dispatch relevant actions if needed
+				}
+			  },
+			
+			login: async (username, password) => {
+				try {
+				  const response = await axios.post(process.env.BACKEND_URL + '/api/login', {
+					username,
+					password
+				  });
+		
+				  if (response.status === 200) {
+					// Login successful
+					const data = response.data;
+					console.log(data)
+					sessionStorage.setItem('token', data.access_token)
+					sessionStorage.setItem('user', data.username )
+					sessionStorage.setItem('idUser', data.id )
+					setStore({ token: data.access_token, user: data.user, idUser: data.idUser });
+				  } else {
+					// Login failed, return the error message
+					const error = response.data.error;
+					return { error };
+				  }
+				} catch (error) {
+				  console.error('Error during login:', error);
+				  return { error: 'An error occurred during login' };
+				}
+			  },
+		
+			  logout: () => {
+				sessionStorage.removeItem('token');
+				sessionStorage.removeItem('user');
+				sessionStorage.removeItem('idUser');
+				setStore({
+					token: null,
+					user: null,
+					idUser: null
+				});
+			},
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
@@ -32,21 +88,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}catch(error){
 					console.log("Error loading message from backend", error)
 				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
+		
 		}
 	};
 };

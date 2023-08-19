@@ -12,16 +12,17 @@ export function ContactPage(){
         
             
         
-            <form action="submit_form.php" method="post">
-            <h2>Get in Touch</h2>
+            <form className= "page" action="submit_form.php" method="post">
+            <h2 className="mt-4 ps-5" > Get in Touch </h2>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required/>
+                <input type="text" id="name" placeholder="Your Name" name="name" required/>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required/>
+                <input type="email" id="email" name="email"placeholder="Your email here" required/>
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <textarea id="message" name="message" placeholder="Write your message here" rows="4" required></textarea>
+                <div>
                 <button type="submit" className="send">Send</button>
-                
+                </div>
             </form>
        
             </div>     

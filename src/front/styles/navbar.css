@@ -1,3 +1,34 @@
 /* nav{
     background-color: green !important;
 } */
+
+
+
+.nav-logo {
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 100px;
+}
+
+.logo {
+    height: 50px;
+    width: 160px;
+    object-fit: contain;
+}
+
+.nav-color {
+    background-color: rgb(201, 238, 144);
+}
+
+
+.nav-input {
+    margin: auto;
+}
+
+.lower-nav {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

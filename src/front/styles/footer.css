@@ -1,5 +1,5 @@
 .footer{
-    background-color: rgba(128, 255, 0, 0.871);
+    background-color: rgb(201, 238, 144);
     display: flex;
     justify-content: center;
     width: auto;
@@ -20,7 +20,7 @@
     text-align: center;
 }
 footer{
-    background-color: rgba(128, 255, 0, 0.871);
+    background-color: rgb(201, 238, 144);
      bottom: 0;
     height: 100px;
 }

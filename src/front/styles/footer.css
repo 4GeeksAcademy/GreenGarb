@@ -30,7 +30,12 @@ content{
 
 li{
     font-size: smaller;
+    color: black;
 }
 h3{
     font-size: medium;
+    color: darkgreen;
+}
+a{
+    color: black;
 }

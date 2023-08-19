@@ -40,7 +40,7 @@ class Seller(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id= db.Column(db.Integer, ForeignKey('user.id'))
     user = db.relationship("User", back_populates="seller")
-    shopName = db.Column(db.String(250), nullable=False)
+    shop_name = db.Column(db.String(250), nullable=False)
     description = db.Column(db.Text, nullable=False)
     email = db.Column(db.String(120), nullable=False)
     img = db.Column(db.String(255))
@@ -49,13 +49,13 @@ class Seller(db.Model):
     
     
     def __repr__(self):
-        return f'<Seller {self.shopName}>'
+        return f'<Seller {self.shop_name}>'
     
     def serialize(self):
        return {
             'id': self.id,
             'user_id': self.user_id,
-            'shopName': self.shopName,
+            'shop_name': self.shop_name,
             'description': self.description,
             'email': self.email,
             'img': self.img,
@@ -77,7 +77,7 @@ class Product(db.Model):
     seller_id = db.Column(db.Integer, ForeignKey('seller.id'), nullable=False)
     seller = db.relationship('Seller', back_populates='products')
     buyer_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
-    status = db.Column(db.String(50), nullable=False)
+    status = db.Column(db.Boolean(), nullable=False)
     def serialize(self):
         return {
             "id": self.id,

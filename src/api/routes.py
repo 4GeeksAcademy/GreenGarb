@@ -100,14 +100,14 @@ def create_seller():
         return jsonify({"error": "User is already a seller"}), 400
     try:
         data = request.json
-        shop_name = data["shopName"]
+        shop_name = data["shop_name"]
         description = data["description"]
         email = data["email"]
         address = data["address"]
 
         new_seller = Seller(
             user=user,
-            shopName=shop_name,
+            shop_name=shop_name,
             description=description,
             email=email,
             address=address,
@@ -177,7 +177,7 @@ def create_product():
             color=color,
             size=size,
             seller_id=seller.id,
-            status="available"  # Set the initial status
+            status=True  # Set the initial status
         )
         db.session.add(new_product)
         db.session.commit()

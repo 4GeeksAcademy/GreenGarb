@@ -1,54 +1,69 @@
+import React, { useState } from 'react';
+
 function createElement(tag, attributes = {}, children = []) {
-    const element = document.createElement(tag);
-    for (const key in attributes) {
-      if (attributes.hasOwnProperty(key)) {
-        element.setAttribute(key, attributes[key]);
-      }
+  const Element = React.createElement(tag, attributes, ...children);
+  return Element;
+}
+
+function SignUpForm() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleRegister = () => {
+    if (username && email && password) {
+      console.log('Registration successful!');
+      console.log(`Username: ${username}`);
+      console.log(`Email: ${email}`);
+    } else {
+      console.log('Please fill in all fields.');
     }
-    children.forEach(child => {
-      if (typeof child === 'string') {
-        element.appendChild(document.createTextNode(child));
-      } else {
-        element.appendChild(child);
-      }
-    });
-    return element;
-  }
-  
-  
-  function createSignUpForm() {
-    const usernameInput = createElement('input', { type: 'text', placeholder: 'Username' });
-    const emailInput = createElement('input', { type: 'email', placeholder: 'Email' });
-    const passwordInput = createElement('input', { type: 'password', placeholder: 'Password' });
-    const registerButton = createElement('button', {}, ['Register']);
-  
-    registerButton.addEventListener('click', () => {
-      const username = usernameInput.value;
-      const email = emailInput.value;
-      const password = passwordInput.value;
-  
-      if (username && email && password) {
-        console.log('Registration successful!');
-        console.log(`Username: {username}`);
-        console.log(`Email: {email}`);
-      } else {
-        console.log('Please fill in all fields.');
-      }
-    });
-  
-    return createElement('div', {}, [
-      createElement('h2', {}, ['Sign Up']),
-      createElement('div', { class: 'form-group' }, [usernameInput]),
-      createElement('div', { class: 'form-group' }, [emailInput]),
-      createElement('div', { class: 'form-group' }, [passwordInput]),
-      createElement('div', { class: 'form-group' }, [registerButton]),
-    ]);
-  }
-  
-  function displaySignUpPage() {
-    const container = createElement('div', { class: 'container' }, [createSignUpForm()]);
-    document.body.appendChild(container);
-  }
-  
-  displaySignUpPage();
-  
+  };
+
+  return (
+    <div>
+      <h2>Sign Up</h2>
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <button onClick={handleRegister}>Register</button>
+      </div>
+    </div>
+  );
+}
+
+function SignUpPage() {
+  return (
+    <div className="container">
+      <SignUpForm />
+    </div>
+  );
+}
+
+function App() {
+  return <SignUpPage />;
+}
+
+export default App;

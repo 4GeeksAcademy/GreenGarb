@@ -136,6 +136,7 @@ height: 70%;
 .product-specs {
     position: relative;
     height: 60%;
+    overflow: auto;
 }
 
 .product-actions {

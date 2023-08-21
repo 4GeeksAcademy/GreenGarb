@@ -13,12 +13,12 @@ export const Product = () => {
         <div>
 
             <div className="container d-flex">
-                <div className="row w-100">
+                <div className="row w-100 m-0">
                     <div className="product-img-div mb-3 col-sm-6">
                         <img className="product-img" src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
                     </div>
 
-                    <div className="right-side-product-div ms-4 col-sm-5 border border-primary">
+                    <div className="right-side-product-div col-sm-5 border border-primary">
                         <div className="product-specs">
                             <h2>prop title</h2>
                             <p className="mt-2">$Price</p>

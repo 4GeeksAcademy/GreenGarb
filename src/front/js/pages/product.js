@@ -13,24 +13,30 @@ export const Product = () => {
         <div>
 
             <div className="container d-flex">
-                <div className="product-img col-6">
-                    <img src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
-                </div>
-
-                <div className="right-side-product-div ms-4 col-6 border border-primary">
-                    <div className="product-specs">
-                        <h2>prop title</h2>
-                        <p className="mt-2">$Price</p>
-                        <p className="mt-2">Size</p>
+                <div className="row w-100">
+                    <div className="product-img-div mb-3 col-sm-6">
+                        <img className="product-img" src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
                     </div>
 
-                    <div className="product-actions border border-primary">
-                        <button className="product-button d-block mt-3"> Add to Cart</button>
-                        <button className="product-button d-block mt-3">Buy Now</button>
+                    <div className="right-side-product-div ms-4 col-sm-5 border border-primary">
+                        <div className="product-specs">
+                            <h2>prop title</h2>
+                            <p className="mt-2">$Price</p>
+                            <p className="mt-2">Size</p>
+                        </div>
+
+                        <div className="product-actions border border-primary">
+                            <button className="product-button d-block mt-3"> Add to Cart</button>
+                            <button className="product-button d-block mt-3">Buy Now</button>
+                        </div>
                     </div>
                 </div>
 
             </div>
+
+
+            {/*---------product description section------------------------ */}
+
 
             <div className="product-description container mt-4">
                 <div className="product-tags row">

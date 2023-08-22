@@ -16,15 +16,15 @@ export const  User = () => {
         <>
         <div className="user-header-div justify-content-center d-flex mb-3">
             <div className="user-img-div rounded-circle">
-                <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+                {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
             </div>
             <h2 className="ms-2 align-self-center"> user name</h2>
         </div>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">
+            <div class="d-flex justify-content-center">
                 
-                <ul class="navbar-nav border border-danger">
+                <ul class="navbar-nav border border-danger col-sm-12">
                     <li class="nav-item col-sm-4 border border-primary">
                     <a class="nav-link active" aria-current="page" href="#">Purchase History</a>
                     </li>

@@ -178,6 +178,8 @@ height: 70%;
 .user-img-div {
     height: 150px;
     width: 150px;
+    border: solid 1px;
+    background-image: url('/workspaces/Team-equalities-final-project/src/front/img/blank-profile-picture-973460_640.png');
 }
 
 .user-img {

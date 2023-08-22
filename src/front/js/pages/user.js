@@ -25,17 +25,17 @@ export const  User = () => {
             <div class="d-flex justify-content-center">
                 
                 <ul class="navbar-nav border border-danger col-sm-12">
-                    <li class="nav-item col-sm-4 border border-primary">
+                    <li class="nav-item  border border-primary">
                     <a class="nav-link active" aria-current="page" href="#">Purchase History</a>
                     </li>
-                    <li class="nav-item col-sm-4 border border-primary">
+                    <li class="nav-item  border border-primary">
                     <a class="nav-link active" href="#">Favorites</a>
                     </li>
-                    <li class="nav-item col-sm-4 border border-primary">
+                    <li class="nav-item  border border-primary">
                     <a class="nav-link active" href="#">Edit Profile</a>
                     </li>
-                    <li class="nav-item col-sm-4 border border-primary">
-                    <a class="nav-link active" href="#">Shop</a>
+                    <li class="nav-item  border border-primary">
+                    <a class="nav-link active" href="#">Your Shop</a>
                     </li>
                 </ul>
                 

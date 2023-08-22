@@ -18,15 +18,15 @@ export const Product = () => {
                         <img className="product-img" src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
                     </div>
 
-                    <div className="right-side-product-div col-sm-5 border border-primary">
+                    <div className="right-side-product-div col-sm-5">
                         <div className="product-specs">
                             <h2>prop title</h2>
-                            <p className="mt-2">$Price</p>
+                            <h5 className="mt-2">$Price</h5>
                             <p className="mt-2">Size</p>
                         </div>
 
-                        <div className="product-actions border border-primary">
-                            <button className="product-button d-block mt-3"> Add to Cart</button>
+                        <div className="product-actions">
+                            <button className="product-button d-block"> Add to Cart</button>
                             <button className="product-button d-block mt-3">Buy Now</button>
                         </div>
                     </div>

@@ -133,20 +133,38 @@ height: 70%;
 
         /*-----------product page ---------------*/
 
+.right-side-product-div {
+    height: 350px;
+    position: relative;
+}
+
+@media only screen and (max-width: 576px) {
+    .right-side-product-div {
+    height: 250px;    }
+  }
+
 .product-specs {
     position: relative;
-    height: 60%;
     overflow: auto;
 }
 
 .product-actions {
-    position: relative;
-    height: 40%;
+    height: 35%;
+    position: absolute;
+    bottom: 0;
 }
+
+@media only screen and (max-width: 576px) {
+    .product-actions {
+        height: 35%;
+        position: absolute;
+        bottom: 10px;
+        right: 35%;    }
+  }
 
 
 .product-img-div {
-    height: 350px;
+    height: 300px;
 }
 
 .product-img {

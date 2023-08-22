@@ -40,16 +40,28 @@ export const Product = () => {
 
             <div className="product-description container mt-4">
                 <div className="product-tags row">
-                    <div className="col-6">
+                    <div className="col-sm-6 mb-3">
                        <h5>Made Of:</h5> 
                     </div>
 
-                    <div className="col-6">
+                    <div className="col-6 mb-3">
                         <h5>Conditon:</h5>
                     </div>
                     
                 </div>
                 <p>description props lorem lskdi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+                        {/* ------product seller info-------------- */}
+
+                <div className="product-shop-info d-flex justify-content-around mt-3">
+                <div className="shop-name"> 
+                    <p>shop name prop</p>
+                </div>
+
+                <div className="favorite-product">
+                    <p><i class="fas fa-heart me-1"></i>Favorite Product</p>
+                </div>
             </div>
 
 

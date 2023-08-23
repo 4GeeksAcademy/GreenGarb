@@ -19,14 +19,14 @@
     margin-bottom: 0;
     text-align: center;
 }
-/* footer{
+footer{
     background-color: rgb(201, 238, 144);
      bottom: 0;
     height: 100px;
 }
 content{
     max-height: 250px;
-} */
+}
 
 li{
     font-size: smaller;

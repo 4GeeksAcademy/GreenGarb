@@ -35,7 +35,7 @@ export const  User = () => {
                     <a class="nav-link active" href="#">Edit Profile</a>
                     </li>
                     <li class="nav-item  border border-primary">
-                    <a class="nav-link active" href="#">Your Shop</a>
+                    <Link class="nav-link active" to="/yourshop">Your Shop</Link>
                     </li>
                 </ul>
                 

@@ -72,7 +72,7 @@ You can find other templates and resources like this at the [school github page]
 
 
 To run the backend:
-install axios 
-install flask jwt extended
-intall flask bcrypt
+install axios: npm install axios
+install flask jwt extended: pip install flask-jwt-extended
+intall flask bcrypt: pip install Flask-Bcrypt
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
@@ -18,18 +18,16 @@ export const Product = () => {
                         <img className="product-img" src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
                     </div>
 
-                    <div className="right-side-product-div col-sm-5 border border-primary">
+                    <div className="right-side-product-div col-sm-5">
                         <div className="product-specs">
                             <h2>prop title</h2>
-                            <p className="mt-2">$Price</p>
+                            <h5 className="mt-2">$Price</h5>
                             <p className="mt-2">Size</p>
                         </div>
 
-                        <div className="product-actions border border-primary justify-content-sm-center">
-                            <div>
-                                <button className="product-button d-block"> Add to Cart</button>
-                                <button className="product-button d-block mt-3">Buy Now</button>
-                            </div>
+                        <div className="product-actions">
+                            <button className="product-button d-block"> Add to Cart</button>
+                            <button className="product-button d-block mt-3">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -42,11 +40,11 @@ export const Product = () => {
 
             <div className="product-description container mt-4">
                 <div className="product-tags row">
-                    <div className="col-6">
+                    <div className="col-sm-6 mb-3">
                        <h5>Made Of:</h5> 
                     </div>
 
-                    <div className="col-6">
+                    <div className="col-6 mb-3">
                         <h5>Conditon:</h5>
                     </div>
                     
@@ -54,9 +52,9 @@ export const Product = () => {
                 <p>description props lorem lskdi Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
 
-            {/* ------product seller info-------------- */}
+                        {/* ------product seller info-------------- */}
 
-            <div className="product-shop-info d-flex justify-content-around mt-3">
+                <div className="product-shop-info d-flex justify-content-around mt-3">
                 <div className="shop-name"> 
                     <p>shop name prop</p>
                 </div>

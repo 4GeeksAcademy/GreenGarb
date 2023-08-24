@@ -78,6 +78,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

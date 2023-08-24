@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
@@ -8,8 +9,8 @@ import "../../styles/home.css";
 
 export const  User = () => {
 
-    // const navigate = useNavigate()
-	// const { store, actions } = useContext(Context)
+    const navigate = useNavigate()
+	const { store, actions } = useContext(Context)
 
 	// useEffect = (() => {
 
@@ -17,6 +18,18 @@ export const  User = () => {
 	// 		navigate('/login')}
 		
 	// },[store.token])
+
+    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
+        headers:{
+            Authorization:'Bearer '+ store.token
+        }
+    })
+    .then(response =>  response.json())
+    .then( data => {
+        console.log('data', data)
+    })
+    .catch(error => console.log(error))
+
 
 
 
@@ -27,7 +40,7 @@ export const  User = () => {
             <div className="user-img-div rounded-circle">
                 {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
             </div>
-            <h2 className="ms-2 align-self-center"> user name</h2>
+            <h2 className="ms-2 align-self-center"> {User.username}username</h2>
         </div>
 
         <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">

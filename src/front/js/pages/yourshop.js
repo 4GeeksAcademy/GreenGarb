@@ -39,7 +39,7 @@ export const Yourshop = () => {
                     <h2 className="ms-2 align-self-center"><i class="fa-solid fa-store"></i>shop name</h2>
                 
             </div>
-            <div className="p-3">shop descriptoin about their store and products and whatnot tops tees short recycled brandname etc.........</div>
+            <div className="p-3 text-md-center">shop descriptoin about their store and products and whatnot tops tees short recycled brandname etc.........</div>
 
             <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">
             <div className="d-flex justify-content-center">

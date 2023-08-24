@@ -43,21 +43,21 @@ export const  User = () => {
             <h2 className="ms-2 align-self-center"> {User.username}username</h2>
         </div>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">
-            <div class="d-flex justify-content-center">
+        <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">
+            <div className="d-flex justify-content-center">
                 
-                <ul class="navbar-nav border border-danger col-sm-12">
-                    <li class="nav-item  border border-primary">
-                    <a class="nav-link active" aria-current="page" href="#">Purchase History</a>
+                <ul className="navbar-nav border border-danger col-sm-12">
+                    <li className="nav-item  border border-primary">
+                    <a className="nav-link active" aria-current="page" href="#">Purchase History</a>
                     </li>
-                    <li class="nav-item  border border-primary">
-                    <a class="nav-link active" href="#">Favorites</a>
+                    <li className="nav-item  border border-primary">
+                    <a className="nav-link active" href="#">Favorites</a>
                     </li>
-                    <li class="nav-item  border border-primary">
-                    <a class="nav-link active" href="#">Edit Profile</a>
+                    <li className="nav-item  border border-primary">
+                    <a className="nav-link active" href="#">Edit Profile</a>
                     </li>
-                    <li class="nav-item  border border-primary">
-                    <Link class="nav-link active" to="/yourshop">Your Shop</Link>
+                    <li className="nav-item  border border-primary">
+                    <Link className="nav-link active" to="/yourshop">Your Shop</Link>
                     </li>
                 </ul>
                 

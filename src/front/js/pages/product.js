@@ -7,6 +7,15 @@ import "../../styles/home.css";
 export const Product = () => {
 
 
+    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
+
+    .then(response =>  response.json())
+    .then( data => {
+        console.log('data', data)
+    })
+    .catch(error => console.log(error))
+
+
 
     return(
 
@@ -60,7 +69,7 @@ export const Product = () => {
                 </div>
 
                 <div className="favorite-product">
-                    <p><i class="fas fa-heart me-1"></i>Favorite Product</p>
+                    <p><i className="fas fa-heart me-1"></i>Favorite Product</p>
                 </div>
             </div>
 

@@ -41,6 +41,8 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+
+
 @api.route('/signup', methods=['POST'])
 def signup():
     email = request.json["email"]
@@ -72,6 +74,8 @@ def signup():
         db.session.rollback()
         print(error)
         return jsonify({"error": "Error creating user"}), 400
+
+
     
 @api.route('/login', methods=["POST", "GET"])
 def login():
@@ -140,6 +144,8 @@ def create_seller():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
+    
+
 
 
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])

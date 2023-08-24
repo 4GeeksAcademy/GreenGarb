@@ -8,6 +8,15 @@ import "../../styles/home.css";
 
 export const  User = () => {
 
+    // const navigate = useNavigate()
+	// const { store, actions } = useContext(Context)
+
+	// useEffect = (() => {
+
+	// 	if(!store.token){
+	// 		navigate('/login')}
+		
+	// },[store.token])
 
 
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate, useContext } from "react-router-dom";
 import "../../styles/navbar.css"
 import greenGarb from "../../img/greenGarb.png"
 
@@ -7,6 +8,21 @@ import greenGarb from "../../img/greenGarb.png"
 
 
 export const Navbar = () => {
+
+	// const navigate = useNavigate()
+	// const { store, actions } = useContext(Context)
+
+	// useEffect = (() => {
+
+	// 	if(!store.token){
+	// 		navigate('/login')}
+	// 	else {
+	// 		navigate('/user/id')}
+		
+	// },[store.token])
+
+
+
 	return (
 		<div>
 		<nav className="navbar navbar-light nav-color p-0">

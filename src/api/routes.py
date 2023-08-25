@@ -197,7 +197,7 @@ def create_product():
             image = request.files['file']
             app.logger.info('%s image', image)
             upload_result = cloudinary.uploader.upload(image)
-            cloudinary_image_url= upload_result['secure_url']
+            cloudinary_image_url= upload_result['public_id']
             new_imageset = Imageset(image=cloudinary_image_url, product=new_product)
             db.session.add(new_imageset)
 
@@ -229,7 +229,7 @@ def update_profile():
             if user.pictures:
                 cloudinary.uploader.destroy(user.pictures.public_id)  # Delete old image from Cloudinary
             response = cloudinary.uploader.upload(profile_image)
-            user.pictures = response['secure_url']
+            user.pictures = response['public_id']
         
         # Update password if provided
         new_password = data.get("new_password")
@@ -272,12 +272,13 @@ def update_product(product_id):
                 imageset.image = data.get(f'existing_image_{imageset.id}', imageset.image)
             else:
                 # Delete imageset if not in existing_imageset_ids
+                cloudinary.uploader.destroy(imageset.image)
                 db.session.delete(imageset)
         
         for image in images_to_upload:
             if image:
                 upload_result = cloudinary.uploader.upload(image)
-                cloudinary_image_url = upload_result['secure_url']
+                cloudinary_image_url = upload_result['public_id']
                 new_imageset = Imageset(image=cloudinary_image_url, product=product)
                 db.session.add(new_imageset)
         
@@ -333,3 +334,18 @@ def get_product(product_id):
     serialized_product['imageset'] = serialized_imagesets
     
     return jsonify(serialized_product), 200
+@api.route('/seller/shopname', methods=['GET'])
+def get_seller_shop_name():
+     try:
+        current_user_id = get_jwt_identity()
+        seller = Seller.query.filter_by(user_id=current_user_id).first()
+        if seller:
+            return jsonify({'shop_name': seller.shop_name})
+        else:
+            return jsonify({'error': 'Seller not found'}), 404
+     except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
+        
+    
+    

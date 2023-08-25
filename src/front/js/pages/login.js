@@ -12,6 +12,8 @@ export const Login = () => {
   const [username, setUsername] =  useState('')
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
+  const token = localStorage.getItem('access_token')
+  console.log('access_token', token)
 
   const submit = (e) => {
 		e.preventDefault()

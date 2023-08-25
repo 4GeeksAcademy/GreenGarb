@@ -48,11 +48,12 @@ const ProductUpload = () => {
         console.log(response.data)
         // Product uploaded successfully, do something (e.g., show a success message)
       } else {
-        // Handle error (e.g., show an error message)
+
+        console.log(error)
       }
     } catch (error) {
       console.error('Error uploading product:', error);
-      // Handle error (e.g., show an error message)
+      
     }
   };
 

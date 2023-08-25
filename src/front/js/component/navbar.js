@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate, useContext } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/navbar.css"
 import greenGarb from "../../img/greenGarb.png"
 

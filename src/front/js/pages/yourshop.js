@@ -64,6 +64,25 @@ export const Yourshop = () => {
         </nav>
 
         <h1 className="text-center">Selling</h1>
+
+        <div className="sellers-listing">
+
+            {/* {products.map((product, index) => (
+               
+               <div className="card w-25 d-flex me-2" key = {index}> 
+               <img className="card-img-top" src="https://www.nawpic.com/media/2020/star-wars-nawpic-23.jpg" alt="Card image cap"></img>
+                   <div className="card-body">
+                   <h5 className="card-title">{product.title}</h5>
+                   <div className="d-flex justify-content-end mt-2">
+                       <a className="btn btn-danger me-1" onClick={() => {actions.addFavorite(product.price)}}>
+                           <i class="fa fa-heart ms-1"></i>
+                       </a>
+                       <Link to={'/product/' + product.id} className="btn btn-primary">Learn More</Link>
+                   </div>
+                   </div>
+               </div> 
+               ))  } */}
+        </div>
         </>
     )
 }

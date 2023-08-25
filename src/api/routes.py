@@ -43,6 +43,8 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+
+
 @api.route('/signup', methods=['POST'])
 def signup():
     email = request.json["email"]
@@ -74,6 +76,8 @@ def signup():
         db.session.rollback()
         print(error)
         return jsonify({"error": "Error creating user"}), 400
+
+
     
 @api.route('/login', methods=["POST", "GET"])
 def login():
@@ -91,6 +95,15 @@ def login():
         return response, 200
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+    
+@api.route('/user', methods=['GET'])
+@jwt_required()
+def get_user(): 
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    return jsonify(user.serialize())
+
 
 
 @api.route('/logout', methods=['POST'])
@@ -99,6 +112,8 @@ def logout():
     resp = jsonify({"msg": "Logout successful"})
     unset_jwt_cookies(resp)
     return resp, 200
+
+
 @api.route('/sellers', methods=['POST'])
 @jwt_required()
 def create_seller():
@@ -131,6 +146,8 @@ def create_seller():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
+    
+
 
 
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])

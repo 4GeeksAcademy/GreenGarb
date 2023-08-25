@@ -66,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			  },
 		
-			  logout: () => {
+			logout: () => {
 				sessionStorage.removeItem('token');
 				sessionStorage.removeItem('user');
 				sessionStorage.removeItem('idUser');
@@ -76,6 +76,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					idUser: null
 				});
 			},
+
+		
 
 			getMessage: async () => {
 				try{

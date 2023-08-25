@@ -14,6 +14,17 @@ from flask_jwt_extended import set_access_cookies
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+cloudinary.config( 
+  cloud_name = os.getenv('CLOUD_NAME'),
+  api_key = os.getenv('CLOUDINARY_API_KEY'),
+  api_secret = os.getenv('CLOUDINARY_API_SECRET'),
+  secure = True
+)
 
 api = Blueprint('api', __name__)
 CORS(api, supports_credentials=True)
@@ -181,12 +192,54 @@ def create_product():
         )
         db.session.add(new_product)
         db.session.commit()
-        for image_url in images:
-            new_imageset = Imageset(image=image_url, product=new_product)
+        for image in images:
+            # Upload image to Cloudinary
+            image = request.files['file']
+            app.logger.info('%s image', image)
+            upload_result = cloudinary.uploader.upload(image)
+            cloudinary_image_url= upload_result['secure_url']
+            new_imageset = Imageset(image=cloudinary_image_url, product=new_product)
             db.session.add(new_imageset)
+
         db.session.commit()
 
         return jsonify({"message": "Product added successfully"}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
+    
+@api.route('/users/profile', methods=['PUT'])
+@jwt_required()
+def update_profile():
+    try:
+        current_user_id = get_jwt_identity()
+        user = User.query.get(current_user_id)
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+        
+        data = request.json
+        user.name = data.get("name", user.name)
+        user.email = data.get("email", user.email)
+        user.address = data.get("address", user.address)
+        user.pictures = data.get("pictures", user.pictures)
+
+        # Handle profile image upload to Cloudinary
+        profile_image = request.files['file']
+        if profile_image:
+            if user.pictures:
+                cloudinary.uploader.destroy(user.pictures.public_id)  # Delete old image from Cloudinary
+            response = cloudinary.uploader.upload(profile_image)
+            user.pictures = response['secure_url']
+        
+        # Update password if provided
+        new_password = data.get("new_password")
+        if new_password:
+            hashed_password = bcrypt.generate_password_hash(new_password).decode("utf-8")
+            user.password = hashed_password
+        
+        db.session.commit()
+
+        return jsonify({"message": "Profile updated successfully"}), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
@@ -198,22 +251,43 @@ def update_product(product_id):
     if not product:
         return jsonify({"error": "Product not found"}), 404
     
-    # Update the product attributes based on the request JSON
-    data = request.json
-    for key, value in data.items():
-        setattr(product, key, value)
-    
-    imageset_data = data.get('imageset', [])
-    for imageset in imageset_data:
-        imageset_id = imageset.get('id')
-        if imageset_id:
-            existing_imageset = Imageset.query.get(imageset_id)
-            if existing_imageset:
-                for key, value in imageset.items():
-                    setattr(existing_imageset, key, value)
+    try:
+        data = request.json
+        product.title = data.get("title", product.title)
+        product.description = data.get("description", product.description)
+        product.price = data.get("price", product.price)
+        product.category = data.get("category", product.category)
+        product.quantity = data.get("quantity", product.quantity)
+        product.condition = data.get("condition", product.condition)
+        product.color = data.get("color", product.color)
+        product.size = data.get("size", product.size)
 
-    db.session.commit()
-    return jsonify({"message": "Product updated successfully"}), 200
+        # Handle image updates and removals
+        images_to_upload = request.files.getlist('images')
+        existing_imageset_ids = data.get('existing_imageset_ids', [])  # List of Imageset IDs to keep
+        
+        for imageset in product.imagesets:
+            if imageset.id in existing_imageset_ids:
+                # Update existing imageset (if necessary)
+                imageset.image = data.get(f'existing_image_{imageset.id}', imageset.image)
+            else:
+                # Delete imageset if not in existing_imageset_ids
+                db.session.delete(imageset)
+        
+        for image in images_to_upload:
+            if image:
+                upload_result = cloudinary.uploader.upload(image)
+                cloudinary_image_url = upload_result['secure_url']
+                new_imageset = Imageset(image=cloudinary_image_url, product=product)
+                db.session.add(new_imageset)
+        
+        db.session.commit()
+
+        return jsonify({"message": "Product updated successfully"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
+
 @api.route('/products/<int:product_id>', methods=['DELETE'])
 @jwt_required()
 def delete_product(product_id):

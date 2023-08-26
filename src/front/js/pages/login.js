@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import axios from "axios";
 
 
 
@@ -12,22 +11,27 @@ export const Login = () => {
   const [username, setUsername] =  useState('')
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
-  const token = localStorage.getItem('access_token')
-  console.log('access_token', token)
+  const navigate = useNavigate()
+ 
 
-  const submit = (e) => {
-		e.preventDefault()
-		actions.login(username,password)			 	
-	 }
+  const submit = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await actions.login(username, password);
 
-
-   useEffect (() => {
-		if(store.token && store.token !== "" && store.token !== undefined){
-		navigate('/user/:id')
-		}
-
-	 },[store.token])
+      if (!response.error) {
+        // Redirect to user profile page on successful login
+        navigate(`/user/${store.idUser}`);
+      } else {
+        // Handle login error here, such as displaying error message to user
+        console.error("Login error:", response.error);
+      }
+    } catch (error) {
+      // Handle any other errors that might occur during login
+      console.error("An error occurred during login:", error);
+    }
+  };
 
 
 
@@ -38,7 +42,7 @@ export const Login = () => {
 			<h1>Please Sign In </h1>
 			
 
-			<form className="container w-25 p-4 bg-light mb-5" onSubmit={(e) => submit(e)}>
+			<form className="container w-25 p-4 bg-light" onSubmit={(e) => submit(e)}>
 			<div className="form-group ">
 				<label for="userName">Username</label>
 				<input type="text" className="form-control" id="userName" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}></input>
@@ -64,6 +68,7 @@ export const Login = () => {
 				</Link>
 			</div>
 			</form>
+{/* } */}
 
 		</div>
 	);

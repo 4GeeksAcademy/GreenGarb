@@ -19,6 +19,7 @@ from flask_bcrypt import Bcrypt
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+CORS(app)
 app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY')
@@ -28,6 +29,7 @@ app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(minutes=45)
 # database condiguration
 jwt = JWTManager(app)
 db_url = os.getenv("DATABASE_URL")
+
 if db_url is not None:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
 else:
@@ -39,7 +41,7 @@ bcrypt =Bcrypt(app)
 db.init_app(app)
 
 # Allow CORS requests to this API
-CORS(app)
+
 
 # add the admin
 setup_admin(app)

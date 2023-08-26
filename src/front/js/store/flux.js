@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signup: async (email, username, password, name) => {
 				try {
-				  const response = await axios.post(process.env.BACKEND_URL + '/api/signup', {
+				  const response = await axios.post(process.env.BACKEND_URL + 'api/signup', {
 					email,
 					username,
 					password,
@@ -43,10 +43,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			login: async (username, password) => {
 				try {
-				  const response = await axios.post(process.env.BACKEND_URL + '/api/login', {
-					username,
-					password
-				  });
+				  const response = await axios.post(process.env.BACKEND_URL + '/api/login',
+				  { username, password },
+				  {
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
 		
 				  if (response.status === 200) {
 					// Login successful
@@ -56,16 +59,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sessionStorage.setItem('user', data.username )
 					sessionStorage.setItem('idUser', data.id )
 					setStore({ token: data.access_token, user: data.user, idUser: data.idUser });
-				  } else {
+					return true; // Return a success indicator
+				} else {
 					// Login failed, return the error message
-					const error = response.data.error;
-					return { error };
-				  }
-				} catch (error) {
-				  console.error('Error during login:', error);
-				  return { error: 'An error occurred during login' };
+					console.log('Login failed:', response.statusText);
+					return { error: 'Login failed' };
 				}
-			  },
+			} catch (error) {
+				console.error('Error during login:', error);
+				return { error: 'An error occurred during login' };
+			}
+		},
 		
 			logout: () => {
 				sessionStorage.removeItem('token');
@@ -83,7 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+					const resp = await fetch(process.env.BACKEND_URL + "api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves

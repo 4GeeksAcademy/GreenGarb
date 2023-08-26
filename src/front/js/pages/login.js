@@ -38,7 +38,7 @@ export const Login = () => {
 			<h1>Please Sign In </h1>
 			
 
-			<form className="container w-25 p-4 bg-light mb-5" onSubmit={(e) => submit(e)}>
+			<form className="container col-md-4 p-4 bg-light mb-5 login-form" onSubmit={(e) => submit(e)}>
 			<div className="form-group ">
 				<label for="userName">Username</label>
 				<input type="text" className="form-control" id="userName" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}></input>

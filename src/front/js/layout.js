@@ -9,7 +9,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import {AboutUs} from "./pages/aboutus";
 import ProductUpload from "./pages/ProductUpload";
-
+import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ContactPage } from "./pages/contactpage";
@@ -46,6 +46,7 @@ const Layout = () => {
                         {/* <Route element={<Catalog/>} path="/catalog/:uid"/> */}
                         <Route element={<Product/>} path="/product"/>
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
+                        <Route element={<SignUp />} path="/signup" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

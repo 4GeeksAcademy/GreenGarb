@@ -26,53 +26,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signup: async (email, username, password, name) => {
 				try {
-					let data = "";
-				  	const response = await axios.post(process.env.BACKEND_URL + 'api/signup', {
-					email,
-					username,
-					password,
-					name,
-				  });
-				  if (response.status === 200) {data = await response.json();
-					console.log(data);
-					
-				  }
+					const response = await axios.post(process.env.BACKEND_URL + 'api/signup', {
+						email,
+						username,
+						password,
+						name
+					}, {
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					});
+					if (response.status === 200) {
+						const data = response.data;
+						
+						sessionStorage.setItem('token', data.access_token)
+						sessionStorage.setItem('user', data.username)
+						sessionStorage.setItem('idUser', data.id)
+						sessionStorage.setItem('name', data.name)
+						setStore({ token: data.access_token, user: data.username, idUser: data.id, name:data.name });
+						
+					}
 				} catch (error) {
-					console.log(error)
-				  // Handle errors and dispatch relevant actions if needed
+					console.log(error);
+					// Handle errors and dispatch relevant actions if needed
 				}
-			  },
-			
+			},
+
 			login: async (username, password) => {
 				try {
-				  const response = await axios.post(process.env.BACKEND_URL + '/api/login',
-				  { username, password },
-				  {
-					headers: {
-						'Content-Type': 'application/json'
+					const response = await axios.post(process.env.BACKEND_URL + '/api/login',
+						{ username, password },
+						{
+							headers: {
+								'Content-Type': 'application/json'
+							  }
+						})
+
+					if (response.status === 200) {
+						// Login successful
+						const data = response.data;
+						console.log(data)
+						sessionStorage.setItem('token', data.access_token)
+						sessionStorage.setItem('user', data.username)
+						sessionStorage.setItem('idUser', data.id)
+						setStore({ token: data.access_token, user: data.username, idUser: data.id });
+						return true; // Return a success indicator
+					} else {
+						// Login failed, return the error message
+						console.log('Login failed:', response.statusText);
+						return { error: 'Login failed' };
 					}
-				})
-		
-				  if (response.status === 200) {
-					// Login successful
-					const data = response.data;
-					console.log(data)
-					sessionStorage.setItem('token', data.access_token)
-					sessionStorage.setItem('user', data.username )
-					sessionStorage.setItem('idUser', data.id )
-					setStore({ token: data.access_token, user: data.user, idUser: data.idUser });
-					return true; // Return a success indicator
-				} else {
-					// Login failed, return the error message
-					console.log('Login failed:', response.statusText);
-					return { error: 'Login failed' };
+				} catch (error) {
+					console.error('Error during login:', error);
+					return { error: 'An error occurred during login' };
 				}
-			} catch (error) {
-				console.error('Error during login:', error);
-				return { error: 'An error occurred during login' };
-			}
-		},
-		
+			},
+
 			logout: () => {
 				sessionStorage.removeItem('token');
 				sessionStorage.removeItem('user');
@@ -84,21 +93,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			
+
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			}
-		
+
 		}
 	};
 };

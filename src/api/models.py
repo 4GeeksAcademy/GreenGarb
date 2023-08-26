@@ -20,10 +20,11 @@ class User(db.Model):
     transactions = db.Column(db.String(255))
     favorites = db.Column(db.Boolean())
     seller = db.relationship('Seller', back_populates='user')
-    def __init__(self, username,email, password):
+    def __init__(self, username,email, password,name):
         self.email=email
         self.username = username
         self.password = password
+        self.name=name
        
     def __repr__(self):
         return f'<User {self.username}>'

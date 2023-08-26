@@ -258,3 +258,11 @@ height: 70%;
     border-radius: 50%;
 
 }
+
+        /* ---------login form---------- */
+
+.login-form {
+    background-image: url('https://images.pexels.com/photos/1353938/pexels-photo-1353938.jpeg?auto=compress&cs=tinysrgb&w=600');
+    object-fit: cover;
+    border: solid black;
+}

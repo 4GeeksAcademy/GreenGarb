@@ -259,6 +259,17 @@ height: 70%;
 
 }
 
+@media only screen and (max-width: 576px) {
+    .user-menu {
+        border-bottom: #ccc 1px solid;    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .sellers-menu {
+        border-bottom: #ccc 1px solid;    }
+  }
+
+
      /* -------------login-form---------- */
 
 .login-form {

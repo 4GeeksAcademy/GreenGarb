@@ -12,6 +12,7 @@ export const Login = () => {
   const [username, setUsername] =  useState('')
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate()
   const token = localStorage.getItem('access_token')
   console.log('access_token', token)
 
@@ -56,7 +57,7 @@ export const Login = () => {
 				</label>
 			</div>
 			
-			<button type="submit" className="btn btn-primary mt-2">Sign in</button>
+			<button type="submit" className="btn btn-success mt-2">Sign in</button>
 
 			<div className="mt-2">
 				<Link to={'./signup'}>

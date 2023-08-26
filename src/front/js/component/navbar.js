@@ -55,40 +55,50 @@ export const Navbar = () => {
 			{/*------------catalog menu---------------------------------------------------- */}
 
 
-		<nav className="navbar navbar-light bg-light lower-nav justify-content-start mb-5">
+		<nav className="navbar navbar-expand-lg  navbar-light bg-light lower-nav justify-content-start mb-5">
+			<div className="container">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<div className="dropdown ms-5 me-3">
-			<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Mens
-			</button>
-			<div className="dropdown-menu" aria-labelledby="MensDropDown">
-				<a className="dropdown-item" href="#">Tops</a>
-				<a className="dropdown-item" href="#">Bottoms</a>
-			</div>
-			</div>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
 
-
-			
-			<div className="dropdown me-3">
-			<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Womens
-			</button>
-			<div className="dropdown-menu" aria-labelledby="WomensDropDown">
-				<a className="dropdown-item" href="#">Tops</a>
-				<a className="dropdown-item" href="#">Bottoms</a>
-			</div>
-			</div>
+					<div className="dropdown me-3">
+					<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Mens
+					</button>
+					<div className="dropdown-menu" aria-labelledby="MensDropDown">
+						<a className="dropdown-item" href="#">Tops</a>
+						<a className="dropdown-item" href="#">Bottoms</a>
+					</div>
+					</div>
 
 
-			<div className="dropdown me-3">
-			<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Shoes
-			</button>
-			<div className="dropdown-menu" aria-labelledby="ShoesDropDown">
-				<a className="dropdown-item" href="#">Sneakers</a>
-				<a className="dropdown-item" href="#">Boots</a>
-				<a className="dropdown-item" href="#">Sandals</a>
-			</div>
+					
+					<div className="dropdown me-3">
+					<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="WomensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Womens
+					</button>
+					<div className="dropdown-menu" aria-labelledby="WomensDropDown">
+						<a className="dropdown-item" href="#">Tops</a>
+						<a className="dropdown-item" href="#">Bottoms</a>
+					</div>
+					</div>
+
+
+					<div className="dropdown me-3">
+					<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="ShoesDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Shoes
+					</button>
+					<div className="dropdown-menu" aria-labelledby="ShoesDropDown">
+						<a className="dropdown-item" href="#">Sneakers</a>
+						<a className="dropdown-item" href="#">Boots</a>
+						<a className="dropdown-item" href="#">Sandals</a>
+					</div>
+					</div>
+					</ul>
+				</div>
 			</div>
 		</nav>
 

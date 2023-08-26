@@ -59,6 +59,9 @@ export const  User = () => {
                     <li className="nav-item  border border-primary">
                     <Link className="nav-link active" to="/yourshop">Your Shop</Link>
                     </li>
+                    <li className="nav-item  border border-primary">
+                    <Link className="nav-link active" to="/">logout</Link>
+                    </li>
                 </ul>
                 
             </div>

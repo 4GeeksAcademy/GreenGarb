@@ -26,13 +26,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signup: async (email, username, password, name) => {
 				try {
-				  const response = await axios.post(process.env.BACKEND_URL + 'api/signup', {
+					let data = "";
+				  	const response = await axios.post(process.env.BACKEND_URL + 'api/signup', {
 					email,
 					username,
 					password,
 					name,
 				  });
-				  if (response.status === 200) {
+				  if (response.status === 200) {data = await response.json();
+					console.log(data);
 					
 				  }
 				} catch (error) {

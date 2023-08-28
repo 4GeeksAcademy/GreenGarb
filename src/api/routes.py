@@ -5,6 +5,7 @@ import hashlib
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Product,Seller, Imageset
+from werkzeug.utils import secure_filename 
 from datetime import datetime, timedelta, timezone
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import unset_jwt_cookies
@@ -14,17 +15,26 @@ from flask_jwt_extended import set_access_cookies
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
+from dotenv import load_dotenv
+load_dotenv()
+import json
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import pathlib
 
-
-cloudinary.config( 
-  cloud_name = os.getenv('CLOUD_NAME'),
-  api_key = os.getenv('CLOUDINARY_API_KEY'),
-  api_secret = os.getenv('CLOUDINARY_API_SECRET'),
-  secure = True
-)
+cloudinary.config(secure = True)
+def uploadImage(filename, folder="green_garb"):
+    stem= pathlib.Path(filename).stem
+    res= cloudinary.uploader.upload(filename, public_id=stem, folder=folder)
+    return res
+    
+def getAssetInfo(public_id):
+    image_info=cloudinary.api.resource(public_id)
+    return image_info
+def deletImage(public_id):
+    
+    cloudinary.uploader.destroy(public_id)
 
 api = Blueprint('api', __name__)
 CORS(api, supports_credentials=True)
@@ -97,7 +107,7 @@ def login():
         return jsonify({"error": str(e)}), 400
     
     
-@api.route('/user', methods=['GET'])
+@api.route('/user/<int:user_id>', methods=['GET'])
 @jwt_required()
 def get_user(): 
     user_id = get_jwt_identity()
@@ -241,12 +251,14 @@ def update_profile():
         user.pictures = data.get("pictures", user.pictures)
 
         # Handle profile image upload to Cloudinary
-        profile_image = request.files['file']
-        if profile_image:
-            if user.pictures:
-                cloudinary.uploader.destroy(user.pictures.public_id)  # Delete old image from Cloudinary
-            response = cloudinary.uploader.upload(profile_image)
-            user.pictures = response['public_id']
+        file_to_upload = request.files['file']
+        
+        # Check if the user already has a profile picture and delete it from Cloudinary
+        if user.pictures:
+            cloudinary.uploader.destroy(user.pictures)
+        
+        upload_result = uploadImage(file_to_upload)
+        user.pictures = upload_result["public_id"]
         
         # Update password if provided
         new_password = data.get("new_password")

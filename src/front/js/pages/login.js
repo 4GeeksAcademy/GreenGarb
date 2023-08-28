@@ -22,7 +22,7 @@ export const Login = () => {
 
       if (!response.error) {
         // Redirect to user profile page on successful login
-        navigate(`/user/${store.idUser}`);
+        navigate(`/`);
       } else {
         // Handle login error here, such as displaying error message to user
         console.error("Login error:", response.error);

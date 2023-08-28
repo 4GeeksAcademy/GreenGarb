@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import blankProfile from "../../img/blankProfile"
-import { User } from "./user";
+import blankProfile from "../../img/blankProfile.png"
 
 
 export const Yourshop = () => {
@@ -34,7 +33,7 @@ export const Yourshop = () => {
 
         <>
             <div className="user-header-div justify-content-center d-flex mb-3">
-                <div className="user-img-div rounded-circle" style={{ backgroundImage:`url(${blankProfile})` }}>
+                <div className="user-img-div rounded-circle" style={{ backgroundImage: 'url(' + blankProfile + ')', backgroundSize: 'contain' }}  >
                     {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
                 </div>
                     <h2 className="ms-2 align-self-center"><i class="fa-solid fa-store"></i>shop name</h2>

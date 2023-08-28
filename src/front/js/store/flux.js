@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sessionStorage.setItem('token', data.access_token)
 					sessionStorage.setItem('user', data.username )
 					sessionStorage.setItem('idUser', data.id )
-					setStore({ token: data.access_token, user: data.user, idUser: data.idUser });
+					setStore({ token: data.access_token, user: data.username, idUser: data.id });
 				  } else {
 					// Login failed, return the error message
 					const error = response.data.error;

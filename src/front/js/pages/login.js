@@ -17,22 +17,16 @@ export const Login = () => {
   
 	const submit = async (e) => {
 	  e.preventDefault();
-  
-	  try {
-		const response = await actions.login(username, password);
-  
-		if (!response.error) {
-		  // Redirect to user profile page on successful login
-		  navigate(`/user/${store.idUser}`);
-		} else {
-		  // Handle login error here, such as displaying error message to user
-		  console.error("Login error:", response.error);
-		}
-	  } catch (error) {
-		// Handle any other errors that might occur during login
-		console.error("An error occurred during login:", error);
-	  }
-	};
+	  actions.login(username,password)
+	
+	}
+
+	
+	
+	  useEffect(() => {
+		if (store.token && store.token != "" && store.token != undefined)
+		  navigate("/user");
+	  });
 
 
 

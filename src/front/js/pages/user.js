@@ -13,6 +13,8 @@ export const  User = () => {
     const navigate = useNavigate()
 	const { store, actions } = useContext(Context)
 
+
+
 	// useEffect = (() => {
 
 	// 	if(!store.token){
@@ -20,7 +22,9 @@ export const  User = () => {
 		
 	// },[store.token])
 
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
+
+
+    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user/:user_id',{
         headers:{
             Authorization:'Bearer '+ store.token
         }

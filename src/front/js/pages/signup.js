@@ -33,16 +33,19 @@ export const SignUp = () => {
   };
   return (
     <div className="text-center">
-      <div className="container py-3 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <h2>Sign Up</h2>
+      <div className="container py-3 mb-5 h-100">
+        <div className="row d-flex justify-content-start align-items-center h-100 mb-5">
+          <h2><strong>Sign Up</strong></h2>
         </div>
         <form onSubmit={handleSignup}>
           <div className="row d-flex justify-content-center">
             <div className="col-md-6">
               <div className="form-group">
-                <div className="row">
+                <div className="row text-start">
                   <div className="col">
+                  <label htmlFor="first-name" className="form-label">
+                First Name
+              </label>
                     <input
                       type="text"
                       className="form-control"
@@ -51,7 +54,10 @@ export const SignUp = () => {
                       onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
-                  <div className="col">
+                  <div className="col ">
+                  <label htmlFor="last-name" className="form-label">
+                Last Name
+              </label>
                     <input
                       type="text"
                       className="form-control"
@@ -62,7 +68,10 @@ export const SignUp = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-group">
+              <div className="form-group text-start">
+              <label htmlFor="username" className="form-label">
+              Username
+              </label>
                 <input
                   type="text"
                   className="form-control"
@@ -71,7 +80,11 @@ export const SignUp = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group text-start">
+              <label htmlFor="email" className="form-label">
+              Email
+              </label>
+                
                 <input
                   type="email"
                   className="form-control"
@@ -80,7 +93,10 @@ export const SignUp = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group text-start">
+              <label htmlFor="password" className="form-label">
+              Password
+              </label>
                 <input
                   type="password"
                   className="form-control"

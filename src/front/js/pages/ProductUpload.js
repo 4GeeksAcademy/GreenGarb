@@ -61,10 +61,10 @@ const ProductUpload = () => {
     <div className="container-xxl bd-gutter mt-3 my-md-4 ">
       <h2 className="mb-4 text-center">Add Product</h2>
       <div className="row ">
-        <aside className="bd-sidebar mt-4 col-3">
+        {/* <aside className="bd-sidebar mt-4 col-3">
           <nav className="left-nav" role="navigation" aria-label="Secondary navigation">
             <div className="group-hd mb-3"><strong>Store's Name</strong></div>
-            {/* <div className="group-hd mb-3"><SellerShopName /></div> */}
+            <div className="group-hd mb-3"><SellerShopName /></div>
             <ul className='list-unstyled pb-3'>
               <li className="mb-3">My Listing</li>
               <li className="mb-3">Pending order</li>
@@ -73,7 +73,7 @@ const ProductUpload = () => {
               <li className="mb-3">Go Back</li>
             </ul>
           </nav>
-        </aside>
+        </aside> */}
 
         <main className="bd-main order-1 col">
           <form className='row'>

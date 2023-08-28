@@ -4,6 +4,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
+			user: [
+				{
+					"address": null,
+					"email":  null,
+					"id": null,
+					"name": null,
+					"seller": [],
+					"username": null,
+					"pictures":null,
+					
+					
+				}
+			],
+			name: null,
+			address:null,
 			message: null,
 			demo: [
 				{
@@ -92,6 +107,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					idUser: null
 				});
 			},
+			fetchUserData: async () => {
+				try {
+				  const response = await axios.get(process.env.BACKEND_URL + '/user/<int:user_id>', {
+					headers: {
+					  Authorization: `Bearer ${getStore().token}`
+					}
+				  });
+		  
+				  if (response.status === 200) {
+					const userData = response.data;
+					setStore({ user: userData }); 
+				  }
+				} catch (error) {
+				  console.error('Error fetching user data:', error);
+				}
+			  },
+			
+
+			updateUserProfile: async (formData) => {
+				try {
+				  const response = await axios.put(process.env.BACKEND_URL + '/api/users/profile', formData, {
+					headers: {
+					  'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+					},
+				  });
+				  if (response.status === 200) {
+					const data = response.data;
+					console.log(data.message);
+					// Update the user's profile data in the store if needed
+				  }
+				} catch (error) {
+				  console.error('Error updating profile:', error);
+				}
+			  },
+			
 
 
 
@@ -106,7 +156,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
-			}
+			},
 
 		}
 	};

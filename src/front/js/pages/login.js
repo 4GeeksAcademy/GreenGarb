@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 
@@ -11,27 +12,22 @@ export const Login = () => {
   const [username, setUsername] =  useState('')
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
-  const navigate = useNavigate()
- 
+  const token = localStorage.getItem('access_token')
+  console.log('access_token', token)
 
-  const submit = async (e) => {
-    e.preventDefault();
+  const submit = (e) => {
+		e.preventDefault()
+		actions.login(username,password)			 	
+	 }
 
-    try {
-      const response = await actions.login(username, password);
 
-      if (!response.error) {
-        // Redirect to user profile page on successful login
-        navigate(`/`);
-      } else {
-        // Handle login error here, such as displaying error message to user
-        console.error("Login error:", response.error);
-      }
-    } catch (error) {
-      // Handle any other errors that might occur during login
-      console.error("An error occurred during login:", error);
-    }
-  };
+
+   useEffect (() => {
+		if(store.token && store.token !== "" && store.token !== undefined){
+		navigate('/user/:id')
+		}
+
+	 },[store.token])
 
 
 
@@ -42,7 +38,7 @@ export const Login = () => {
 			<h1>Please Sign In </h1>
 			
 
-			<form className="container w-25 p-4 bg-light login-form" onSubmit={(e) => submit(e)}>
+			<form className="container w-25 p-4 bg-light mb-5" onSubmit={(e) => submit(e)}>
 			<div className="form-group ">
 				<label for="userName">Username</label>
 				<input type="text" className="form-control" id="userName" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}></input>
@@ -60,7 +56,7 @@ export const Login = () => {
 				</label>
 			</div>
 			
-			<button type="submit" className="btn btn-primary mt-2">Sign in</button>
+			<button type="submit" className="btn btn-success mt-2">Sign in</button>
 
 			<div className="mt-2">
 				<Link to={'./signup'}>

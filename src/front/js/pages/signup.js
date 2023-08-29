@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const SignUp = () => {
-  const {store, actions} = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
@@ -18,10 +18,10 @@ export const SignUp = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const name=`${firstName} ${lastName}`;
+    const name = `${firstName} ${lastName}`;
     await actions.signup(email, username, password, name);
-    
-      
+
+
     //   if (result.status===200){
     //     navigate("/login");
     //   }else{
@@ -43,9 +43,9 @@ export const SignUp = () => {
               <div className="form-group">
                 <div className="row text-start">
                   <div className="col">
-                  <label htmlFor="first-name" className="form-label">
-                First Name
-              </label>
+                    <label htmlFor="first-name" className="form-label">
+                      First Name
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -55,9 +55,9 @@ export const SignUp = () => {
                     />
                   </div>
                   <div className="col ">
-                  <label htmlFor="last-name" className="form-label">
-                Last Name
-              </label>
+                    <label htmlFor="last-name" className="form-label">
+                      Last Name
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -69,9 +69,9 @@ export const SignUp = () => {
                 </div>
               </div>
               <div className="form-group text-start">
-              <label htmlFor="username" className="form-label">
-              Username
-              </label>
+                <label htmlFor="username" className="form-label">
+                  Username
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -81,10 +81,10 @@ export const SignUp = () => {
                 />
               </div>
               <div className="form-group text-start">
-              <label htmlFor="email" className="form-label">
-              Email
-              </label>
-                
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+
                 <input
                   type="email"
                   className="form-control"
@@ -94,9 +94,9 @@ export const SignUp = () => {
                 />
               </div>
               <div className="form-group text-start">
-              <label htmlFor="password" className="form-label">
-              Password
-              </label>
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
                 <input
                   type="password"
                   className="form-control"
@@ -106,14 +106,26 @@ export const SignUp = () => {
                 />
               </div>
               <div class="d-grid">
-              <button type="submit" className="btn btn-success">Sign Up</button>
-            </div>
+                <button type="submit" className="btn btn-success">Sign Up</button>
+              </div>
             </div>
           </div>
         </form>
       </div>
     </div>
   );
-};
-      
-    
+}
+
+function SignUpPage() {
+  return (
+    <div className="container">
+      <SignUpForm />
+    </div>
+  );
+}
+
+function App() {
+  return <SignUpPage />;
+}
+
+export default App;

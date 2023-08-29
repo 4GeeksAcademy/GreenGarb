@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { useParams } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ export const Login = () => {
 	const [password, setPassword] = useState('')
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate()
+	const {userid} = useParams();
    
   
 	const submit = async (e) => {
@@ -25,7 +27,7 @@ export const Login = () => {
 	
 	  useEffect(() => {
 		if (store.token && store.token != "" && store.token != undefined)
-		  navigate("/user");
+		  navigate("/user/:`${userid}`");
 	  });
 
 

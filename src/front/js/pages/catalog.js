@@ -9,6 +9,7 @@ import "../../styles/home.css";
 export const Catalog = () => {
 
     const [products, setProducts] = useState([])
+    const [list,setList] = useState({})
 
     fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
 
@@ -76,7 +77,6 @@ export const Catalog = () => {
 
             <div className="container-fluid catalog-imgs my-5 d-flex justify-content-between">
 
-                {/* map  every product into this html format */}
                 {/* {products.map((product, index) => (
                
                <div className="card w-25 d-flex me-2" key = {index}> 

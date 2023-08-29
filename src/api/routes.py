@@ -107,7 +107,7 @@ def login():
         return jsonify({"error": str(e)}), 400
     
     
-@api.route('/user/<int:user_id>', methods=['GET'])
+@api.route('/user', methods=['GET'])
 @jwt_required()
 def get_user(): 
     user_id = get_jwt_identity()

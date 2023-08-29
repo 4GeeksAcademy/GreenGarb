@@ -15,16 +15,16 @@ export const  User = () => {
 
 
 
-	// useEffect = (() => {
+	useEffect = (() => {
 
-	// 	if(!store.token){
-	// 		navigate('/login')}
+		if(!store.token){
+			navigate('/login')}
 		
-	// },[store.token])
+	},[store.token])
 
 
 
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user/:user_id',{
+    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
         headers:{
             Authorization:'Bearer '+ store.token
         }

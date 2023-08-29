@@ -31,7 +31,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+			],
+			products: [
+				{
+					'title': 'shirt',
+					'price': '$25',
+					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'id':'1'
+				},
+				{
+					'title': 'shirt',
+					'price': '$25',
+					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'id':'2'
+				},
+				{
+					'title': 'shirt',
+					'price': '$25',
+					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'id':'3'
+				},
+				{
+					'title': 'shirt',
+					'price': '$25',
+					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'id':'4'
+				},
 			]
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -109,7 +136,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			fetchUserData: async () => {
 				try {
-				  const response = await axios.get(process.env.BACKEND_URL + '/user/<int:user_id>', {
+				  const response = await axios.get(process.env.BACKEND_URL + '/user', {
 					headers: {
 					  Authorization: `Bearer ${getStore().token}`
 					}

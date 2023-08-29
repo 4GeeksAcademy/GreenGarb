@@ -1,19 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 
 export const Product = () => {
+    const {store, actions} = useContext(Context)
+    let params = useParams()
+    let id = parseInt(params.id)
+    let item = store.products[id]
 
 
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
 
-    .then(response =>  response.json())
-    .then( data => {
-        console.log('data', data)
-    })
-    .catch(error => console.log(error))
+    // fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
+
+    // .then(response =>  response.json())
+    // .then( data => {
+    //     console.log('data', data)
+    // })
+    // .catch(error => console.log(error))
 
 
 
@@ -24,14 +29,14 @@ export const Product = () => {
             <div className="container d-flex">
                 <div className="row w-100 m-0">
                     <div className="product-img-div mb-3 col-sm-6">
-                        <img className="product-img" src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600"/>
+                        <img className="product-img" src={item.image}/>
                     </div>
 
                     <div className="right-side-product-div col-sm-5">
                         <div className="product-specs">
-                            <h2>prop title</h2>
-                            <h5 className="mt-2">$Price</h5>
-                            <p className="mt-2">Size</p>
+                            <h2>{item.title}</h2>
+                            <h5 className="mt-2">{item.price}</h5>
+                            {/* <p className="mt-2">Size</p> */}
                         </div>
 
                         <div className="product-actions">

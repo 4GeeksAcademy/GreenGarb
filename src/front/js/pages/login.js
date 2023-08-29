@@ -59,7 +59,7 @@ export const Login = () => {
 			<button type="submit" className="btn btn-success mt-2">Sign in</button>
 
 			<div className="mt-2">
-				<Link to={'./signup'}>
+				<Link to={'/signup'}>
 				<a href="#">New User? Create Account Here</a>
 				</Link>
 			</div>

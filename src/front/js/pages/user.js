@@ -70,7 +70,7 @@ export const  User = () => {
                     <Link className="nav-link active" to="/yourshop">Your Shop</Link>
                     </li>
                     <li className="nav-item  border border-primary">
-                    <Link className="nav-link active" to="/">logout</Link>
+                    <Link className="nav-link active" onClick={() => actions.logout()} to="/">logout</Link>
                     </li>
                 </ul>
                 

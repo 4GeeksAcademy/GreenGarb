@@ -37,24 +37,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'title': 'shirt',
 					'price': '$25',
 					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
 					'id':'1'
 				},
 				{
-					'title': 'shirt',
-					'price': '$25',
-					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'title': 'NYC shirt',
+					'price': '$28',
+					'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
 					'id':'2'
 				},
 				{
-					'title': 'shirt',
-					'price': '$25',
-					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'title': 'Jeans',
+					'price': '$75',
+					'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
 					'id':'3'
 				},
 				{
-					'title': 'shirt',
-					'price': '$25',
-					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+					'title': 'shoes',
+					'price': '$35',
+					'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
+					'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
 					'id':'4'
 				},
 			]
@@ -64,6 +68,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+
+			//saves token for everytime u load any page so its not lost
+			setToken: () => {
+				let token = sessionStorage.getItem('token');
+				setStore({token:token})
 			},
 
 			signup: async (email, username, password, name) => {

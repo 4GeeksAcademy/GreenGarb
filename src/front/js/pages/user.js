@@ -12,29 +12,34 @@ export const  User = () => {
 
     const navigate = useNavigate()
 	const { store, actions } = useContext(Context)
+    const [userData, setUserData] = useState()
 
 
 
-	useEffect = (() => {
+	useEffect (() => {
 
 		if(!store.token){
 			navigate('/login')}
+        else {
+                fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
+            headers:{
+                Authorization:'Bearer '+ store.token,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response =>  response.json())
+        .then( data => {
+            setUserData(data)  
+        })
+        .catch(error => console.log(error))
+        
+        }
 		
 	},[store.token])
 
-
-
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
-        headers:{
-            Authorization:'Bearer '+ store.token
-        }
-    })
-    .then(response =>  response.json())
-    .then( data => {
-        console.log('data', data)
-    })
-    .catch(error => console.log(error))
-
+        console.log(userData)
+    
+ 
 
 
 
@@ -45,7 +50,7 @@ export const  User = () => {
             <div className="user-img-div rounded-circle" style={{ backgroundImage: 'url(' + blankProfile + ')', backgroundSize: 'contain' }}>
                 {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
             </div>
-            <h2 className="ms-2 align-self-center"> {User.username}username</h2>
+            <h2 className="ms-2 align-self-center"> {userData && userData.username || 'Not available'}</h2>
         </div>
 
         <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">

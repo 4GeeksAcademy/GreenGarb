@@ -35,7 +35,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
-            "seller": self.seller
+          #  "seller": self.seller
         }
     
 class Seller(db.Model):

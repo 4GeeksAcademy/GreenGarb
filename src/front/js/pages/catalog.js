@@ -83,6 +83,7 @@ export const Catalog = () => {
                <img className="card-img-top" src={product.image} alt="Card image cap"></img>
                    <div className="card-body">
                    <h5 className="card-title">{product.title}</h5>
+                   <h5>{product.price}</h5>
                    <div className="d-flex justify-content-end mt-2">
                        {/* <a className="btn btn-danger me-1" onClick={() => {actions.addFavorite(product.price)}}>
                            <i class="fa fa-heart ms-1"></i>

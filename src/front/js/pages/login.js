@@ -12,6 +12,7 @@ export const Login = () => {
   const [username, setUsername] =  useState('')
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate()
   const token = localStorage.getItem('access_token')
   console.log('access_token', token)
 
@@ -20,11 +21,12 @@ export const Login = () => {
 		actions.login(username,password)			 	
 	 }
 
+ 
 
 
    useEffect (() => {
 		if(store.token && store.token !== "" && store.token !== undefined){
-		navigate('/user/')
+		navigate('/user')
 		}
 
 	 },[store.token])

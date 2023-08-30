@@ -10,24 +10,29 @@ export const Yourshop = () => {
 
 	const navigate = useNavigate()
 	const { store, actions } = useContext(Context)
+    const [sellerData, setSellerData] = useState()
 
-	// useEffect = (() => {
+    useEffect (() => {
 
-	// 	if(!store.token){
-	// 		navigate('/login')}
-		
-	// },[store.token])
-
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
-        headers:{
-            Authorization:'Bearer '+ store.token
+		if(!store.token){
+			navigate('/login')}
+        else {
+                fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
+            headers:{
+                Authorization:'Bearer '+ store.token,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response =>  response.json())
+        .then( data => {
+            setSellerData(data)  
+        })
+        .catch(error => console.log(error))
+        
         }
-    })
-    .then(response =>  response.json())
-    .then( data => {
-        console.log('data', data)
-    })
-    .catch(error => console.log(error))
+		
+	},[store.token])
+
 
     return(
 

@@ -8,38 +8,60 @@ from api.models import db, User, Product,Seller, Imageset
 from werkzeug.utils import secure_filename 
 from datetime import datetime, timedelta, timezone
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import unset_jwt_cookies
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import set_access_cookies
-from flask_jwt_extended import jwt_required
-from flask_cors import CORS
+from flask_jwt_extended import unset_jwt_cookies, create_access_token, get_jwt_identity, set_access_cookies, jwt_required
+from flask_cors import CORS, cross_origin
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 load_dotenv()
 import json
 import cloudinary
-import cloudinary.uploader
+from cloudinary.uploader import upload, destroy
 import cloudinary.api
 import pathlib
-
-cloudinary.config(secure = True)
-def uploadImage(filename, folder="green_garb"):
-    stem= pathlib.Path(filename).stem
-    res= cloudinary.uploader.upload(filename, public_id=stem, folder=folder)
-    return res
-    
-def getAssetInfo(public_id):
-    image_info=cloudinary.api.resource(public_id)
-    return image_info
-def deletImage(public_id):
-    
-    cloudinary.uploader.destroy(public_id)
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 api = Blueprint('api', __name__)
 CORS(api, supports_credentials=True)
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+cloudinary.config(secure = True)
+
+# def uploadImage():
+#     form=ImageForm()
+#     if form.validate_on_submit():
+#         image_file = form.image_file.data
+#         if image_file.filename == "":
+#             print("No selected file!", "error")
+#         if image_file and allowed_file(image_file.filename):
+#             upload_result = upload(
+#                 image_file,
+#                 resource_type="image",
+#                 folder="green_garb",
+#             )
+#             return upload_result
+#         else:
+#             print("File type not allowed!", "error")
+
+
+# @api.route("/upload", methods=["GET", "POST"])
+# def upload():
+#     form=ImageForm()
+#     if form.validate_on_submit():
+#         image_file = form.image_file.data
+#         if image_file.filename == "":
+#             print("No selected file!", "error")
+#         if image_file and allowed_file(image_file.filename):
+#             upload_result = upload(
+#                 image_file,
+#                 resource_type="image",
+#                 folder="green_garb",
+#             )
+#             secure_url = upload_result["secure_url"]
+#             public_id = upload_result["public_id"]
+            
 
 
 
@@ -52,8 +74,6 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
-
-
 
 @api.route('/signup', methods=['POST'])
 def signup():
@@ -86,8 +106,6 @@ def signup():
         db.session.rollback()
         print(error)
         return jsonify({"error": "Error creating user"}), 400
-
-
     
 @api.route('/login', methods=["POST", "GET"])
 def login():
@@ -106,14 +124,12 @@ def login():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
-    
-@api.route('/user/<int:user_id>', methods=['GET'])
+@api.route('/user', methods=['GET'])
 @jwt_required()
 def get_user(): 
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     return jsonify(user.serialize())
-
 
 
 @api.route('/logout', methods=['POST'])
@@ -124,8 +140,9 @@ def logout():
     return resp, 200
 
 
-@api.route('/sellers', methods=['POST'])
+@api.route('/sellers', methods=['POST',"GET"])
 @jwt_required()
+@cross_origin()
 def create_seller():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
@@ -135,11 +152,22 @@ def create_seller():
     if user.seller:
         return jsonify({"error": "User is already a seller"}), 400
     try:
-        data = request.json
+        data = request.form
         shop_name = data["shop_name"]
         description = data["description"]
         email = data["email"]
+        
         address = data["address"]
+        
+        # Assuming the image data is sent in the JSON request
+
+        img=request.files["img"]
+        upload_result = upload(
+            img,
+            resource_type="image",
+            folder="green_garb",
+        )
+        public_id = upload_result["public_id"]
 
         new_seller = Seller(
             user=user,
@@ -147,19 +175,18 @@ def create_seller():
             description=description,
             email=email,
             address=address,
+            img=public_id,
         )
 
         db.session.add(new_seller)
         db.session.commit()
 
         return jsonify({"message": "Seller created successfully"}), 201
+
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
     
-
-
-
 @api.route('/sellers/<int:seller_id>', methods=['DELETE'])
 @jwt_required()
 def delete_seller(seller_id):
@@ -194,7 +221,7 @@ def create_product():
         if not seller:
             return jsonify({"error": "User is not a seller"}), 400
         
-        data = request.json
+        data = request.form
         title = data["title"]
         description = data["description"]
         price = data["price"]
@@ -223,7 +250,7 @@ def create_product():
             # Upload image to Cloudinary
             image = request.files['file']
             app.logger.info('%s image', image)
-            upload_result = cloudinary.uploader.upload(image)
+            upload_result = upload(image, folder="green_garb")
             cloudinary_image_url= upload_result['public_id']
             new_imageset = Imageset(image=cloudinary_image_url, product=new_product)
             db.session.add(new_imageset)
@@ -235,43 +262,37 @@ def create_product():
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
     
-@api.route('/users/profile', methods=['PUT'])
+@api.route('/users/profile', methods=['PUT','POST','GET'])
 @jwt_required()
+@cross_origin()
 def update_profile():
-    try:
+    
         current_user_id = get_jwt_identity()
         user = User.query.get(current_user_id)
         if not user:
             return jsonify({"error": "User not found"}), 404
         
-        data = request.json
+        data = request.form
         user.name = data.get("name", user.name)
         user.email = data.get("email", user.email)
         user.address = data.get("address", user.address)
-        user.pictures = data.get("pictures", user.pictures)
-
-        # Handle profile image upload to Cloudinary
-        file_to_upload = request.files['file']
+        print(request.files)
+        if 'profile_image' in request.files:
+            if user.pictures:
+                destroy(user.pictures)
+            result = upload(request.files['profile_image'], folder="green_garb")
+            user.pictures=result['public_id']
+       
         
-        # Check if the user already has a profile picture and delete it from Cloudinary
-        if user.pictures:
-            cloudinary.uploader.destroy(user.pictures)
-        
-        upload_result = uploadImage(file_to_upload)
-        user.pictures = upload_result["public_id"]
-        
-        # Update password if provided
         new_password = data.get("new_password")
         if new_password:
             hashed_password = bcrypt.generate_password_hash(new_password).decode("utf-8")
             user.password = hashed_password
-        
+        db.session.add(user)
         db.session.commit()
 
-        return jsonify({"message": "Profile updated successfully"}), 200
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": str(e)}), 400
+        return  jsonify('all good'), 200
+    
 
 @api.route('/products/<int:product_id>', methods=['PUT'])
 @jwt_required()
@@ -281,7 +302,7 @@ def update_product(product_id):
         return jsonify({"error": "Product not found"}), 404
     
     try:
-        data = request.json
+        data = request.form
         product.title = data.get("title", product.title)
         product.description = data.get("description", product.description)
         product.price = data.get("price", product.price)
@@ -301,12 +322,12 @@ def update_product(product_id):
                 imageset.image = data.get(f'existing_image_{imageset.id}', imageset.image)
             else:
                 # Delete imageset if not in existing_imageset_ids
-                cloudinary.uploader.destroy(imageset.image)
+                destroy(imageset.image)
                 db.session.delete(imageset)
         
         for image in images_to_upload:
             if image:
-                upload_result = cloudinary.uploader.upload(image)
+                upload_result = upload(image,folder="green_garb")
                 cloudinary_image_url = upload_result['public_id']
                 new_imageset = Imageset(image=cloudinary_image_url, product=product)
                 db.session.add(new_imageset)

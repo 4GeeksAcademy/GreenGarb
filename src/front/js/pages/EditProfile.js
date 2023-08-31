@@ -1,36 +1,39 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import axios from 'axios';
 
 
 const EditProfile = () => {
-  const { actions } = useContext(Context);
+  const {store, actions } = useContext(Context);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [newPassword, setNewPassword] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
+  const [files, setFiles] = useState(null);
 
-  const handleProfilePictureChange = (event) => {
-    setProfilePicture(event.target.files[0]);
-  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log
     const formData = new FormData();
+    console.log(files)
+    formData.append('profile_image', files[0]);
     formData.append('name', name);
     formData.append('email', email);
     formData.append('address', address);
     formData.append('new_password', newPassword);
-    formData.append('file', profilePicture);
+    console.log('Form Data:', formData); 
 
     try {
       await actions.updateUserProfile(formData);
-      alert('Profile updated successfully');
+      
     } catch (error) {
       console.error('Error updating profile:', error);
       alert('Error updating profile');
     }
+  
   };
 
   return (
@@ -55,7 +58,7 @@ const EditProfile = () => {
         </div>
         <div>
           <label>Profile Picture:</label>
-          <input type="file" accept="image/*" onChange={handleProfilePictureChange} />
+          <input type="file"  onChange={ e=>setFiles(e.target.files)} />
         </div>
         <button type="submit">Update Profile</button>
       </form>
@@ -64,3 +67,4 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+

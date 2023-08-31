@@ -50,7 +50,7 @@ export const  User = () => {
             <div className="user-img-div rounded-circle" style={{ backgroundImage: 'url(' + blankProfile + ')', backgroundSize: 'contain' }}>
                 {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
             </div>
-            <h2 className="ms-2 align-self-center"> {userData && userData.username || 'Not available'}</h2>
+            <h2 className="ms-2 align-self-center"> {userData && userData.username || 'Loading'}</h2>
         </div>
 
         <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">
@@ -61,7 +61,7 @@ export const  User = () => {
                     <a className="nav-link active" aria-current="page" href="#">Purchase History</a>
                     </li>
                     <li className="nav-item user-menu">
-                    <a className="nav-link active" href="#">Favorites</a>
+                    <Link className="nav-link active" to="/favorites">Your Favorites</Link>
                     </li>
                     <li className="nav-item user-menu">
                     <a className="nav-link active" href="#">Edit Profile</a>
@@ -69,7 +69,7 @@ export const  User = () => {
                     <li className="nav-item user-menu">
                     <Link className="nav-link active" to="/yourshop">Your Shop</Link>
                     </li>
-                    <li className="nav-item  border border-primary">
+                    <li className="nav-item">
                     <Link className="nav-link active" onClick={() => actions.logout()} to="/">logout</Link>
                     </li>
                 </ul>

@@ -94,21 +94,7 @@ export const Catalog = () => {
                </div> 
                ))  }
 
-                {/* <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
-
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
-
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
-
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div> */}
+            
             </div>
 
 

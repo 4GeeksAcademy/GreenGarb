@@ -55,11 +55,11 @@ export const Product = () => {
             <div className="product-description container mt-4">
                 <div className="product-tags row">
                     <div className="col-sm-6 mb-3">
-                       <h5>Made Of:</h5> 
+                       <h5>Made Of: {item.material}</h5> 
                     </div>
 
                     <div className="col-6 mb-3">
-                        <h5>Conditon:</h5>
+                        <h5>Conditon: {item.condition}</h5>
                     </div>
                     
                 </div>

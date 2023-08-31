@@ -38,6 +38,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'price': '$25',
 					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
 					'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
+					'category': 'mens',
+					'sub_category': 'tops',
+					'condition': 'New',
+					'material': 'Recycled materials',
 					'id':'1'
 				},
 				{
@@ -45,6 +49,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'price': '$28',
 					'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
 					'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
+					'category': 'womens',
+					'sub_category': 'tops',
+					'condition': 'New',
+					'material': 'Organic Fibers',
 					'id':'2'
 				},
 				{
@@ -52,6 +60,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'price': '$75',
 					'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
 					'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
+					'category': 'womens',
+					'sub_category': 'bottoms',
+					'condition': 'New',
+					'material': 'Recycled Fibers',
 					'id':'3'
 				},
 				{
@@ -59,6 +71,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'price': '$35',
 					'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
 					'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
+					'category': 'shoes',
+					'sub_category': '',
+					'condition': 'New',
+					'material': 'Hemp, Recycled Fibers',
 					'id':'4'
 				},
 			]

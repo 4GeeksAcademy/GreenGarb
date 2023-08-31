@@ -86,6 +86,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			addFavorite: () => {
+				console.log('storeItem')
+			},
+
+			removeFavorite: () => {
+				console.log('removeMe')
+			},
+
 			//saves token for everytime u load any page so its not lost
 			setToken: () => {
 				let token = sessionStorage.getItem('token');

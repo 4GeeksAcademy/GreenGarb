@@ -8,6 +8,8 @@ import "../../styles/home.css";
 
 export const Catalog = () => {
     const {store, actions} = useContext(Context)
+    const [catalogData, setCatalogData] = useState()
+    // const filteredItems = items.filter(item => item.isActive)
 
 
 
@@ -15,9 +17,28 @@ export const Catalog = () => {
 
     .then(response =>  response.json())
     .then( data => {
-        console.log('data', data)
+        setCatalogData(data)
     })
     .catch(error => console.log(error))
+
+
+
+            //favorite button function
+            // useEffect(() => {
+            //     if (
+            //         store.favorites.find((x) => {
+            //             for (let i in x) {
+            //                 if (Planets[i] && Planets[i].name === x[i].name) {
+            //                     return true;
+            //                 }
+            //             }
+            //         })
+            //     ) {
+            //         setLiked(true);
+            //     } else {
+            //         setLiked(false);
+            //     }
+            // }, [store.favorites]);
 
 
 
@@ -79,18 +100,22 @@ export const Catalog = () => {
 
                 {store.products.map((product, index) => (
                
-               <div className="card w-25 d-flex me-2" key = {index}>
+               <div className="card col-sm-3 d-flex me-1 " key = {index}>
                 <div className="card-img-div">
-                    <img className="card-img-top" src={product.image} alt="Card image cap"></img>
+                    <button className="heart-button btn" >
+                    <i class="far fa-heart" style={{color: 'red'}}></i>
+                    </button>
+                    <Link to={'/product/' + index}>
+                        <img className="card-img-top" src={product.image} alt="Card image cap"></img>
+                    </Link>
+                    
                 </div>
-                   <div className="card-body">
-                   <h5 className="card-title">{product.title}</h5>
-                   <h5>{product.price}</h5>
+                   <div className="card-body p-1">
+                   <p className="card-title text-center mb-0">{product.title}</p>
+                   <p className="text-center">{product.price}</p>
                    <div className="d-flex justify-content-end mt-2">
-                       <button className="btn btn-danger me-1" >
-                           <i class="fa fa-heart ms-1"></i>
-                       </button>
-                       <Link to={'/product/' + index} className="btn btn-primary">Learn More</Link>
+                       
+                       
                    </div>
                    </div>
                </div> 

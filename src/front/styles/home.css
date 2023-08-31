@@ -201,15 +201,25 @@ height: 70%;
 
         /*-----------Catalog page ---------------*/
 
-.card-img-div {
-    height: 200px;
-    width: 243.200px;
+.card {
+    border: none;
 }
+
+.card-img-div {
+    height: 300px;
+    width: 364.2px;
+    position: relative;
+}
+
+.heart-button {
+    position: absolute;
+}
+
 
 .card-img-top {
     height: 100%;
     width: 100%;
-    object-fit: revert;
+    object-fit: cover;
 }
 
 

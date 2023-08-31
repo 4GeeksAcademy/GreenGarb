@@ -36,9 +36,15 @@ export const Navbar = () => {
 					</Link>
 				</div>
 
+
+				{/* --------input bar---------- */}
+
+
 				<div className="align-middle input-div col-5">
 					<input classname="nav-input w-100" type="text" placeholder="search"></input>
 				</div>
+
+				{/* ----------Menu Icons------------- */}
 
 				<div className="icons position-absolute end-0 me-5 justify-content-between">
 					<Link to='/favorites'><i className="fas fa-heart fa-xl me-2"></i></Link>

@@ -54,7 +54,7 @@ export const Yourshop = () => {
                     <a className="nav-link active" aria-current="page" href="#">Selling History</a>
                     </li>
                     <li className="nav-item sellers-menu">
-                    <a className="nav-link active" href="#">Favorites</a>
+                    <Link className="nav-link active" to="/favorites">Your Favorites</Link>
                     </li>
                     <li className="nav-item sellers-menu">
                     <a className="nav-link active" href="#">Add Items</a>

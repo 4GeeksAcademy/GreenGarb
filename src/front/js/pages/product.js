@@ -70,7 +70,7 @@ export const Product = () => {
 
                 <div className="product-shop-info d-flex justify-content-around mt-3">
                 <div className="shop-name"> 
-                    <p>shop name prop</p>
+                    <p><i class="fa-solid fa-store"></i>{item.shopName}</p>
                 </div>
 
                 <div className="favorite-product">

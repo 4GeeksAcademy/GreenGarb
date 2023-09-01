@@ -18,9 +18,17 @@ export const Login = () => {
 
   const submit = (e) => {
 		e.preventDefault()
-		actions.login(username,password)			 	
-	 }
-
+		try {
+			const response = await actions.login(username, password);
+			if (!response.error) {
+				navigate('/user')
+			} else {
+				console.error("Login error:", response.error);
+			}
+		}catch (error) {
+			console.error("An error occurred during login:", error);
+		}
+	};
  
 
 

@@ -19,6 +19,7 @@ import { User } from "./pages/user";
 import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
+import {WomensCatalog} from "./pages/womensCatalog"
 
 
 //create your first component
@@ -44,7 +45,9 @@ const Layout = () => {
                         {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
                         <Route element={<Catalog/>} path="/catalog"/>
-                        {/* <Route element={<Catalog/>} path="/catalog/:uid"/> */}
+                        <Route element={<WomensCatalog/>} path="catalog/womens"/>
+                        <Route element={<Catalog/>} path="/catalog/mens"/>
+                        <Route element={<Catalog/>} path="/catalog/shoes"/>
                         <Route element={<Product/>} path="/product/:id"/>
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
                         <Route element={<SignUp />} path="/signup" />

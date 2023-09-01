@@ -32,6 +32,7 @@ export const Footer = () => {
 							<h3>Help</h3>
 							<ul>
 								<li><a href="#"> Contact Us</a></li>
+								
 							</ul>
 							
 						</div>

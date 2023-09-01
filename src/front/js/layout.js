@@ -7,13 +7,14 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import {AboutUs} from "./pages/aboutus";
+import { AboutUs } from "./pages/aboutus";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ContactPage } from "./pages/contactpage";
 import { Catalog } from "./pages/catalog";
 import { Product } from "./pages/product";
+import CartPage from "./pages/cartpage";
 
 //create your first component
 const Layout = () => {
@@ -21,7 +22,7 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
@@ -32,12 +33,13 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<ContactPage />} path="/contact" />
                         <Route element={<AboutUs />} path="/aboutus" />
+                        <Route element={<CartPage />} path="/cart" />
                         {/* <Route element={<User/>} path="/user"/> */}
                         {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
-                        <Route element={<Catalog/>} path="/catalog"/>
+                        <Route element={<Catalog />} path="/catalog" />
                         {/* <Route element={<Catalog/>} path="/catalog/:uid"/> */}
-                        <Route element={<Product/>} path="/product"/>
+                        <Route element={<Product />} path="/product" />
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />

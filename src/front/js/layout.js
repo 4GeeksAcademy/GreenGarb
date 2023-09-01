@@ -11,6 +11,7 @@ import {AboutUs} from "./pages/aboutus";
 import ProductUpload from "./pages/ProductUpload";
 import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
+import Seller from "./pages/NewStore";
 import { Footer } from "./component/footer";
 import { ContactPage } from "./pages/contactpage";
 import { Catalog } from "./pages/catalog";
@@ -52,6 +53,7 @@ const Layout = () => {
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
+                        <Route element={<Seller />} path="/newstore" />
                         
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />

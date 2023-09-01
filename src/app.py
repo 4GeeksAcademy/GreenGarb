@@ -5,7 +5,7 @@ import os
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from api.utils import APIException, generate_sitemap
 from api.models import db, User, Product, Imageset, Seller
 from api.routes import api
@@ -23,7 +23,7 @@ CORS(app)
 app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY')
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(minutes=45)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(minutes=105)
 
 
 # database condiguration

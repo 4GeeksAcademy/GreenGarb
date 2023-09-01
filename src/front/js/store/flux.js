@@ -238,7 +238,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 				  const response = await axios.get(process.env.BACKEND_URL + '/user', {
 					headers: {
-					  Authorization: `Bearer ${getStore().token}`
+						Authorization: `Bearer ${sessionStorage.getItem('token')}`
 					}
 				  });
 		  
@@ -254,9 +254,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updateUserProfile: async (formData) => {
 				try {
-				  const response = await axios.put(process.env.BACKEND_URL + '/api/users/profile', formData, {
+				  const response = await axios.post(process.env.BACKEND_URL + 'api/users/profile', formData, {
 					headers: {
-					  'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+						Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+						
+						'Content-Type': 'multipart/form-data'
 					},
 				  });
 				  if (response.status === 200) {
@@ -268,6 +270,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.error('Error updating profile:', error);
 				}
 			  },
+			  createSeller: async (formData) => {
+				try {
+				  const response = await axios.post(
+					process.env.BACKEND_URL + 'api/sellers',
+					formData,
+					{
+					  headers: {
+						Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+						'Content-Type': 'multipart/form-data',
+					  },
+					}
+				  );
+			
+				  if (response.status === 201) {
+					const data = response.data;
+					console.log(data.message);
+					// Handle success if needed
+				  }
+				} catch (error) {
+				  console.error('Error creating seller:', error);
+				}
+			  },
+			  
+			createProduct: async formData => {
+				try {
+					const response = await axios.post(
+						process.env.BACKEND_URL + 'api/products',
+						formData,
+						{
+							headers: {
+								'Content-Type': 'multipart/form-data',
+								Authorization: `Bearer ${sessionStorage.getItem('token')}`
+							}
+						}
+					);
+					if (response.status === 200) {
+						const data = response.data;
+						console.log(data.message);
+					}
+				} catch (error) {
+					console.error('Error creating product:', error);
+					return error.response;
+				}
+			},
 			
 
 

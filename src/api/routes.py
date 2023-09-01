@@ -213,6 +213,7 @@ def private():
 
 @api.route('/products', methods=['POST'])
 @jwt_required()
+@cross_origin()
 def create_product():
     try:
         current_user_id = get_jwt_identity()
@@ -230,7 +231,6 @@ def create_product():
         condition = data["condition"]
         color = data["color"]
         size = data["size"]
-        images = data.get("imageset", [])  # List of image URLs
     
         new_product = Product(
             title=title,
@@ -246,16 +246,15 @@ def create_product():
         )
         db.session.add(new_product)
         db.session.commit()
+        images = request.files.getlist("file")
+        image_public_ids = []
         for image in images:
-            # Upload image to Cloudinary
-            image = request.files['file']
-            app.logger.info('%s image', image)
-            upload_result = upload(image, folder="green_garb")
-            cloudinary_image_url= upload_result['public_id']
-            new_imageset = Imageset(image=cloudinary_image_url, product=new_product)
-            db.session.add(new_imageset)
-
-        db.session.commit()
+            if image:
+                upload_result = upload(image, folder="green_garb")
+                image_public_ids.append(upload_result['public_id'])
+                new_imageset = Imageset(image=image_public_ids[-1], product=new_product)
+                db.session.add(new_imageset)
+                db.session.commit()
 
         return jsonify({"message": "Product added successfully"}), 201
     except Exception as e:

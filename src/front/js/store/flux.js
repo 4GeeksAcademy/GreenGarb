@@ -165,6 +165,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.error('Error creating seller:', error);
 				}
 			  },
+			  
+			createProduct: async formData => {
+				try {
+					const response = await axios.post(
+						process.env.BACKEND_URL + 'api/products',
+						formData,
+						{
+							headers: {
+								'Content-Type': 'multipart/form-data',
+								Authorization: `Bearer ${sessionStorage.getItem('token')}`
+							}
+						}
+					);
+					if (response.status === 200) {
+						const data = response.data;
+						console.log(data.message);
+					}
+				} catch (error) {
+					console.error('Error creating product:', error);
+					return error.response;
+				}
+			},
 			
 
 

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import ShopName from '../component/ShopName';
 
 const ProductUpload = () => {
+  const { store, actions } = useContext(Context);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
@@ -11,12 +13,16 @@ const ProductUpload = () => {
   const [condition, setCondition] = useState('');
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
-  const [images, setImages] = useState([]);
+  const [files, setFiles] = useState([]);
+  
 
-  const handleImageChange = e => {
-    const newImages = Array.from(e.target.files);
-    setImages(newImages);
-  };
+  // const handleImageChange = e => {
+  //   const newImages =[] 
+  //   for(let i = 0; i < e.target.files.length; i++){
+  //     newImages.push(e.target.files[i])
+  //   }
+  //   setImages(newImages)
+  //   }
 
   const handleUpload = async () => {
     try {
@@ -30,30 +36,23 @@ const ProductUpload = () => {
       formData.append('condition', condition);
       formData.append('color', color);
       formData.append('size', size);
-      formData.append('images', images);
-
-
-      const response = await axios.post(
-        process.env.REACT_APP_BACKEND_URL + '/api/products',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
-          }
-        }
-      );
-
-      if (response.status === 201) {
-        console.log(response.data)
+      
+      for (let i = 0; i < files.length; i++){
+        formData.append(`file`, files[i]);
+      } 
+     
+      
+      const response = await actions.createProduct(formData);
+      
+      if (response && response.status === 201) {
+        console.log('Message:', response.data.message);
         // Product uploaded successfully, do something (e.g., show a success message)
       } else {
-
-        console.log(error)
+        console.log('Error:', response.data);
+        // Handle other response statuses or errors here
       }
     } catch (error) {
       console.error('Error uploading product:', error);
-      
     }
   };
 
@@ -150,11 +149,11 @@ const ProductUpload = () => {
               </label>
               <input
                 type="file"
-                className="form-control"
+                className="file-loading"
                 id="images"
                 multiple
                 accept="image/*"
-                onChange={handleImageChange}
+                onChange={(e)=> setFiles(e.target.files)}
               />
             </div>
             <div className="mb-3 col-6">
@@ -162,7 +161,7 @@ const ProductUpload = () => {
               className="form-select"
               aria-label="Category"
               value={category}
-              onChange={e => setCategory(e.target.value)}
+              onChange={(e)=> setCategory(e.target.value)}
             >
               <option value="" disabled>Category</option>
               <option value="Men">Men</option>

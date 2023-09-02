@@ -24,13 +24,13 @@ export const Home = () => {
 					<h2 className="section-titles rounded container">Catalog</h2>
 				</div>
 					<div className="d-inline-flex row justify-content-around">
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 rounded womens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Womens</p>
 						</div>
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 rounded mens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Mens</p>
 						</div>
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 rounded shoes-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Shoes</p>
 						</div>
 					</div>
@@ -44,16 +44,16 @@ export const Home = () => {
 					<h2 className="section-titles rounded container">Popular Finds</h2>
 				</div>
 				<div className="d-inline-flex row justify-content-around">
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 recycle-box rounded">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Recycled Clothing</p>
 						</div>
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 organic-box rounded">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Organic Fibers</p>
 						</div>
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 hemp-box rounded">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Hemp</p>
 						</div>
-						<div className="col-3 catalog-boxes rounded">
+						<div className="col-3 sustain-box rounded">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Sustainably Made</p>
 						</div>
 					</div>

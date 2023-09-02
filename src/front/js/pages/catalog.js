@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
@@ -7,6 +7,38 @@ import "../../styles/home.css";
 
 
 export const Catalog = () => {
+    const {store, actions} = useContext(Context)
+    const [catalogData, setCatalogData] = useState()
+    // const filteredItems = items.filter(item => item.isActive)
+
+
+
+    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
+
+    .then(response =>  response.json())
+    .then( data => {
+        setCatalogData(data)
+    })
+    .catch(error => console.log(error))
+
+
+
+            //favorite button function
+            // useEffect(() => {
+            //     if (
+            //         store.favorites.find((x) => {
+            //             for (let i in x) {
+            //                 if (Planets[i] && Planets[i].name === x[i].name) {
+            //                     return true;
+            //                 }
+            //             }
+            //         })
+            //     ) {
+            //         setLiked(true);
+            //     } else {
+            //         setLiked(false);
+            //     }
+            // }, [store.favorites]);
 
 
 
@@ -18,45 +50,45 @@ export const Catalog = () => {
 
             <nav className="navbar navbar-light border border-2 border-bottom-0 lower-nav justify-content-start my-2">
 
-            <div class="dropdown ms-5 me-1">
-            <button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown ms-5 me-1">
+            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sub-Category
             </button>
-            <div class="dropdown-menu" aria-labelledby="MensDropDown">
-                <a class="dropdown-item" href="#">Tops</a>
-                <a class="dropdown-item" href="#">Bottoms</a>
+            <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                <a className="dropdown-item" href="#">Tops</a>
+                <a className="dropdown-item" href="#">Bottoms</a>
             </div>
             </div>
 
-            <div class="dropdown me-2">
-            <button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown me-2">
+            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Size
             </button>
-            <div class="dropdown-menu" aria-labelledby="MensDropDown">
-                <a class="dropdown-item" href="#">Small</a>
-                <a class="dropdown-item" href="#">Medium</a>
-                <a class="dropdown-item" href="#">Large</a>
+            <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                <a className="dropdown-item" href="#">Small</a>
+                <a className="dropdown-item" href="#">Medium</a>
+                <a className="dropdown-item" href="#">Large</a>
 
             </div>
             </div>
 
-            <div class="dropdown me-2">
-            <button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown me-2">
+            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Conditon
             </button>
-            <div class="dropdown-menu" aria-labelledby="MensDropDown">
-                <a class="dropdown-item" href="#">New</a>
-                <a class="dropdown-item" href="#">Used</a>
+            <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                <a className="dropdown-item" href="#">New</a>
+                <a className="dropdown-item" href="#">Used</a>
             </div>
             </div>
 
-            <div class="dropdown position-absolute end-0 me-3">
-            <button class="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown position-absolute end-0 me-3">
+            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort
             </button>
-            <div class="dropdown-menu" aria-labelledby="MensDropDown">
-                <a class="dropdown-item" href="#">Lowest to Highest Price</a>
-                <a class="dropdown-item" href="#">Highest to Lowest Price</a>
+            <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                <a className="dropdown-item" href="#">Lowest to Highest Price</a>
+                <a className="dropdown-item" href="#">Highest to Lowest Price</a>
             </div>
             </div>
 
@@ -65,21 +97,31 @@ export const Catalog = () => {
             {/* product selection section */}
 
             <div className="container-fluid catalog-imgs my-5 d-flex justify-content-between">
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
 
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
+                {store.products.map((product, index) => (
+               
+               <div className="card col-sm-3 d-flex me-1 " key = {index}>
+                <div className="card-img-div">
+                    <button className="heart-button btn" >
+                    <i class="far fa-heart" style={{color: 'red'}}></i>
+                    </button>
+                    <Link to={'/product/' + index}>
+                        <img className="card-img-top" src={product.image} alt="Card image cap"></img>
+                    </Link>
+                    
                 </div>
+                   <div className="card-body p-1">
+                   <p className="card-title text-center mb-0">{product.title}</p>
+                   <p className="text-center">{product.price}</p>
+                   <div className="d-flex justify-content-end mt-2">
+                       
+                       
+                   </div>
+                   </div>
+               </div> 
+               ))  }
 
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
-
-                <div className="border border-dark col-3">
-                    <Link to='#'>prodcut 123..</Link>
-                </div>
+            {/* onClick={() => {actions.addFavorite(product.index)}} */}
             </div>
 
 

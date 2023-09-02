@@ -55,26 +55,8 @@ footer {
     padding: 1rem;
 } */
 
+            /* ----------home Page-------- */
 
-.banner-text {
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
-
-.homePtags {
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    padding: 1rem;
-}
-
-.catalog-boxes {
-    height: 250px;
-    width: 250px;
-    background-size: cover;
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url("https://lh3.googleusercontent.com/-w-vj8zhs9sk/WtsrbrEnwUI/AAAAAAAAdXU/BcxGl8WGWr04BgPpJzzrrjNnBveAWOOVQCHMYCw/s0/african-women-fashion-styles0951.jpg");
-}
 
 .banner {
     background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.womenfitness.net%2Fwp%2Fwp-content%2Fuploads%2F2016%2F10%2FEco-friendly-Fashion.jpg&f=1&nofb=1&ipt=0c36a35f1ba0804afa743d9c7e33846ff279d51076a4e2eafdf80a1dead57c50&ipo=images");
@@ -86,11 +68,98 @@ footer {
 
 }
 
+.banner-text {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}
+
+.homePtags {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    padding: 1rem;
+}
+
+
+
+.womens-box {
+    height: 350px;
+    width: 350px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=600");
+}
+
+.mens-box {
+    height: 350px;
+    width: 350px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/6627104/pexels-photo-6627104.jpeg?auto=compress&cs=tinysrgb&w=600");
+}
+
+.shoes-box {
+    height: 350px;
+    width: 350px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/609771/pexels-photo-609771.jpeg?auto=compress&cs=tinysrgb&w=600");
+}
+
+
+.recycle-box {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/3850512/pexels-photo-3850512.jpeg?auto=compress&cs=tinysrgb&w=400");
+
+}
+
+.organic-box {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.unsplash.com/photo-1539902743451-20dfa0a92ffd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8b3JnYW5pY3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60");
+}
+
+.hemp-box {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/7667811/pexels-photo-7667811.jpeg?auto=compress&cs=tinysrgb&w=400");
+}
+
+.sustain-box {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg?auto=compress&cs=tinysrgb&w=400");
+}
+
+
+
+
 .section-titles {
     background-color: beige;
 }
 
-        /* featured sellers */
+             /*-------- featured sellers---------- */
 
 .featured-seller {
     padding: 0;
@@ -130,27 +199,103 @@ height: 70%;
     object-fit: cover;
 }
 
+        /*-----------Catalog page ---------------*/
+
+.card {
+    border: none;
+}
+
+.card-img-div {
+    height: 300px;
+    width: 364.2px;
+    position: relative;
+}
+
+.heart-button {
+    position: absolute;
+}
+
+
+.card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 
         /*-----------product page ---------------*/
 
+.right-side-product-div {
+    height: 350px;
+    position: relative;
+}
+
+@media only screen and (max-width: 576px) {
+    .right-side-product-div {
+    height: 250px;    }
+  }
+
 .product-specs {
     position: relative;
-    height: 60%;
     overflow: auto;
 }
 
 .product-actions {
-    position: relative;
-    height: 40%;
+    height: 35%;
+    position: absolute;
+    bottom: 0;
 }
+
+@media only screen and (max-width: 576px) {
+    .product-actions {
+        height: 35%;
+        position: absolute;
+        bottom: 10px;
+        right: 35%;    }
+  }
 
 
 .product-img-div {
-    height: 350px;
+    height: 300px;
 }
 
 .product-img {
     object-fit: contain;
     width: 100%;
     height: 350px;
+}
+
+            /* ----------user Page----------- */
+
+.user-img-div {
+    height: 150px;
+    width: 150px;
+    border: solid 1px;
+}
+
+.user-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+@media only screen and (max-width: 576px) {
+    .user-menu {
+        border-bottom: #ccc 1px solid;    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .sellers-menu {
+        border-bottom: #ccc 1px solid;    }
+  }
+
+
+     /* -------------login-form---------- */
+
+.login-form {
+    background-image: url('https://images.pexels.com/photos/1654255/pexels-photo-1654255.jpeg?auto=compress&cs=tinysrgb&w=600');
+    object-fit: contain;
+    background-repeat: no-repeat;
 }

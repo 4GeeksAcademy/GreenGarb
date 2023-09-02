@@ -1,54 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/home.css";
 
-function createElement(tag, attributes = {}, children = []) {
-  const Element = React.createElement(tag, attributes, ...children);
-  return Element;
-}
-
-function SignUpForm() {
+export const SignUp = () => {
+  const { store, actions } = useContext(Context);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (store.token && store.token != "" && store.token != undefined)
+      navigate("/login");
+  });
 
-  const handleRegister = () => {
-    if (username && email && password) {
-      console.log('Registration successful!');
-      console.log(`Username: ${username}`);
-      console.log(`Email: ${email}`);
-    } else {
-      console.log('Please fill in all fields.');
-    }
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const name = `${firstName} ${lastName}`;
+    await actions.signup(email, username, password, name);
+
+
+    //   if (result.status===200){
+    //     navigate("/login");
+    //   }else{
+    //     console.log(result.error)
+    //   }
+    // } catch(error){
+    //   console.error(error)
+    // }
   };
-
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <div className="form-group">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <button onClick={handleRegister}>Register</button>
+    <div className="text-center">
+      <div className="container py-3 mb-5 h-100">
+        <div className="row d-flex justify-content-start align-items-center h-100 mb-5">
+          <h2><strong>Sign Up</strong></h2>
+        </div>
+        <form onSubmit={handleSignup}>
+          <div className="row d-flex justify-content-center">
+            <div className="col-md-6">
+              <div className="form-group">
+                <div className="row text-start">
+                  <div className="col">
+                    <label htmlFor="first-name" className="form-label">
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="First Name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div className="col ">
+                    <label htmlFor="last-name" className="form-label">
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Last Name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group text-start">
+                <label htmlFor="username" className="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div className="form-group text-start">
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="form-group text-start">
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div class="d-grid">
+                <button type="submit" className="btn btn-success">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

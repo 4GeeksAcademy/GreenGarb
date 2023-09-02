@@ -7,13 +7,19 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { AboutUs } from "./pages/aboutus";
-
+import {AboutUs} from "./pages/aboutus";
+import ProductUpload from "./pages/ProductUpload";
+import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ContactPage } from "./pages/contactpage";
 import { Catalog } from "./pages/catalog";
 import { Product } from "./pages/product";
+import { User } from "./pages/user";
+import { Yourshop } from "./pages/yourshop";
+import { Login } from "./pages/login";
+import EditProfile from "./pages/EditProfile";
+
 import CartPage from "./pages/cartpage";
 
 //create your first component
@@ -34,14 +40,20 @@ const Layout = () => {
                         <Route element={<ContactPage />} path="/contact" />
                         <Route element={<AboutUs />} path="/aboutus" />
                         <Route element={<CartPage />} path="/cart" />
-                        {/* <Route element={<User/>} path="/user"/> */}
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<User/>} path="/user"/>
+                        <Route element={<Yourshop/>} path="/yourshop"/>
                         {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
                         <Route element={<Catalog />} path="/catalog" />
                         {/* <Route element={<Catalog/>} path="/catalog/:uid"/> */}
-                        <Route element={<Product />} path="/product" />
+                        <Route element={<Product />} path="/product/:id" />
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
+                        <Route element={<SignUp />} path="/signup" />
+                        <Route element={<EditProfile />} path="/user/edit" />
+                        
                         <Route element={<Demo />} path="/demo" />
+                        <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

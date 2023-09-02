@@ -20,10 +20,11 @@ class User(db.Model):
     transactions = db.Column(db.String(255))
     favorites = db.Column(db.Boolean())
     seller = db.relationship('Seller', back_populates='user')
-    def __init__(self, username,email, password):
+    def __init__(self, username,email, password,name):
         self.email=email
         self.username = username
         self.password = password
+        self.name=name
        
     def __repr__(self):
         return f'<User {self.username}>'
@@ -34,6 +35,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
+            "seller": self.seller
         }
     
 class Seller(db.Model):
@@ -68,7 +70,9 @@ class Product(db.Model):
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
-    category = db.Column(db.String(50), nullable=False)  # Store the category name as a string
+    category = db.Column(db.String(50), nullable=False)  # Store the category name as a string /mens, womens,etc
+    sub_category = db.Column(db.String(50), nullable=False) #tops, bottoms etc
+    material = db.Column(db.String(50), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     condition = db.Column(db.String(50), nullable=False)
     color = db.Column(db.String(50))

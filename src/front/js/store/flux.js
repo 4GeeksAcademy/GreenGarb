@@ -33,116 +33,116 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 
-			products:[
-				{
-					'title': 'shirt',
-					'price': '$25',
-					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
-					'category': 'mens',
-					'subCategory': 'tops',
-					'condition': 'New',
-					'material': 'Recycled materials',
-					'shopName': 'Unique Tees',
-					'id':'1'
-				},
-				{
-					'title': 'NYC shirt',
-					'price': '$28',
-					'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
-					'category': 'womens',
-					'subCategory': 'tops',
-					'condition': 'New',
-					'material': 'Organic Fibers',
-					'shopName': 'Ambers Shop',
-					'id':'2'
-				},
-				{
-					'title': 'Torn Blue Jeans',
-					'price': '$75',
-					'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
-					'category': 'womens',
-					'subCategory': 'bottoms',
-					'condition': 'New',
-					'material': 'Recycled Fibers',
-					'shopName': 'Modern Boutique',
-					'id':'3'
-				},
-				{
-					'title': 'Blue Hemp Shoes',
-					'price': '$35',
-					'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
-					'category': 'shoes',
-					'subCategory': '',
-					'condition': 'New',
-					'material': 'Hemp, Recycled Fibers',
-					'shopName': 'Eco FootWear',
-					'id':'4'
-				},
-			],
+				products:[]
+			// 	{
+			// 		'title': 'shirt',
+			// 		'price': '$25',
+			// 		'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
+			// 		'category': 'mens',
+			// 		'subCategory': 'tops',
+			// 		'condition': 'New',
+			// 		'material': 'Recycled materials',
+			// 		'shopName': 'Unique Tees',
+			// 		'id':'1'
+			// 	},
+			// 	{
+			// 		'title': 'NYC shirt',
+			// 		'price': '$28',
+			// 		'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
+			// 		'category': 'womens',
+			// 		'subCategory': 'tops',
+			// 		'condition': 'New',
+			// 		'material': 'Organic Fibers',
+			// 		'shopName': 'Ambers Shop',
+			// 		'id':'2'
+			// 	},
+			// 	{
+			// 		'title': 'Torn Blue Jeans',
+			// 		'price': '$75',
+			// 		'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
+			// 		'category': 'womens',
+			// 		'subCategory': 'bottoms',
+			// 		'condition': 'New',
+			// 		'material': 'Recycled Fibers',
+			// 		'shopName': 'Modern Boutique',
+			// 		'id':'3'
+			// 	},
+			// 	{
+			// 		'title': 'Blue Hemp Shoes',
+			// 		'price': '$35',
+			// 		'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
+			// 		'category': 'shoes',
+			// 		'subCategory': '',
+			// 		'condition': 'New',
+			// 		'material': 'Hemp, Recycled Fibers',
+			// 		'shopName': 'Eco FootWear',
+			// 		'id':'4'
+			// 	},
+			// ],
 
 
 
 
 
-			mensCategory: [
-				{
-					'title': 'shirt',
-					'price': '$25',
-					'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
-					'category': 'mens',
-					'subCategory': 'tops',
-					'condition': 'New',
-					'material': 'Recycled materials',
-					'shopName': 'Unique Tees',
-					'id':'1'
-				}
+			// mensCategory: [
+			// 	{
+			// 		'title': 'shirt',
+			// 		'price': '$25',
+			// 		'image': 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Handmade shirt made from recycled polyester and eco friendly ink.',
+			// 		'category': 'mens',
+			// 		'subCategory': 'tops',
+			// 		'condition': 'New',
+			// 		'material': 'Recycled materials',
+			// 		'shopName': 'Unique Tees',
+			// 		'id':'1'
+			// 	}
 				
-					],
+			// 		],
 
-			womensCategory:[
-				{
-					'title': 'NYC shirt',
-					'price': '$28',
-					'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
-					'category': 'womens',
-					'subCategory': 'tops',
-					'condition': 'New',
-					'material': 'Organic Fibers',
-					'shopName': 'Ambers Shop',
-					'id':'2'
-				},
-				{
-					'title': 'Torn Blue Jeans',
-					'price': '$75',
-					'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
-					'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
-					'category': 'womens',
-					'subCategory': 'bottoms',
-					'condition': 'New',
-					'material': 'Recycled Fibers',
-					'shopName': 'Modern Boutique',
-					'id':'3'
-				}
-					],
-				shoes:
-				{
-					'title': 'Blue Hemp Shoes',
-					'price': '$35',
-					'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
-					'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
-					'category': 'shoes',
-					'subCategory': '',
-					'condition': 'New',
-					'material': 'Hemp, Recycled Fibers',
-					'shopName': 'Eco FootWear',
-					'id':'4'
-				},
+			// womensCategory:[
+			// 	{
+			// 		'title': 'NYC shirt',
+			// 		'price': '$28',
+			// 		'image': 'https://images.pexels.com/photos/1917611/pexels-photo-1917611.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Nice comfy from NYC from the early 2000s. Only worn once. Made of 100% organic cotton.',
+			// 		'category': 'womens',
+			// 		'subCategory': 'tops',
+			// 		'condition': 'New',
+			// 		'material': 'Organic Fibers',
+			// 		'shopName': 'Ambers Shop',
+			// 		'id':'2'
+			// 	},
+			// 	{
+			// 		'title': 'Torn Blue Jeans',
+			// 		'price': '$75',
+			// 		'image': 'https://images.pexels.com/photos/3324444/pexels-photo-3324444.jpeg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description':'Made of recycled demin, these stylish jeans will make you look good and feel good',
+			// 		'category': 'womens',
+			// 		'subCategory': 'bottoms',
+			// 		'condition': 'New',
+			// 		'material': 'Recycled Fibers',
+			// 		'shopName': 'Modern Boutique',
+			// 		'id':'3'
+			// 	}
+			// 		],
+			// 	shoes:
+			// 	{
+			// 		'title': 'Blue Hemp Shoes',
+			// 		'price': '$35',
+			// 		'image': 'https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
+			// 		'description': 'Comfortable shoes made of Hemp and recycled materials size womens 7.',
+			// 		'category': 'shoes',
+			// 		'subCategory': '',
+			// 		'condition': 'New',
+			// 		'material': 'Hemp, Recycled Fibers',
+			// 		'shopName': 'Eco FootWear',
+			// 		'id':'4'
+			// 	},
 			
 
 		},
@@ -236,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			fetchUserData: async () => {
 				try {
-				  const response = await axios.get(process.env.BACKEND_URL + '/user', {
+				  const response = await axios.get(process.env.BACKEND_URL + 'api/user', {
 					headers: {
 						Authorization: `Bearer ${sessionStorage.getItem('token')}`
 					}
@@ -314,10 +314,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return error.response;
 				}
 			},
+
+			fetchProducts: async () => {
+				try {
+				  const response = await axios.get(process.env.BACKEND_URL + 'api/products');
+				  if (response.status === 200) {
+					const products = response.data; // Assuming the response is an array of product objects
+					 setStore({products: products });
+				
+				  }
+				} catch (error) {
+				  console.error('Error fetching products:', error);
+				}
+			  },
 			
-
-
-
 			getMessage: async () => {
 				try {
 					// fetching data from the backend

@@ -10,35 +10,15 @@ export const Catalog = () => {
     const {store, actions} = useContext(Context)
     const [catalogData, setCatalogData] = useState()
     // const filteredItems = items.filter(item => item.isActive)
+    const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
 
 
-    fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
+    useEffect(() => {
+      // Fetch products when the component mounts
+      actions.fetchProducts();
+    }, []);
 
-    .then(response =>  response.json())
-    .then( data => {
-        setCatalogData(data)
-    })
-    .catch(error => console.log(error))
-
-
-
-            //favorite button function
-            // useEffect(() => {
-            //     if (
-            //         store.favorites.find((x) => {
-            //             for (let i in x) {
-            //                 if (Planets[i] && Planets[i].name === x[i].name) {
-            //                     return true;
-            //                 }
-            //             }
-            //         })
-            //     ) {
-            //         setLiked(true);
-            //     } else {
-            //         setLiked(false);
-            //     }
-            // }, [store.favorites]);
 
 
 
@@ -106,7 +86,7 @@ export const Catalog = () => {
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
                     <Link to={'/product/' + index}>
-                        <img className="card-img-top" src={product.image} alt="Card image cap"></img>
+                        <img className="card-img-top" src={cloudinaryUrl+product.imageset[0].image} alt="Card image cap"></img>
                     </Link>
                     
                 </div>

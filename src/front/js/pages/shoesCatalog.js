@@ -6,7 +6,7 @@ import "../../styles/home.css";
 
 
 
-export const Catalog = () => {
+export const ShoesCatalog = () => {
     const {store, actions} = useContext(Context)
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
@@ -84,7 +84,7 @@ export const Catalog = () => {
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
                     <Link to={'/product/' + index}>
-                        <img className="card-img-top" src={cloudinaryUrl+product.imageset[0].image} alt="Card image cap"></img>
+                        <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]} alt="Card image cap"></img>
                     </Link>
                     
                 </div>

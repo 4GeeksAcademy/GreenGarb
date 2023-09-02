@@ -20,7 +20,9 @@ import { User } from "./pages/user";
 import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
-import {WomensCatalog} from "./pages/womensCatalog"
+import {WomensCatalog} from "./pages/womensCatalog";
+import { MensCatalog } from "./pages/mensCatalog";
+import { ShoesCatalog } from "./pages/shoesCatalog";
 
 import CartPage from "./pages/cartpage";
 
@@ -45,13 +47,14 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<User />} path="/user" />
                         <Route element={<Yourshop />} path="/yourshop" />
-                        {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
+
                         <Route element={<Catalog/>} path="/catalog"/>
-                        <Route element={<WomensCatalog/>} path="catalog/womens"/>
-                        <Route element={<Catalog/>} path="/catalog/mens"/>
-                        <Route element={<Catalog/>} path="/catalog/shoes"/>
+                        <Route element={<WomensCatalog/>} path="/catalog/womens"/>
+                        <Route element={<MensCatalog/>} path="/catalog/mens"/>
+                        <Route element={<ShoesCatalog/>} path="/catalog/shoes"/>
                         <Route element={<Product/>} path="/product/:id"/>
+
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />

@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import shoes from "../../img/shoes.jpeg"
+import womensClothing from "../../img/womensClothes.jpeg"
+import mensClothes from "../../img/mensClothes.webp"
 import "../../styles/home.css";
+
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const navigate = useNavigate();
 
 	return (
 		<div className="text-center">
@@ -25,14 +30,14 @@ export const Home = () => {
 					<h2 className="section-titles rounded container">Catalog</h2>
 				</div>
 					<div className="d-inline-flex row justify-content-around">
-						<div className="col-3 rounded womens-box">
+						<div className="col-3 rounded womens-box" onClick={ () => navigate('/catalog/womens')} style={{ backgroundImage: 'url(' + womensClothing + ')' }}>
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Womens</p>
 						</div>
 						
-						<div className="col-3 rounded mens-box">
+						<div className="col-3 rounded mens-box" onClick={ () => navigate('/catalog/mens')} style={{ backgroundImage: 'url(' + mensClothes + ')' }}>
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Mens</p>
 						</div>
-						<div className="col-3 rounded shoes-box">
+						<div className="col-3 rounded shoes-box" onClick={ () => navigate('/catalog/shoes')} style={{ backgroundImage: 'url(' + shoes + ')' }}>
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Shoes</p>
 						</div>
 					</div>

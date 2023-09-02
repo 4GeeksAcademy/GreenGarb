@@ -50,11 +50,9 @@ const Layout = () => {
                         <Route element={<Catalog/>} path="/catalog/mens"/>
                         <Route element={<Catalog/>} path="/catalog/shoes"/>
                         <Route element={<Product/>} path="/product/:id"/>
-                        {/* <Route element={<Product/>} path="/product/:uid"/> */}
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />
-                        
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

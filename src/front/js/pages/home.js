@@ -25,9 +25,9 @@ export const Home = () => {
 					<h2 className="section-titles rounded container">Catalog</h2>
 				</div>
 					<div className="d-inline-flex row justify-content-around">
-						<Link to='/#'><div className="col-3 rounded womens-box">
+						<div className="col-3 rounded womens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Womens</p>
-						</div></Link>
+						</div>
 						
 						<div className="col-3 rounded mens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Mens</p>

@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+
 
 
 
@@ -13,14 +12,21 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const { store, actions } = useContext(Context);
   const navigate = useNavigate()
-  const token = localStorage.getItem('access_token')
-  console.log('access_token', token)
+ 
 
-  const submit = (e) => {
-		e.preventDefault()
-		actions.login(username,password)			 	
-	 }
-
+  const submit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await actions.login(username, password);
+      if (!response.error) {
+        navigate('/user');
+      } else {
+        console.error("Login error:", response.error);
+      }
+    } catch (error) {
+      console.error("An error occurred during login:", error);
+    }
+  };
  
 
 

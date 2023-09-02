@@ -35,7 +35,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
-            "seller": self.seller
+            #"seller": self.seller
         }
     
 class Seller(db.Model):
@@ -71,8 +71,8 @@ class Product(db.Model):
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(50), nullable=False)  # Store the category name as a string /mens, womens,etc
-    sub_category = db.Column(db.String(50), nullable=False) #tops, bottoms etc
-    material = db.Column(db.String(50), nullable=False)
+    # sub_category = db.Column(db.String(50), nullable=False) #tops, bottoms etc
+    # material = db.Column(db.String(50), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     condition = db.Column(db.String(50), nullable=False)
     color = db.Column(db.String(50))

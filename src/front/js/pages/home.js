@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
@@ -24,9 +25,10 @@ export const Home = () => {
 					<h2 className="section-titles rounded container">Catalog</h2>
 				</div>
 					<div className="d-inline-flex row justify-content-around">
-						<div className="col-3 rounded womens-box">
+						<Link to='/#'><div className="col-3 rounded womens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Womens</p>
-						</div>
+						</div></Link>
+						
 						<div className="col-3 rounded mens-box">
 							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">Mens</p>
 						</div>

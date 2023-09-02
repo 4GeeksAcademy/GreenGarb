@@ -21,9 +21,9 @@ export const  User = () => {
 		if(!store.token){
 			navigate('/login')}
         else {
-                fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/user',{
+                fetch(process.env.BACKEND_URL + 'api/user',{
             headers:{
-                Authorization:'Bearer '+ store.token,
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
             }
         })
@@ -35,7 +35,7 @@ export const  User = () => {
         
         }
 		
-	},[store.token])
+	},[])
 
         console.log(userData)
     
@@ -50,7 +50,7 @@ export const  User = () => {
             <div className="user-img-div rounded-circle" style={{ backgroundImage: 'url(' + blankProfile + ')', backgroundSize: 'contain' }}>
                 {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
             </div>
-            <h2 className="ms-2 align-self-center"> {userData && userData.username || 'Loading'}</h2>
+            <h2 className="ms-2 align-self-center"> {userData?.username || "Loading..."}</h2>
         </div>
 
         <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">

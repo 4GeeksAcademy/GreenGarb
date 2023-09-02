@@ -11,6 +11,7 @@ import { AboutUs } from "./pages/aboutus";
 import ProductUpload from "./pages/ProductUpload";
 import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
+import Seller from "./pages/NewStore";
 import { Footer } from "./component/footer";
 import { ContactPage } from "./pages/contactpage";
 import { Catalog } from "./pages/catalog";
@@ -19,6 +20,7 @@ import { User } from "./pages/user";
 import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
+import {WomensCatalog} from "./pages/womensCatalog"
 
 import CartPage from "./pages/cartpage";
 
@@ -45,13 +47,16 @@ const Layout = () => {
                         <Route element={<Yourshop />} path="/yourshop" />
                         {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
-                        <Route element={<Catalog />} path="/catalog" />
-                        {/* <Route element={<Catalog/>} path="/catalog/:uid"/> */}
-                        <Route element={<Product />} path="/product/:id" />
+                        <Route element={<Catalog/>} path="/catalog"/>
+                        <Route element={<WomensCatalog/>} path="catalog/womens"/>
+                        <Route element={<Catalog/>} path="/catalog/mens"/>
+                        <Route element={<Catalog/>} path="/catalog/shoes"/>
+                        <Route element={<Product/>} path="/product/:id"/>
                         {/* <Route element={<Product/>} path="/product/:uid"/> */}
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
-
+                        <Route element={<Seller />} path="/newstore" />
+                        
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

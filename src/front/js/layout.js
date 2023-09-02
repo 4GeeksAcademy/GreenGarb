@@ -7,7 +7,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import {AboutUs} from "./pages/aboutus";
+import { AboutUs } from "./pages/aboutus";
 import ProductUpload from "./pages/ProductUpload";
 import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
@@ -22,6 +22,7 @@ import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
 import {WomensCatalog} from "./pages/womensCatalog"
 
+import CartPage from "./pages/cartpage";
 
 //create your first component
 const Layout = () => {
@@ -29,7 +30,7 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
@@ -40,9 +41,10 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<ContactPage />} path="/contact" />
                         <Route element={<AboutUs />} path="/aboutus" />
+                        <Route element={<CartPage />} path="/cart" />
                         <Route element={<Login />} path="/login" />
-                        <Route element={<User/>} path="/user"/>
-                        <Route element={<Yourshop/>} path="/yourshop"/>
+                        <Route element={<User />} path="/user" />
+                        <Route element={<Yourshop />} path="/yourshop" />
                         {/* <Route element={<Cart/>} path="/cart"/> */}
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
                         <Route element={<Catalog/>} path="/catalog"/>

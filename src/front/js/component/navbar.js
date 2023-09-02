@@ -26,19 +26,15 @@ export const Navbar = () => {
 
 	return (
 		<div>
-		<nav className="navbar navbar-light nav-color p-0">
-			<div className="container-fluid justify-content-around align-middle">
-				<div className="navbar-brand">
-					<Link to="/">
-						<div className="nav-logo">
-							<img className="logo ms-3" src={greenGarb}></img>
-						</div>
-					</Link>
-				</div>
-
-
-				{/* --------input bar---------- */}
-
+			<nav className="navbar navbar-light nav-color p-0">
+				<div className="container-fluid justify-content-around align-middle">
+					<div className="navbar-brand">
+						<Link to="/">
+							<div className="nav-logo">
+								<img className="logo ms-3" src={greenGarb}></img>
+							</div>
+						</Link>
+					</div>
 
 				<div className="align-middle input-div col-5">
 					<input classname="nav-input w-100" type="text" placeholder="search"></input>
@@ -46,16 +42,22 @@ export const Navbar = () => {
 
 				{/* ----------Menu Icons------------- */}
 
-				<div className="icons position-absolute end-0 me-5 justify-content-between">
-					<Link to='/favorites'><i className="fas fa-heart fa-xl me-2"></i></Link>
-					<Link to='/cart'><i className="fas fa-cart-arrow-down fa-xl me-2"></i></Link>
-					<Link to="/user"><i className="fas fa-user fa-xl"></i></Link>
-				</div>
+					<div className="icons position-absolute end-0 me-5 justify-content-between">
+						<i class="fas fa-heart fa-xl me-2">
+							<Link to='/favorites'></Link>
+						</i>
+						<i class="fas fa-cart-arrow-down fa-xl me-2">
+							<Link to='/cart'></Link>
+						</i>
+						<i class="fas fa-user fa-xl">
+							<Link to="/user"></Link>
+						</i>
+					</div>
 
-				<div className="ml-auto">
+					<div className="ml-auto">
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
 
 
 			{/*------------catalog menu---------------------------------------------------- */}

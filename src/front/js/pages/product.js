@@ -6,19 +6,10 @@ import "../../styles/home.css";
 
 export const Product = () => {
     const {store, actions} = useContext(Context)
-    let params = useParams()
-    let id = parseInt(params.id)
-    let item = store.products[id]
+    const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
+    let item = store.Product?.id
+    console.log(item)
 
-
-
-    // fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product')
-
-    // .then(response =>  response.json())
-    // .then( data => {
-    //     console.log('data', data)
-    // })
-    // .catch(error => console.log(error))
 
 
 
@@ -29,13 +20,13 @@ export const Product = () => {
             <div className="container d-flex">
                 <div className="row w-100 m-0">
                     <div className="product-img-div mb-3 col-sm-6">
-                        <img className="product-img" src={item.image}/>
+                        <img className="product-img" src={cloudinaryUrl+Product.imageset?.image}/>
                     </div>
 
                     <div className="right-side-product-div col-sm-5">
                         <div className="product-specs">
-                            <h2>{item.title}</h2>
-                            <h5 className="mt-2">{item.price}</h5>
+                            <h2>{item?.title}</h2>
+                            <h5 className="mt-2">{item?.price}</h5>
                             {/* <p className="mt-2">Size</p> */}
                         </div>
 
@@ -55,22 +46,22 @@ export const Product = () => {
             <div className="product-description container mt-4">
                 <div className="product-tags row">
                     <div className="col-sm-6 mb-3">
-                       <h5>Made Of: {item.material}</h5> 
+                       <h5>Made Of: {item?.material}</h5> 
                     </div>
 
                     <div className="col-6 mb-3">
-                        <h5>Conditon: {item.condition}</h5>
+                        <h5>Conditon: {item?.condition}</h5>
                     </div>
                     
                 </div>
-                <p>{item.description}</p>
+                <p>{item?.description}</p>
             </div>
 
                         {/* ------product seller info-------------- */}
 
                 <div className="product-shop-info d-flex justify-content-around mt-3">
                 <div className="shop-name"> 
-                    <p><i class="fa-solid fa-store"></i>{item.shopName}</p>
+                    <p><i class="fa-solid fa-store"></i>{item?.shopName}</p>
                 </div>
 
                 <div className="favorite-product">

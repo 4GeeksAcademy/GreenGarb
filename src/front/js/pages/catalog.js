@@ -22,7 +22,7 @@ export const Catalog = () => {
 
     return(
         <div>
-            <h1 className="text-center my-5 fw-bold">title prop </h1>
+            <h1 className="text-center my-5 fw-bold">All Products</h1>
 
             {/* filter menus */}
 

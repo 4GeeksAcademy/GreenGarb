@@ -50,9 +50,9 @@ const Layout = () => {
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
 
                         <Route element={<Catalog/>} path="/catalog"/>
-                        <Route element={<WomensCatalog/>} path="/catalog/womens"/>
-                        <Route element={<MensCatalog/>} path="/catalog/mens"/>
-                        <Route element={<ShoesCatalog/>} path="/catalog/shoes"/>
+                        <Route element={<WomensCatalog/>} path="/catalog/:category"/>
+                        <Route element={<MensCatalog/>} path="/catalog/:category"/>
+                        <Route element={<ShoesCatalog/>} path="/catalog/:category"/>
                         <Route element={<Product/>} path="/product/:id"/>
 
                         <Route element={<SignUp />} path="/signup" />

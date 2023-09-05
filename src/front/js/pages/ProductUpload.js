@@ -164,9 +164,9 @@ const ProductUpload = () => {
               onChange={(e)=> setCategory(e.target.value)}
             >
               <option value="" disabled>Category</option>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-              <option value="Shoes">Shoes</option>
+              <option value="mens">Men</option>
+              <option value="womens">Women</option>
+              <option value="shoes">Shoes</option>
             </select>
           </div>
           <div className="mb-3 col-6">

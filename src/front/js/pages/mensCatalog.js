@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
@@ -9,6 +9,9 @@ import "../../styles/home.css";
 export const MensCatalog = () => {
     const {store, actions} = useContext(Context)
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
+    let params = useParams()
+    console.log(params, store.products[0]?.category)
+    console.log(store.products)
 
 
 
@@ -22,7 +25,7 @@ export const MensCatalog = () => {
 
     return(
         <div>
-            <h1 className="text-center my-5 fw-bold">title prop </h1>
+            <h1 className="text-center my-5 fw-bold">Mens</h1>
 
             {/* filter menus */}
 
@@ -76,7 +79,7 @@ export const MensCatalog = () => {
 
             <div className="container-fluid catalog-imgs my-5 d-flex justify-content-between">
 
-                {store.products.map((product, index) => (
+                {store.products.filter((item, index) => item.category === params.category).map((product, index) => (
                
                <div className="card col-sm-3 d-flex me-1 " key = {index}>
                 <div className="card-img-div">
@@ -84,7 +87,7 @@ export const MensCatalog = () => {
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
                     <Link to={'/product/' + index}>
-                        <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]} alt="Card image cap"></img>
+                        <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]?.image} alt="Card image cap"></img>
                     </Link>
                     
                 </div>

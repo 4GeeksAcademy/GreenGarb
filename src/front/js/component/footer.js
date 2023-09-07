@@ -14,20 +14,20 @@ export const Footer = () => {
 							<li>
 								<h3>Shop</h3>
 								<a href="#">Register</a>
-	  						</li>
+							</li>
 							<li>
 								<h3>Sell</h3>
-								<a href="#">Start Selling</a>	
-						    </li>
-							
+								<a href="#">Start Selling</a>
+							</li>
+
 							<li>
 								<h3>About</h3>
-								<a href="#">Our Ethical Approach</a> 
-                            </li>
+								<a href="#">Our Ethical Approach</a>
+							</li>
 							<li>
 								<h3>Help</h3>
 								<a href="#">Contact Us</a>
-							</li>	
+							</li>
 
 
 						</ul>

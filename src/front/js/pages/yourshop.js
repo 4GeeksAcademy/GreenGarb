@@ -57,7 +57,7 @@ export const Yourshop = () => {
                     <Link className="nav-link active" to="/favorites">Your Favorites</Link>
                     </li>
                     <li className="nav-item sellers-menu">
-                    <a className="nav-link active" href="#">Add Items</a>
+                    <Link className="nav-link active" to="/productupload">List products</Link>
                     </li>
                     <li className="nav-item sellers-menu">
                     <a className="nav-link active" href="#">Pending Orders</a>

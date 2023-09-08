@@ -24,7 +24,7 @@ export const User = () => {
             actions.fetchUserData();
             setUserData(userData)
         }
-    }, [store.token, actions]);
+    }, []);
 
 
 
@@ -52,7 +52,7 @@ export const User = () => {
                             <Link className="nav-link active" to="/user/edit">Edit Profile</Link>
                         </li>
                         <li className="nav-item user-menu">
-                            {store.user.Seller ? (
+                            {store.user.seller ? (
                                 <Link className="nav-link active" to="/yourshop">
                                     Your Shop
                                 </Link>

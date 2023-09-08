@@ -161,7 +161,7 @@ def create_seller():
         description = data["description"]
         email = data["email"]
         
-        address = data["address"]
+        # address = data["address"]
         
         # Assuming the image data is sent in the JSON request
 
@@ -178,7 +178,7 @@ def create_seller():
             shop_name=shop_name,
             description=description,
             email=email,
-            address=address,
+            # address=address,
             img=public_id,
         )
 

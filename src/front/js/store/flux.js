@@ -13,10 +13,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"seller": [],
 					"username": null,
 					"pictures":null,
+					"seller": null,
 					
 					
 				}
 			],
+			idUser:null,
 			name: null,
 			address:null,
 			message: null,
@@ -254,7 +256,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updateUserProfile: async (formData) => {
 				try {
-				  const response = await axios.post(process.env.BACKEND_URL + 'api/users/profile', formData, {
+				  const response = await axios.put(process.env.BACKEND_URL + 'api/users/profile', formData, {
 					headers: {
 						Authorization: `Bearer ${sessionStorage.getItem('token')}`,
 						
@@ -308,6 +310,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						const data = response.data;
 						console.log(data.message);
+						return data
 					}
 				} catch (error) {
 					console.error('Error creating product:', error);

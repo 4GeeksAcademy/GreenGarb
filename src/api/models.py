@@ -35,7 +35,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
-            #"seller": self.seller
+            "seller": list(map(lambda x: x.serialize(), self.seller))
         }
     
 class Seller(db.Model):
@@ -62,7 +62,7 @@ class Seller(db.Model):
             'email': self.email,
             'img': self.img,
             'address': self.address,
-            'products': [product.serialize() for product in self.products]
+            'products': list(map(lambda x: x.serialize(), self.products))
         }
     
 class Product(db.Model):
@@ -71,8 +71,8 @@ class Product(db.Model):
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(50), nullable=False)  # Store the category name as a string /mens, womens,etc
-    # sub_category = db.Column(db.String(50), nullable=False) #tops, bottoms etc
-    # material = db.Column(db.String(50), nullable=False)
+    sub_category = db.Column(db.String(50)) #tops, bottoms etc
+    material = db.Column(db.String(50))
     quantity = db.Column(db.Integer, nullable=False)
     condition = db.Column(db.String(50), nullable=False)
     color = db.Column(db.String(50))
@@ -89,11 +89,13 @@ class Product(db.Model):
             "description": self.description,
             "price": self.price,
             "category": self.category,
+            "sub_category": self.sub_category,
+            "material": self.material,
             "quantity": self.quantity,
             "condition": self.condition,
             "color": self.color,
             "size": self.size,
-            "imageset": [image.serialize() for image in self.imageset],
+            "imageset": list(map(lambda x: x.serialize(), self.imageset)),
             "seller_id": self.seller_id,
             "buyer_id": self.buyer_id,
             "status": self.status

@@ -101,7 +101,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         access_token = create_access_token(identity=username)
-        return jsonify({"access_token": access_token}), 200
+        return jsonify(access_token=access_token), 200
     except Exception as error:
         db.session.rollback()
         print(error)
@@ -118,14 +118,17 @@ def login():
             return jsonify({"error": "Invalid email or password"}), 401
 
         access_token = create_access_token(identity=user.id)
-        response = jsonify({"access_token": access_token})
-        set_access_cookies(response, access_token)
-        return response, 200
+        return jsonify(
+            access_token=access_token,
+            username=user.username, 
+            id=user.id  
+        ), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
     
 @api.route('/user', methods=['GET'])
+@cross_origin()
 @jwt_required()
 def get_user(): 
     user_id = get_jwt_identity()
@@ -228,6 +231,8 @@ def create_product():
         description = data["description"]
         price = data["price"]
         category = data["category"]
+        sub_category= data["sub_category"]
+        material= data["material"]
         quantity = data["quantity"]
         condition = data["condition"]
         color = data["color"]
@@ -238,6 +243,8 @@ def create_product():
             description=description,
             price=price,
             category=category,
+            sub_category=sub_category,
+            material=material,
             quantity=quantity,
             condition=condition,
             color=color,
@@ -307,6 +314,8 @@ def update_product(product_id):
         product.description = data.get("description", product.description)
         product.price = data.get("price", product.price)
         product.category = data.get("category", product.category)
+        product.sub_catergory = data.get("sub_catergory", product.sub_catergory)
+        product.material = data.get("material", product.material)
         product.quantity = data.get("quantity", product.quantity)
         product.condition = data.get("condition", product.condition)
         product.color = data.get("color", product.color)
@@ -384,7 +393,9 @@ def get_product(product_id):
     serialized_product['imageset'] = serialized_imagesets
     
     return jsonify(serialized_product), 200
-@api.route('/seller/shopname', methods=['GET'])
+@api.route('/seller/shopname', methods=['GET','POST'])
+@cross_origin()
+@jwt_required()
 def get_seller_shop_name():
      try:
         current_user_id = get_jwt_identity()

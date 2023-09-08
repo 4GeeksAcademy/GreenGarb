@@ -76,3 +76,9 @@ install axios: npm install axios
 install flask jwt extended: pip install flask-jwt-extended
 intall flask bcrypt: pip install Flask-Bcrypt
 
+Enter these 2 command into the terminal:
+npm run start (to render the website)
+pipenv run start (for the backend)
+
+Create a user at the register page and login
+You can add a shop and products into the markteplace

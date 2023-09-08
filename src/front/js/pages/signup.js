@@ -18,7 +18,7 @@ export const SignUp = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const name = `${firstName} ${lastName}`;
+    const name = `${firstName},${lastName}`;
     await actions.signup(email, username, password, name);
 
 

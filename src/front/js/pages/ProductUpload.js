@@ -9,21 +9,17 @@ const ProductUpload = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState('');
+  const [subCategory, setSubCategory] = useState('');
+  const [material, setMaterial] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [condition, setCondition] = useState('');
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const [files, setFiles] = useState([]);
+  const navigate = useNavigate();
   
 
-  // const handleImageChange = e => {
-  //   const newImages =[] 
-  //   for(let i = 0; i < e.target.files.length; i++){
-  //     newImages.push(e.target.files[i])
-  //   }
-  //   setImages(newImages)
-  //   }
-
+  
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -32,6 +28,8 @@ const ProductUpload = () => {
       formData.append('price', price);
       formData.append('color', color);
       formData.append('category', category);
+      formData.append('sub_category', subCategory);
+      formData.append('material', material);
       formData.append('quantity', quantity);
       formData.append('condition', condition);
       formData.append('color', color);
@@ -44,9 +42,10 @@ const ProductUpload = () => {
       
       const response = await actions.createProduct(formData);
       
-      if (response && response.status === 201) {
-        console.log('Message:', response.data.message);
+      if (data && response.status === 201) {
+        console.log('Message:', data.message);
         // Product uploaded successfully, do something (e.g., show a success message)
+        navigate(`/product/${data.id}`);
       } else {
         console.log('Error:', response.data);
         // Handle other response statuses or errors here

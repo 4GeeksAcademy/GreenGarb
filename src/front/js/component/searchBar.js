@@ -53,12 +53,6 @@ export const SearchBar = () => {
                     if(url.includes('people')){
                         navigate(`/CharacterDescription/${id}`)
                     }
-                    if(url.includes('planets')){
-                        navigate(`/PlanetDescription/${id}`)
-                    }
-                    if(url.includes('vehicles')){
-                        navigate(`/VehicleDescription/${id}`)
-                    }
                     if(url.includes('product')){
                         navigate('/product/' + index)
                     }

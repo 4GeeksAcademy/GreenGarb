@@ -86,7 +86,7 @@ export const WomensCatalog = () => {
                     <button className="heart-button btn" >
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
-                    <Link to={'/product/:id'}>
+                    <Link to={`/products/${product.id}`}>
                         <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]?.image} alt="Card image cap"></img>
                     </Link>
                     

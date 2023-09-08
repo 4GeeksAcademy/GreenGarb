@@ -327,6 +327,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.error('Error fetching products:', error);
 				}
 			  },
+
+
+			  fetchOneProduct: async () => {
+				try {
+				  const response = await axios.get(process.env.BACKEND_URL + 'api/products/<int:product_id>');
+				  if (response.status === 200) {
+					const product = response.data; // Assuming the response is an array of product objects
+					 setStore({product: product });
+				
+				  }
+				} catch (error) {
+				  console.error('Error fetching product:', error);
+				}
+			  },
 			
 			getMessage: async () => {
 				try {

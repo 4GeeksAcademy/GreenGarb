@@ -205,6 +205,10 @@ height: 70%;
     object-fit: cover;
 }
 
+.FeaturedDescription {
+    padding: 1rem;
+    color: black;
+}
         /*-----------Catalog page ---------------*/
 
 .card {

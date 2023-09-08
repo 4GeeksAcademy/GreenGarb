@@ -7,7 +7,7 @@ import "../../styles/home.css";
 
 
 export const MensCatalog = () => {
-    const {store, actions} = useContext(Context)
+    // const {store, actions} = useContext(Context)
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
     let params = useParams()
     console.log(params, store.products[0]?.category)

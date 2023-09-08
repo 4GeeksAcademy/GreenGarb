@@ -71,9 +71,6 @@ class Product(db.Model):
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(50), nullable=False)  # Store the category name as a string /mens, womens,etc
-    # womens_catalog = db.relationship('WomensCatalog', back_populates='product', lazy=True, uselist=True)
-    # mens_catalog = db.relationship('MensCatalog', back_populates='product', lazy=True, uselist=True)
-    # shoes_catalog = db.relationship('ShoesCatalog', back_populates='product', lazy=True, uselist=True)
     quantity = db.Column(db.Integer, nullable=False)
     condition = db.Column(db.String(50), nullable=False)
     color = db.Column(db.String(50))
@@ -90,9 +87,6 @@ class Product(db.Model):
             "description": self.description,
             "price": self.price,
             "category": self.category,
-            # "womens_catalog":self.womens_catalog,
-            # "mens_catalog":self.mens_catalog,
-            # "shoes_catalog":self.shoes_catalog,
             "quantity": self.quantity,
             "condition": self.condition,
             "color": self.color,
@@ -103,25 +97,6 @@ class Product(db.Model):
             "status": self.status
         }
     
-
-# class WomensCatalog(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     womens = db.Column(db.String(100), nullable=False)
-#     product_id = db.Column(db.Integer, ForeignKey('product.id'), nullable=False)
-#     product = db.relationship("Product", back_populates="womens_category")
-
-
-# class MensCatalog(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     mens = db.Column(db.String(100), nullable=False)
-#     product_id = db.Column(db.Integer, ForeignKey('product.id'), nullable=False)
-#     product = db.relationship("Product", back_populates="mens_category")
-
-# class ShoesCatalog(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     shoes = db.Column(db.String(100), nullable=False)
-#     product_id = db.Column(db.Integer, ForeignKey('product.id'), nullable=False)
-#     product = db.relationship("Product", back_populates="shoes_category")
 
     
 class Imageset(db.Model):

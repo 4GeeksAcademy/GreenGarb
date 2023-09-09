@@ -4,6 +4,7 @@ import { useNavigate, useContext } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css"
 import greenGarb from "../../img/greenGarb.png"
+import { SearchBar } from "./searchBar";
 
 
 
@@ -32,7 +33,7 @@ export const Navbar = () => {
 
 					{/* --------input bar---------- */}
 
-
+					<SearchBar/>
 					{/* <div className="align-middle input-div col-5">
 						<input classname="nav-input w-100" type="text" placeholder="search"></input>
 					</div> */}

@@ -323,3 +323,27 @@ height: 70%;
     object-fit: contain;
     background-repeat: no-repeat;
 }
+
+     /* -------------login-form---------- */
+
+.parentOfInput {
+    position: relative;
+}
+
+
+.searchDropdown {
+    position: absolute;
+    background-color: antiquewhite;
+    left:0%;
+    overflow: auto;
+    height: 230px;
+    top: 55px;
+    z-index: 10;
+    width: -webkit-fill-available;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+}     
+
+.searchDropdown::-webkit-scrollbar {
+    display: none;
+  }

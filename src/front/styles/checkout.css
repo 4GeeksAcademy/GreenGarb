@@ -1,0 +1,14 @@
+customer{
+    firstname Van                  
+    lastname Williams
+    email; 'van.doe@example.com'
+  }
+  shipping
+  {
+    name: 'Van Williams',
+    street: '123 Fake St',
+    town_city: 'Nashville',
+    county_state: 'TN',
+    postal_zip_code: '94103',
+    country: 'US',
+  }

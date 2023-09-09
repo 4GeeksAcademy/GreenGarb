@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
 } */
-.row {
+.cartpagerow {
   display: flex;
   gap: 1rem;
 }
@@ -39,7 +39,7 @@ input, label{
 .item{
   flex-grow: 1;
 }
-input{
+inputlabel{
   width: 100%;
   height: 30px;
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
@@ -8,6 +8,7 @@ import "../../styles/home.css";
 
 export const Catalog = () => {
     const {store, actions} = useContext(Context)
+    const params = useParams()
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
 
@@ -83,7 +84,7 @@ export const Catalog = () => {
                     <button className="heart-button btn" >
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
-                    <Link to={'/product/' + index}>
+                    <Link to={`/product/${params.id}`}>
                         <img className="card-img-top" src={cloudinaryUrl+product.imageset[0].image} alt="Card image cap"></img>
                     </Link>
                     

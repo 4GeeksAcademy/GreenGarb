@@ -20,7 +20,7 @@ import { User } from "./pages/user";
 import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
-import {WomensCatalog} from "./pages/womensCatalog";
+import { WomensCatalog } from "./pages/womensCatalog";
 import { MensCatalog } from "./pages/mensCatalog";
 import { ShoesCatalog } from "./pages/shoesCatalog";
 
@@ -49,16 +49,16 @@ const Layout = () => {
                         <Route element={<Yourshop />} path="/yourshop" />
                         {/* <Route element={<Favorites/>} path="/favorites"/> */}
 
-                        <Route element={<Catalog/>} path="/catalog"/>
-                        <Route element={<WomensCatalog/>} path="/catalog/:category"/>
+                        <Route element={<Catalog />} path="/catalog" />
+                        <Route element={<WomensCatalog />} path="/catalog/:category" />
                         {/* <Route element={<MensCatalog/>} path="/catalog/:category"/>
                         <Route element={<ShoesCatalog/>} path="/catalog/:category"/> */}
-                        <Route element={<Product/>} path="/products/:id"/>
+                        <Route element={<Product />} path="/products/:id" />
 
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />
-                        
+
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

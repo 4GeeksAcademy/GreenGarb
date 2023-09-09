@@ -13,14 +13,7 @@ export const Navbar = () => {
 	// const navigate = useNavigate()
 	// const { store, actions } = useContext(Context)
 
-	// useEffect = (() => {
-
-	// 	if(!store.token){
-	// 		navigate('/login')}
-	// 	else {
-	// 		navigate('/user/id')}
-
-	// },[store.token])
+	
 
 
 
@@ -40,9 +33,9 @@ export const Navbar = () => {
 					{/* --------input bar---------- */}
 
 
-					<div className="align-middle input-div col-5">
+					{/* <div className="align-middle input-div col-5">
 						<input classname="nav-input w-100" type="text" placeholder="search"></input>
-					</div>
+					</div> */}
 
 					{/* ----------Menu Icons------------- */}
 

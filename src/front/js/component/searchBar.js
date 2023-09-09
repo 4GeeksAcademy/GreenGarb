@@ -11,9 +11,9 @@ export const SearchBar = () => {
 
 
     useEffect(() => { 
-    async function fetchProducts () {  //this is fetching the data for the input
+    async function fetchSearchResults () {  //this is fetching the data for the input
         let info = [];
-        const result = await fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product');
+        const result = await fetch(process.env.BACKEND_URL + 'api/products');
         const data = await result.json();
         data.results.forEach(element => {
             info.push(element)      //pushing the data into the info array
@@ -24,15 +24,18 @@ export const SearchBar = () => {
 
     }
     
-        fetchProducts()
+    fetchSearchResults()
 
     }, [])
 
    console.log('data', data) 
+   
     //fitler all names from the api object array that has the 'text' u typed 
    let filtered = data.filter(ProductTitle => {
         return ProductTitle.title.includes(text)
    })
+
+
 
     return(
     <div className='parentOfInput justify-content-end'>
@@ -41,7 +44,7 @@ export const SearchBar = () => {
         <input placeholder='search' type='text' value={text} onChange={(e) => setText(e.target.value) }></input>
     </form>
     
-    <div className='dropdown'>
+    <div className='searchDropdown'>
         {text.length ? filtered.map((item, index) => {
             return(
                 <>
@@ -54,7 +57,7 @@ export const SearchBar = () => {
                         navigate(`/CharacterDescription/${id}`)
                     }
                     if(url.includes('product')){
-                        navigate('/product/' + index)
+                        navigate(`/product/${title}`)
                     }
                 }} >{item.name}</p>
                 

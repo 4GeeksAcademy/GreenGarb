@@ -47,13 +47,7 @@ button {
     cursor: pointer;
 
 }
-/* 
-footer {
-    background-color: #3aab09;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-} */
+
 
             /* ----------home Page-------- */
 
@@ -212,12 +206,13 @@ height: 70%;
         /*-----------Catalog page ---------------*/
 
 .card {
+    width:360px ;
     border: none;
 }
 
 .card-img-div {
     height: 300px;
-    width: 364.2px;
+    width: 360px;
     position: relative;
 }
 
@@ -232,6 +227,9 @@ height: 70%;
     object-fit: cover;
 }
 
+.catalog-row {
+    flex-wrap: wrap;
+}
 
         /*-----------product page ---------------*/
 

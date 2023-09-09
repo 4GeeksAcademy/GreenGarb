@@ -12,7 +12,7 @@ export const  User = () => {
 
     const navigate = useNavigate()
 	const { store, actions } = useContext(Context)
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState({})
 
 
 

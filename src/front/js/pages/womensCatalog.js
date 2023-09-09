@@ -77,11 +77,11 @@ export const WomensCatalog = () => {
 
             {/* product selection section */}
 
-            <div className="container-fluid catalog-imgs my-5 d-flex">
+            <div className="d-flex p-1 catalog-imgs my-5 d-flex justify-content-between catalog-row">
 
                 {store.products.filter((item, index) => item.category === params.category).map((product, index) => (
                
-               <div className="card col-sm-3 d-flex me-1 " key = {index}>
+               <div className="card col-sm-3 d-flex mb-2 border border-primary" key = {index}>
                 <div className="card-img-div">
                     <button className="heart-button btn" >
                     <i class="far fa-heart" style={{color: 'red'}}></i>

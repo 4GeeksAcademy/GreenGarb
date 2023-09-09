@@ -77,7 +77,8 @@ export const WomensCatalog = () => {
 
             {/* product selection section */}
 
-            <div className="d-flex p-1 catalog-imgs my-5 d-flex justify-content-between catalog-row">
+            
+            <div className="d-flex p-1 catalog-imgs my-5 d-flex justify-content-md-between catalog-row">
 
                 {store.products.filter((item, index) => item.category === params.category).map((product, index) => (
                

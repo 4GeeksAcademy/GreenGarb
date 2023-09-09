@@ -231,6 +231,22 @@ height: 70%;
     flex-wrap: wrap;
 }
 
+
+@media (max-width: 600px) {
+    .card {
+      flex: 1 35%;
+      margin-inline: 3px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .card-img-div {
+    height: 250px;
+    width: auto;
+    position: relative;
+    }
+  }
+
         /*-----------product page ---------------*/
 
 .right-side-product-div {

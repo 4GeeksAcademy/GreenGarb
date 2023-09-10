@@ -38,7 +38,7 @@ export const Product = (props) => {
                 setLoading(false);
             });
         }
-    }, []);
+    }, [productDetail]);
 
     console.log('imageset', product.imageset)
 

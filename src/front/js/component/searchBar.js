@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams,useNavigate, Link } from 'react-router-dom';
 import { Product } from '../pages/product';
 import { Context } from '../store/appContext';
+
 
 
 export const SearchBar = () => {
@@ -16,29 +17,12 @@ export const SearchBar = () => {
         console.log(filtered)
     },[filtered])   
 
-    // useEffect(() => { 
-    // async function fetchSearchResults () {  //this is fetching the data for the input
-    //     let info = [];
-    //     const result = await fetch(process.env.BACKEND_URL + 'api/products');
-    //     const data = await result.json();
-    //     data.results.forEach(element => {
-    //         info.push(element)      //pushing the data into the info array
-    //     });
 
-    //     setData(info)
-    //     console.log(info, 'info')
 
-    // }
     
-    // fetchSearchResults()
-
-    // }, [])
-
-   console.log('data', store.products) 
-
    
-   
-    //fitler all names from the api object array that has the 'text' u typed 
+    //fitler all names from the api object array that has the 'text' u typed
+    //appContext has a fetch product function for all pages 
    
    const filter = (value) => {
         let filtered = store.products.filter(ProductTitle => {
@@ -54,8 +38,7 @@ export const SearchBar = () => {
 
     return(
     <div className='parentOfInput justify-content-end'>
-    <form autoComplete='off'>
-        <i class="fas fa-search me-2"></i>
+    <form className='d-flex' autoComplete='off'>
         <input placeholder='search' type='text' value={text} onChange={(e) => filter(e.target.value) }></input>
     </form>
     
@@ -65,14 +48,14 @@ export const SearchBar = () => {
                 <>
                 {console.log(item)}
 
-                <p onClick={() => {
-                    if(url.includes('product')){
-                        navigate(`/product/${item.id}`)
-                    }
-                }} >{item.title}</p>
+                <Link to={`/products/${item.id}`} style={{textDecoration: 'none'}}>
+                    <p className='dropResults'>
+                    {item.title}
+                    </p>
+                </Link>
                 
                 </>
-            )
+                )
         }) : ''}
         
     </div>

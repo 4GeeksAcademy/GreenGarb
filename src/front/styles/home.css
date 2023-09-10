@@ -324,7 +324,7 @@ height: 70%;
     background-repeat: no-repeat;
 }
 
-     /* -------------login-form---------- */
+     /* -------------SearchBar---------- */
 
 .parentOfInput {
     position: relative;
@@ -333,11 +333,11 @@ height: 70%;
 
 .searchDropdown {
     position: absolute;
-    background-color: antiquewhite;
+    background-color: ghostwhite;
     left:0%;
     overflow: auto;
     height: 230px;
-    top: 55px;
+    top: 30px;
     z-index: 10;
     width: -webkit-fill-available;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -347,3 +347,13 @@ height: 70%;
 .searchDropdown::-webkit-scrollbar {
     display: none;
   }
+
+.dropResults {
+    padding-left: 1rem;
+    margin-bottom: 1px;
+}
+
+.dropResults:hover {
+    background-color: lightgrey;
+    pointer: pointer;
+}

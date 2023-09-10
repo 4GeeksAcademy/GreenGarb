@@ -29,42 +29,54 @@ export const WomensCatalog = () => {
 
             {/* filter menus */}
 
-            <nav className="navbar navbar-light border border-2 border-bottom-0 lower-nav justify-content-start my-2">
+            <nav className="navbar navbar-expand-lg  navbar-light border border-2 border-bottom-0 lower-nav justify-content-start my-2">
 
-            <div className="dropdown ms-5 me-1">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sub-Category
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">Tops</a>
-                <a className="dropdown-item" href="#">Bottoms</a>
-            </div>
+            <div className="container-fluid">
+				<button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#catalogDropDown" aria-controls="catalogDropDown" aria-expanded="false" aria-label="Toggle navigation">
+					<span>Filter <span className="fas fa-sliders-h"></span></span>
+				</button>
+
+				<div class="collapse navbar-collapse mb-1" id="catalogDropDown">
+					<ul class="navbar-nav">
+
+                        <div className="dropdown ms-5 me-1">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sub-Category
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">Tops</a>
+                            <a className="dropdown-item" href="#">Bottoms</a>
+                        </div>
+                        </div>
+
+                        <div className="dropdown me-2">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">Small</a>
+                            <a className="dropdown-item" href="#">Medium</a>
+                            <a className="dropdown-item" href="#">Large</a>
+
+                        </div>
+                        </div>
+
+                        <div className="dropdown me-2">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Conditon
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">New</a>
+                            <a className="dropdown-item" href="#">Used</a>
+                        </div>
+                        </div>
+                    </ul>
+                </div>
             </div>
 
-            <div className="dropdown me-2">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Size
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">Small</a>
-                <a className="dropdown-item" href="#">Medium</a>
-                <a className="dropdown-item" href="#">Large</a>
-
-            </div>
-            </div>
-
-            <div className="dropdown me-2">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Conditon
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">New</a>
-                <a className="dropdown-item" href="#">Used</a>
-            </div>
-            </div>
 
             <div className="dropdown position-absolute end-0 me-3">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn btn-light border border-dark dropdown-toggle sortButton" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort
             </button>
             <div className="dropdown-menu" aria-labelledby="MensDropDown">

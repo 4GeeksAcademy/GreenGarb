@@ -100,8 +100,7 @@ def signup():
     try:
         db.session.add(new_user)
         db.session.commit()
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
+        return jsonify({"msg": "User created successfully"}), 200
     except Exception as error:
         db.session.rollback()
         print(error)
@@ -163,15 +162,16 @@ def create_seller():
         
         # address = data["address"]
         
-        # Assuming the image data is sent in the JSON request
-
-        img=request.files["img"]
-        upload_result = upload(
-            img,
-            resource_type="image",
-            folder="green_garb",
-        )
-        public_id = upload_result["public_id"]
+        if "img" in request.files:
+            img=request.files["img"]
+            upload_result = upload(
+                img,
+                resource_type="image",
+                folder="green_garb",
+            )
+            public_id = upload_result["public_id"]
+        else:
+            public_id = None
 
         new_seller = Seller(
             user=user,
@@ -264,7 +264,7 @@ def create_product():
                 db.session.add(new_imageset)
                 db.session.commit()
 
-        return jsonify({"message": "Product added successfully"}), 201
+        return jsonify(new_product.serialize()), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
@@ -393,15 +393,15 @@ def get_product(product_id):
     serialized_product['imageset'] = serialized_imagesets
     
     return jsonify(serialized_product), 200
-@api.route('/seller/shopname', methods=['GET','POST'])
+@api.route('/seller/shop', methods=['GET','POST'])
 @cross_origin()
 @jwt_required()
-def get_seller_shop_name():
+def get_seller_shop():
      try:
         current_user_id = get_jwt_identity()
         seller = Seller.query.filter_by(user_id=current_user_id).first()
         if seller:
-            return jsonify({'shop_name': seller.shop_name})
+            return jsonify(seller.serialize()), 200
         else:
             return jsonify({'error': 'Seller not found'}), 404
      except Exception as e:

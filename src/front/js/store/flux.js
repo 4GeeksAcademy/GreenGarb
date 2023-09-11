@@ -182,12 +182,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 					if (response.status === 200) {
 						const data = response.data;
-						
-						sessionStorage.setItem('token', data.access_token)
-						sessionStorage.setItem('user', data.username)
-						sessionStorage.setItem('idUser', data.id)
-						sessionStorage.setItem('name', data.name)
-						setStore({ token: data.access_token, user: data.username, idUser: data.id, name:data.name });
+						console.log(data)
+						return data
 						
 					}
 				} catch (error) {
@@ -226,7 +222,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout: () => {
+			logout: async () => {
 				sessionStorage.removeItem('token');
 				sessionStorage.removeItem('user');
 				sessionStorage.removeItem('idUser');
@@ -247,6 +243,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  if (response.status === 200) {
 					const userData = response.data;
 					setStore({ user: userData }); 
+				  }
+				} catch (error) {
+				  console.error('Error fetching user data:', error);
+				}
+			  },
+
+			  fetchSellerData: async () => {
+				try {
+				  const response = await axios.get(process.env.BACKEND_URL + 'api/seller/shop', {
+					headers: {
+						Authorization: `Bearer ${sessionStorage.getItem('token')}`
+					}
+				  });
+		  
+				  if (response.status === 200) {
+					const data = response.data;
+					console.log(data)
+					return data; 
 				  }
 				} catch (error) {
 				  console.error('Error fetching user data:', error);
@@ -288,7 +302,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  if (response.status === 201) {
 					const data = response.data;
 					console.log(data.message);
-					// Handle success if needed
+					return data
 				  }
 				} catch (error) {
 				  console.error('Error creating seller:', error);
@@ -309,7 +323,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					);
 					if (response.status === 200) {
 						const data = response.data;
-						console.log(data.message);
+						console.log(data)
 						return data
 					}
 				} catch (error) {

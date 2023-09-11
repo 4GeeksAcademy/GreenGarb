@@ -304,8 +304,9 @@ height: 70%;
 
      /* -------------login-form---------- */
 
-.login-form {
+.login-form, .create-form  {
     background-image: url('https://images.pexels.com/photos/1654255/pexels-photo-1654255.jpeg?auto=compress&cs=tinysrgb&w=600');
-    object-fit: contain;
     background-repeat: no-repeat;
+    background-position: center;
+    
 }

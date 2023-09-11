@@ -19,7 +19,11 @@ const ProductUpload = () => {
   const navigate = useNavigate();
   
 
-  
+  const subCategories = {
+    mens: ['Tops', 'Bottoms'],
+    womens: ['Tops', 'Bottoms'],
+    shoes: ['Sneakers', 'Boots', 'Sandals']
+  };
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -41,24 +45,25 @@ const ProductUpload = () => {
      
       
       const response = await actions.createProduct(formData);
-      
-      if (data && response.status === 201) {
-        console.log('Message:', data.message);
-        // Product uploaded successfully, do something (e.g., show a success message)
-        navigate(`/product/${data.id}`);
+
+      if (response){
+        navigate(`/products/${response.id}`);
       } else {
-        console.log('Error:', response.data);
+        console.log('Error:', response)
         // Handle other response statuses or errors here
       }
     } catch (error) {
       console.error('Error uploading product:', error);
     }
   };
+  const handleGoBack = () => {
+    navigate(-1); 
+  };
 
   return (
-    <div className="container-xxl bd-gutter mt-3 my-md-4 ">
+    <div className="container ">
       <h2 className="mb-4 text-center">Add Product</h2>
-      <div className="row ">
+      <div className="row row mb-3 p-3">
         {/* <aside className="bd-sidebar mt-4 col-3">
           <nav className="left-nav" role="navigation" aria-label="Secondary navigation">
             <div className="group-hd mb-3"><strong>Store's Name</strong></div>
@@ -180,14 +185,41 @@ const ProductUpload = () => {
               <option value="Used">Used</option>
             </select>
           </div>
+          <div className="mb-3 col-6">
+          <select
+            className="form-select"
+            aria-label="Subcategory"
+            value={subCategory}
+            onChange={e => setSubCategory(e.target.value)}
+          >
+            <option value="" disabled>Subcategory</option>
+            {subCategories[category] &&
+              subCategories[category].map((sub, index) => (
+                <option key={index} value={sub}>{sub}</option>
+              ))}
+          </select>
+        </div>
+        <div className="mb-3 col-6">
+              <input
+                type="text"
+                placeholder='Material'
+                className="form-control"
+                id="material"
+                value={material}
+                onChange={e => setMaterial(e.target.value)}
+              />
+            </div>
 
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-success mb-3"
               onClick={handleUpload}
             >
               Upload Product
             </button>
+            <button className="btn-secondary" type="button" onClick={handleGoBack}>
+        Go Back
+        </button>
           </form>
         </main>
       </div>

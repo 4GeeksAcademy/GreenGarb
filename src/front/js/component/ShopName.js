@@ -8,8 +8,8 @@ const ShopName = () => {
     // Fetch the seller's shop name from the backend
     const fetchShopName = async () => {
       try {
-        const response = await axios.get('process.env.REACT_APP_BACKEND_URL + /api/seller/shopname');
-        setShopName(response.data.shop_name);
+        const response = await axios.get('process.env.REACT_APP_BACKEND_URL + /api/seller/shop');
+        setShopName(response.shop_name);
       } catch (error) {
         console.error('Error fetching shop name:', error);
       }

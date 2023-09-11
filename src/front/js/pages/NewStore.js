@@ -24,25 +24,22 @@ function Seller() {
 
   const handleImageChange = (event) => {
     const img = event.target.files;
-    if (img.length > 0) {
       setFormData({
         ...formData,
         img: img[0],
-      });
-    } else {
-      // Clear the img property if no file is selected
-      const { img, ...formDataWithoutImg } = formData;
-      setFormData(formDataWithoutImg);
-    }
+    
+      
+    })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    
+  
     try {
-      await actions.createSeller(formData);
-      navigate('/');
+      const response = await actions.createSeller(formData);
+      if (response && response.message === 'Seller created successfully') {
+        navigate('/yourshop'); // Redirect if the status code is 201
+      }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         setErrorMessage(error.response.data.error);
@@ -98,7 +95,7 @@ function Seller() {
           <input
             type="file"
             onChange={handleImageChange}
-            required
+            
           />
         </div>
         <div className="d-grid">

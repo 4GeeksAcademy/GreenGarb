@@ -35,6 +35,8 @@ export const SearchBar = () => {
         setFiltered(filtered)
    }
 
+   console.log('text', text)
+
 
     return(
     <div className='parentOfInput justify-content-end'>

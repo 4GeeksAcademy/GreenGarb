@@ -15,12 +15,6 @@ export const WomensCatalog = () => {
 
 
 
-    useEffect(() => {
-      // Fetch products when the component mounts
-      actions.fetchProducts();
-    }, []);
-
-
 
 
     return(

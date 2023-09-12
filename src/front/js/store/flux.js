@@ -243,6 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  if (response.status === 200) {
 					const userData = response.data;
 					setStore({ user: userData }); 
+					console.log(userData)
 				  }
 				} catch (error) {
 				  console.error('Error fetching user data:', error);

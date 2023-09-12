@@ -280,9 +280,12 @@ def update_profile():
             return jsonify({"error": "User not found"}), 404
         
         data = request.form
-        user.name = data.get("name", user.name)
-        user.email = data.get("email", user.email)
-        user.address = data.get("address", user.address)
+        if "name" in data:
+            user.name = data.get("name", user.name)
+        if "email" in data:
+            user.email = data.get("email", user.email)
+        if 'address' in data:
+            user.address = data.get("address", user.address)
         print(request.files)
         if 'profile_image' in request.files:
             if user.pictures:

@@ -12,7 +12,7 @@ export const User = () => {
     const navigate = useNavigate()
     const { store, actions } = useContext(Context)
     const [userData, setUserData] = useState(null)
-
+    const cloudinaryUrl = "https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export const User = () => {
             setUserData(userData)
         }
     }, [store.token]);
+    console.log(store.user)
 
 
 
@@ -34,10 +35,13 @@ export const User = () => {
             {sessionStorage.getItem('token') ? (
                 <div>
                     <div className="user-header-div justify-content-center d-flex mb-3">
-                        <div className="user-img-div rounded-circle" style={{ backgroundImage: 'url(' + blankProfile + ')', backgroundSize: 'contain' }}>
-                            {/* <img className="user-img" src="https://images.pexels.com/photos/4355345/pexels-photo-4355345.jpeg?auto=compress&cs=tinysrgb&w=600"/> */}
-                        </div>
-                        <h2 className="ms-2 align-self-center"> {store.user.username || "Loading..."}</h2>
+                        <img
+                            className="user-img-div rounded-circle "
+                            src={store.user && store.user.pictures ? cloudinaryUrl + store.user.pictures : blankProfile}
+                            alt="Profile"
+
+                        />
+                        <h2 className="ms-2 align-self-center"> <i className="fa-solid fa-user"></i> {store.user.username || "Loading..."}</h2>
                     </div>
 
                     <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">

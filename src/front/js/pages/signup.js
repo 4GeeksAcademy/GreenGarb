@@ -48,6 +48,7 @@ export const SignUp = () => {
                       placeholder="First Name"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className="col ">
@@ -60,6 +61,7 @@ export const SignUp = () => {
                       placeholder="Last Name"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -74,6 +76,7 @@ export const SignUp = () => {
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group text-start">
@@ -87,6 +90,7 @@ export const SignUp = () => {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group text-start">
@@ -99,6 +103,7 @@ export const SignUp = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div class="d-grid">

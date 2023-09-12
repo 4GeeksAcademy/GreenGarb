@@ -18,10 +18,10 @@ const EditProfile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log
-    const name = `${firstName},${lastName}`;
+    const name = `${firstName.trim()}, ${lastName.trim()}`;
     const formData = new FormData();
     console.log(files)
-    if (name.trim() !== '') {
+    if (name.trim() !== ',') {
       formData.append('name', name);
     }
     if (email.trim() !== '') {

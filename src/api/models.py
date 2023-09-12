@@ -35,6 +35,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "address": self.address,
+            "pictures": self.pictures,
             "seller": list(map(lambda x: x.serialize(), self.seller))
         }
     

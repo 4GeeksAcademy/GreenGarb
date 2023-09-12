@@ -100,7 +100,7 @@ export const Product = (props) => {
                 </div>
 
                 <div className="favorite-product">
-                    <p><i className="fas fa-heart me-1"></i>Favorite Product</p>
+                    <p><i className="fas fa-heart heartIcon me-1"></i>Favorite Product</p>
                 </div>
             </div>
     

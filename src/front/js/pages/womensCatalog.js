@@ -94,7 +94,7 @@ export const WomensCatalog = () => {
 
                 {store.products.filter((item, index) => item.category === params.category).map((product, index) => (
                
-               <div className="card col-sm-3 d-flex mb-2 border border-primary" key = {index}>
+               <div className="card col-sm-3 d-flex mb-2" key = {index}>
                 <div className="card-img-div">
                     <button className="heart-button btn" >
                     <i class="far fa-heart" style={{color: 'red'}}></i>

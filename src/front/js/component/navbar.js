@@ -21,11 +21,11 @@ export const Navbar = () => {
 	return (
 		<div>
 			<nav className="navbar navbar-light nav-color p-0">
-				<div className="container-fluid justify-content-around align-middle">
+				<div className="container-fluid justify-content-between align-middle">
 					<div className="navbar-brand">
 						<Link to="/">
 							<div className="nav-logo">
-								<img className="logo ms-3" src={greenGarb}></img>
+								<img className="logo ms-1" src={greenGarb}></img>
 							</div>
 						</Link>
 					</div>

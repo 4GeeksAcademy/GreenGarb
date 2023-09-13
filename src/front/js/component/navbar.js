@@ -4,6 +4,7 @@ import { useNavigate, useContext } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css"
 import greenGarb from "../../img/greenGarb.png"
+import { SearchBar } from "./searchBar";
 
 
 
@@ -13,25 +14,18 @@ export const Navbar = () => {
 	// const navigate = useNavigate()
 	// const { store, actions } = useContext(Context)
 
-	// useEffect = (() => {
-
-	// 	if(!store.token){
-	// 		navigate('/login')}
-	// 	else {
-	// 		navigate('/user/id')}
-
-	// },[store.token])
+	
 
 
 
 	return (
 		<div>
 			<nav className="navbar navbar-light nav-color p-0">
-				<div className="container-fluid justify-content-around align-middle">
+				<div className="container-fluid justify-content-between align-middle">
 					<div className="navbar-brand">
 						<Link to="/">
 							<div className="nav-logo">
-								<img className="logo ms-3" src={greenGarb}></img>
+								<img className="logo ms-1" src={greenGarb}></img>
 							</div>
 						</Link>
 					</div>
@@ -39,10 +33,7 @@ export const Navbar = () => {
 
 					{/* --------input bar---------- */}
 
-
-					<div className="align-middle input-div col-5">
-						<input classname="nav-input w-100" type="text" placeholder="search"></input>
-					</div>
+					<SearchBar/>
 
 					{/* ----------Menu Icons------------- */}
 
@@ -63,11 +54,11 @@ export const Navbar = () => {
 
 			<nav className="navbar navbar-expand-lg  navbar-light bg-light lower-nav justify-content-start mb-5">
 				<div className="container">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<button class="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
-					<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<div class="collapse navbar-collapse mb-1" id="navbarNavDropdown">
 						<ul class="navbar-nav">
 
 							<div className="dropdown me-3">
@@ -104,6 +95,9 @@ export const Navbar = () => {
 								</div>
 							</div>
 						</ul>
+
+						<SearchBar/>
+
 					</div>
 				</div>
 			</nav>

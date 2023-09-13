@@ -10,9 +10,8 @@ import blankProfile from "../../img/blankProfile.png"
 export const User = () => {
 
     const navigate = useNavigate()
-    const { store, actions } = useContext(Context)
-    const [userData, setUserData] = useState(null)
-    const cloudinaryUrl = "https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
+	const { store, actions } = useContext(Context)
+    const [userData, setUserData] = useState({})
 
 
     useEffect(() => {

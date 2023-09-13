@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
@@ -8,15 +8,12 @@ import "../../styles/home.css";
 
 export const Catalog = () => {
     const {store, actions} = useContext(Context)
+    const params = useParams()
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
 
 
-    useEffect(() => {
-      // Fetch products when the component mounts
-      actions.fetchProducts();
-    }, []);
-
+   
 
 
 
@@ -26,42 +23,54 @@ export const Catalog = () => {
 
             {/* filter menus */}
 
-            <nav className="navbar navbar-light border border-2 border-bottom-0 lower-nav justify-content-start my-2">
+            <nav className="navbar navbar-expand-lg  navbar-light border border-2 border-bottom-0 lower-nav justify-content-start my-2">
 
-            <div className="dropdown ms-5 me-1">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sub-Category
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">Tops</a>
-                <a className="dropdown-item" href="#">Bottoms</a>
-            </div>
+            <div className="container-fluid">
+                <button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#catalogDropDown" aria-controls="catalogDropDown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span>Filter <span className="fas fa-sliders-h"></span></span>
+                </button>
+
+                <div class="collapse navbar-collapse mb-1" id="catalogDropDown">
+                    <ul class="navbar-nav">
+
+                        <div className="dropdown ms-5 me-1">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sub-Category
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">Tops</a>
+                            <a className="dropdown-item" href="#">Bottoms</a>
+                        </div>
+                        </div>
+
+                        <div className="dropdown me-2">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Size
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">Small</a>
+                            <a className="dropdown-item" href="#">Medium</a>
+                            <a className="dropdown-item" href="#">Large</a>
+
+                        </div>
+                        </div>
+
+                        <div className="dropdown me-2">
+                        <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Conditon
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="MensDropDown">
+                            <a className="dropdown-item" href="#">New</a>
+                            <a className="dropdown-item" href="#">Used</a>
+                        </div>
+                        </div>
+                    </ul>
+                </div>
             </div>
 
-            <div className="dropdown me-2">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Size
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">Small</a>
-                <a className="dropdown-item" href="#">Medium</a>
-                <a className="dropdown-item" href="#">Large</a>
-
-            </div>
-            </div>
-
-            <div className="dropdown me-2">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Conditon
-            </button>
-            <div className="dropdown-menu" aria-labelledby="MensDropDown">
-                <a className="dropdown-item" href="#">New</a>
-                <a className="dropdown-item" href="#">Used</a>
-            </div>
-            </div>
 
             <div className="dropdown position-absolute end-0 me-3">
-            <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn btn-light border border-dark dropdown-toggle sortButton" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort
             </button>
             <div className="dropdown-menu" aria-labelledby="MensDropDown">
@@ -74,16 +83,17 @@ export const Catalog = () => {
 
             {/* product selection section */}
 
-            <div className="container-fluid catalog-imgs my-5 d-flex justify-content-between">
+
+            <div className="container-fluid catalog-imgs my-5 d-flex justify-content-md-between catalog-row">
 
                 {store.products.map((product, index) => (
                
-               <div className="card col-sm-3 d-flex me-1 " key = {index}>
+               <div className="card col-sm-3 d-flex me-2 " key = {index}>
                 <div className="card-img-div">
                     <button className="heart-button btn" >
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
-                    <Link to={'/product/' + index}>
+                    <Link to={`/product/${params.id}`}>
                         <img className="card-img-top" src={cloudinaryUrl+product.imageset[0].image} alt="Card image cap"></img>
                     </Link>
                     

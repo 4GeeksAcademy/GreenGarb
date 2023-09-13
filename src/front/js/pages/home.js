@@ -97,31 +97,6 @@ export const Home = () => {
 					</div>
 				</div>
 
-				
-
-				
-
-				<div className="container featured-seller">
-					<div className="d-flex h-100">
-						<div className="shop-img col-6">
-							<p className="position-absolute bottom-0 end-0 pe-4 fs-4 text homePtags">shop name</p>
-						</div>
-
-							<div className="col-6 right-side-shop">
-									<div className="d-flex shop-img-div">
-										<img className="img-box col-4" src="https://images.pexels.com/photos/6311602/pexels-photo-6311602.jpeg?auto=compress&cs=tinysrgb&w=600"/>
-										<img className="img-box col-4" src="https://images.pexels.com/photos/6311602/pexels-photo-6311602.jpeg?auto=compress&cs=tinysrgb&w=600"/>
-										<img className="img-box col-4" src="https://images.pexels.com/photos/6311602/pexels-photo-6311602.jpeg?auto=compress&cs=tinysrgb&w=600"/>
-									</div>
-								
-
-									<div className="shop-bottom">
-										<p className='FeaturedDescription'>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-									</div>
-							</div>
-					</div>	
-				</div>
-
 			
 
 

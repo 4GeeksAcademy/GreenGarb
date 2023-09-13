@@ -57,15 +57,21 @@
    /* -------------SearchBar---------- */
 
    .parentOfInput {
+    width: 8rem;
     position: relative;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
-/* @media only screen and (max-width: 820px){
+
+
+@media only screen and (max-width: 600px){
     .parentOfInput{
-        visibility: hidden;
+        border: solid red;
+        flex-wrap: wrap;
     }
-} */
+}
 
 
 .searchDropdown {

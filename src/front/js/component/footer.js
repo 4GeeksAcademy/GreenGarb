@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/footer.css"
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
 	const year = new Date().getFullYear();
@@ -13,7 +14,7 @@ export const Footer = () => {
 						<ul className="footerlist">
 							<li>
 								<h3>Shop</h3>
-								<a href="#">Register</a>
+								<Link to={'/signup'}>Register</Link>
 							</li>
 							<li>
 								<h3>Sell</h3>
@@ -22,11 +23,11 @@ export const Footer = () => {
 
 							<li>
 								<h3>About</h3>
-								<a href="#">Our Ethical Approach</a>
+								<Link to={'/aboutus'}>Our Ethical Approach</Link>
 							</li>
 							<li>
 								<h3>Help</h3>
-								<a href="#">Contact Us</a>
+								<Link to={'/contact'}>Contact US</Link>
 							</li>
 
 

@@ -5,6 +5,7 @@ import { Context } from '../store/appContext';
 
 
 
+
 export const SearchBar = () => {
     const {store, actions} = useContext(Context)
     const [text, setText] = useState('');
@@ -13,13 +14,7 @@ export const SearchBar = () => {
     const navigate = useNavigate();
     console.log(text);
 
-    useEffect(() => {
-        console.log(filtered)
-    },[filtered])   
 
-
-
-    
    
     //fitler all names from the api object array that has the 'text' u typed
     //appContext has a fetch product function for all pages 

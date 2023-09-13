@@ -36,10 +36,12 @@ export const Yourshop = () => {
 
         <>
             <div className="user-header-div justify-content-center d-flex mb-3">
+                <div className="user-img-div-parent rounded-circle">
                 <img className="user-img-div rounded-circle"
                     src={sellerData && sellerData.img ? cloudinaryUrl + sellerData.img : blankProfile}
                     alt="Profile"
                 />
+                </div>
                 <h2 className="ms-2 align-self-center"><i class="fa-solid fa-store"></i>{sellerData?.shop_name}</h2>
 
             </div >

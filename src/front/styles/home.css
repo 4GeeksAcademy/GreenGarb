@@ -329,18 +329,17 @@ height: 70%;
 
             /* ----------user Page----------- */
 
-.user-img-div {
+.user-img-div-parent {
     height: 200px;
     width: 200px;
-    border: solid 1px;
 }
 
-.user-img {
-    width: 100%;
+.user-img-div {
     height: 100%;
+    width: 100%;
+    border: solid 1px;
     object-fit: cover;
     border-radius: 50%;
-
 }
 
 @media only screen and (max-width: 576px) {

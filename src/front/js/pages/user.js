@@ -34,12 +34,14 @@ export const User = () => {
             {sessionStorage.getItem('token') ? (
                 <div>
                     <div className="user-header-div justify-content-center d-flex mb-3">
+                        <div className="user-img-div-parent rounded-circle">
                         <img
                             className="user-img-div rounded-circle "
                             src={store.user && store.user.pictures ? cloudinaryUrl + store.user.pictures : blankProfile}
                             alt="Profile"
 
                         />
+                        </div>
                         <h2 className="ms-2 align-self-center"> <i className="fa-solid fa-user"></i> {store.user.username || "Loading..."}</h2>
                     </div>
 

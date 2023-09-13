@@ -51,7 +51,7 @@ export const Product = (props) => {
 
 
             <div className="container d-flex">
-                <div className="row w-100 m-0">
+                <div className="row w-100 m-0 first-product-row">
                     <div className="product-img-div mb-3 col-sm-6">
                         <div id="carouselExample" className="carousel slide">
                             <div className="carousel-inner">

@@ -277,7 +277,9 @@ height: 70%;
 
 @media only screen and (max-width: 576px) {
     .right-side-product-div {
-    height: 250px;    }
+    height: 250px; 
+    margin-top: 67px;
+}
   }
 
 .product-specs {
@@ -316,7 +318,14 @@ height: 70%;
     color: red;
 }
 
+.product-tags {
+    margin-top: 20px;
+    vertical-align: middle;
+}
 
+.first-product-row{
+    overflow: hidden;
+}
 
             /* ----------user Page----------- */
 

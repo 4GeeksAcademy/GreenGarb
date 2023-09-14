@@ -8,6 +8,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { AboutUs } from "./pages/aboutus";
+import { Favorites } from "./pages/favorites";
 import ProductUpload from "./pages/ProductUpload";
 import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
@@ -47,7 +48,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<User />} path="/user" />
                         <Route element={<Yourshop />} path="/yourshop" />
-                        {/* <Route element={<Favorites/>} path="/favorites"/> */}
+                        <Route element={<Favorites/>} path="/favorites"/>
 
                         <Route element={<Catalog />} path="/catalog" />
                         <Route element={<WomensCatalog />} path="/catalog/:category" />

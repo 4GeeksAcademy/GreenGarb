@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams,useNavigate, Link } from 'react-router-dom';
 import { Product } from '../pages/product';
 import { Context } from '../store/appContext';
+import { useRef } from 'react';
 
 
 
@@ -9,10 +10,23 @@ import { Context } from '../store/appContext';
 export const SearchBar = () => {
     const {store, actions} = useContext(Context)
     const [text, setText] = useState('');
-    const [data, setData] = useState(store.products);
     const [filtered, setFiltered] = useState([])
-    const navigate = useNavigate();
+    const [theDefault, setTheDefault] = useState(true)
+    const refInput = useRef()
     console.log(text);
+
+
+    useEffect(() => {
+        window.onclick = (event) => {
+          if (event.target.contains(refInput.current)
+            && event.target !== refInput.current) {     
+            console.log(`You clicked Outside the box!`);
+
+          } else {     
+            console.log(`You clicked Inside the box!`);
+          }
+        }
+    }, []);
 
 
    
@@ -34,9 +48,9 @@ export const SearchBar = () => {
 
 
     return(
-    <div className='parentOfInput justify-content-end'>
-    <form className='d-flex' autoComplete='off'>
-        <input placeholder='search' type='text' value={text} onChange={(e) => filter(e.target.value) }></input>
+    <div className='parentOfInput justify-content-end' >
+    <form className='d-flex w-100' autoComplete='off'>
+        <input placeholder='search' type='text' ref={refInput} value={text} onChange={(e) => filter(e.target.value) } id='search'></input>
     </form>
     
     <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
@@ -53,7 +67,7 @@ export const SearchBar = () => {
                 
                 </>
                 )
-        }) : ''}
+        }) : `$('#search').value('')`}
         
     </div>
     </div>

@@ -33,7 +33,9 @@ export const Navbar = () => {
 
 					{/* --------input bar---------- */}
 
-					<SearchBar/>
+					
+								<SearchBar/>
+					
 
 					{/* ----------Menu Icons------------- */}
 

@@ -6,7 +6,7 @@ import "../../styles/home.css";
 import blankProfile from "../../img/blankProfile.png"
 
 
-export const Yourshop = () => {
+export const Favorites = () => {
 
     const navigate = useNavigate()
     const { store, actions } = useContext(Context)
@@ -42,44 +42,49 @@ export const Yourshop = () => {
                     alt="Profile"
                 />
                 </div>
-                <h2 className="ms-2 align-self-center"><i class="fa-solid fa-store"></i>{sellerData?.shop_name}</h2>
 
             </div >
-            <div className="p-3 text-md-center">{sellerData?.description}</div>
 
             <nav className="navbar navbar-expand-md navbar-light bg-light justify-content-center">
-                <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center">
 
-                    <ul className="navbar-nav col-sm-12">
-                        <li className="nav-item sellers-menu">
-                            <a className="nav-link active" aria-current="page" href="#">Selling History</a>
-                        </li>
-                        <li className="nav-item sellers-menu">
-                            <Link className="nav-link active" to="/favorites">Your Favorites</Link>
-                        </li>
-                        <li className="nav-item sellers-menu">
-                            <Link className="nav-link active" to="/productupload">List products</Link>
-                        </li>
-                        <li className="nav-item sellers-menu">
-                            <a className="nav-link active" href="#">Pending Orders</a>
-                        </li>
-                    </ul>
+                            <ul className="navbar-nav col-sm-12">
+                                <li className="nav-item user-menu">
+                                    <a className="nav-link active" aria-current="page" href="#">Purchase History</a>
+                                </li>
+                                <li className="nav-item user-menu">
+                                    <Link className="nav-link active" to="/user/edit">Edit Profile</Link>
+                                </li>
+                                <li className="nav-item user-menu">
+                                    {store.user && Array.isArray(store.user.seller) && store.user.seller.length === 0 ? (
+                                        <Link className="nav-link active" to="/newstore">
+                                            New Shop
+                                        </Link>
+                                    ) : (
+                                        <Link className="nav-link active" to="/yourshop">
+                                            Your Shop
+                                        </Link>
+                                    )}
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active" onClick={() => actions.logout()} to="/">logout</Link>
+                                </li>
+                            </ul>
 
-                </div>
-
-            </nav>
+                        </div>
+                    </nav>
 
 
                     {/* sellers-listing */}
 
-            <h1 className="text-center">Selling</h1>
+            <h1 className="text-center">Your Favorites</h1>
 
             <div className="d-flex p-1 catalog-imgs my-5 d-flex justify-content-md-around catalog-row">
                 {sellerData?.products.map((product, index) => (
                     <div className="card col-sm-3 d-flex mb-2" key={index}>
                         <div className="card-img-div">
-                            <button className="editButton">
-                                <i class="fas fa-pen"></i>
+                            <button className="trashButton">
+                            <i class="fas fa-trash-alt" style={{color: 'red'}}></i>
                             </button>
                             <Link to={'/products/' + product.id}>
                               <img className="card-img-top" src={cloudinaryUrl + product.imageset[0].image}/>

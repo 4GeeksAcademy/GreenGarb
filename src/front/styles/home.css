@@ -349,6 +349,21 @@ height: 70%;
   }
 
 
+.editButton {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    border-radius: 50%;
+}
+
+.trashButton {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    border-radius: 50%;
+    background: none;
+}
+
 
      /* -------------login-form---------- */
 

@@ -57,7 +57,7 @@
    /* -------------SearchBar---------- */
 
    .parentOfInput {
-    width: 8rem;
+    width: 20rem;
     position: relative;
     margin-top: 10px;
     display: flex;
@@ -97,4 +97,8 @@
 
 .dropResults:hover {
     background-color: lightgrey;
+}
+
+.invisible {
+    visibility: hidden;
 }

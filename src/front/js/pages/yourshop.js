@@ -74,7 +74,7 @@ export const Yourshop = () => {
 
             <h1 className="text-center">Selling</h1>
 
-            <div className="d-flex p-1 catalog-imgs my-5 d-flex justify-content-md-around catalog-row">
+            <div className="sellers-listing row p-4 gx-0">
                 {sellerData?.products.map((product, index) => (
                     <div className="card col-sm-3 d-flex mb-2" key={index}>
                         <div className="card-img-div">

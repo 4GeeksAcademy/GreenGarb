@@ -143,7 +143,7 @@ def logout():
     return resp, 200
 
 
-@api.route('/sellers', methods=['POST',"GET"])
+@api.route('/sellers', methods=['POST'])
 @jwt_required()
 @cross_origin()
 def create_seller():
@@ -410,6 +410,23 @@ def get_seller_shop():
      except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 400
-        
+@api.route('/sellers/<int:seller_id>', methods=['GET'])
+def get_seller(seller_id):
+    try:
+        seller = Seller.query.get(seller_id)
+        if not seller:
+            return jsonify({'error': 'Seller not found'}), 404
+
+        return jsonify(seller.serialize())
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+@api.route('/sellers', methods=['GET'])
+def get_sellers():
+    try:
+        sellers = Seller.query.all()
+        serialized_sellers = [seller.serialize() for seller in sellers]
+        return jsonify(serialized_sellers)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
     
     

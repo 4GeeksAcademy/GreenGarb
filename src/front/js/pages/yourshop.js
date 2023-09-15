@@ -71,7 +71,7 @@ export const Yourshop = () => {
 
             <h1 className="text-center">Selling</h1>
 
-            <div className="sellers-listing row p-4">
+            <div className="sellers-listing row p-4 gx-0">
                 {sellerData?.products.map((product, index) => (
                     <div className="card col-xl-2 col-lg-3 col-md-4 col-12 d-flex mb-3" key={index}>
                         <img className="card-img-top" src={cloudinaryUrl + product.imageset[0].image} alt="Card image cap" />

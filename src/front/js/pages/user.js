@@ -12,6 +12,7 @@ export const User = () => {
     const navigate = useNavigate()
 	const { store, actions } = useContext(Context)
     const [userData, setUserData] = useState({})
+    const cloudinaryUrl = "https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
 
     useEffect(() => {

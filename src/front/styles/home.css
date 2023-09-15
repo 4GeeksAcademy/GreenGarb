@@ -85,6 +85,20 @@ button {
     background-repeat: no-repeat;
     cursor: pointer;
 }
+.popular-finds-div{
+    height: 350px;
+    width: 310px;
+
+}
+.popular-finds-div>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+
+}
+
+
 
 .mens-box {
     height: 350px;
@@ -161,10 +175,6 @@ button {
 
              /*-------- featured sellers---------- */
 
-.featuredSellerCards{
-    background-color: honeydew;
-    overflow: hidden;
-}
 
 .circle-img-div {
     width: 50px;
@@ -181,8 +191,13 @@ button {
 .featured-seller {
     padding: 0;
     margin-bottom: 2rem;
-    height: 400px;
+   
 }
+.featured-product-image{
+    width: 310px;
+    height: 350px;
+}
+
 
 .shop-img {
     background-size: cover;
@@ -267,39 +282,53 @@ height: 70%;
         /*-----------product page ---------------*/
 
 .right-side-product-div {
-    height: 350px;
+    
     position: relative;
 }
-
+/* 
 @media only screen and (max-width: 576px) {
     .right-side-product-div {
     height: 250px; 
     margin-top: 67px;
 }
-  }
+  } */
 
 .product-specs {
     position: relative;
     overflow: auto;
+
+}
+.seller-thumbnail{
+    height: 40px;
+    width: 40px;
 }
 
+.seller-thumbnail>img {
+    height: 100%;
+    width: 100%;
+    border: solid 1px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+/* 
 .product-actions {
     height: 35%;
     position: absolute;
     bottom: 0;
-}
-
+} */
+/* 
 @media only screen and (max-width: 576px) {
     .product-actions {
-        height: 35%;
-        position: absolute;
+        height: 35%; 
+         position: absolute;
         bottom: 10px;
-        right: 35%;    }
-  }
+        right: 35%;    
+  }  */
 
 
 .product-img-div {
-    height: 300px;
+    max-width: 650px;
+    min-width: 250;
 }
 
 .product-img {

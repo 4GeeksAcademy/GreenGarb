@@ -48,9 +48,12 @@ export const SearchBar = () => {
 
 
     return(
-    <div className='parentOfInput justify-content-end' >
-    <form className='d-flex w-100' autoComplete='off'>
+    
+    <>
+    <form className='parentOfInput justify-content-end' autoComplete='off'>
+    <div className='d-flex w-100'  >
         <input placeholder='search' type='text' ref={refInput} value={text} onChange={(e) => filter(e.target.value) } id='search'></input>
+    </div>
     </form>
     
     <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
@@ -70,7 +73,7 @@ export const SearchBar = () => {
         }) : `$('#search').value('')`}
         
     </div>
-    </div>
+    </>
     )
 }
 

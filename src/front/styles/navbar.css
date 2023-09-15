@@ -102,3 +102,17 @@
 .invisible {
     visibility: hidden;
 }
+
+.clearButton {
+    display: block;
+    width: 2rem;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    color: #a8a8a8;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding:0;
+  }

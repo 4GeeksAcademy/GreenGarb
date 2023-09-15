@@ -3,6 +3,8 @@ import { useParams,useNavigate, Link } from 'react-router-dom';
 import { Product } from '../pages/product';
 import { Context } from '../store/appContext';
 import { useRef } from 'react';
+import Turnstone from 'turnstone'
+
 
 
 
@@ -15,20 +17,29 @@ export const SearchBar = () => {
     const refInput = useRef()
     console.log(text);
 
+    const Inputstyles = {
+      input: 'searchBar',
+      inputFocus: 'inputFocus',
+      query: 'query',
+      typeahead: 'typeAhead',
+      clearButton: 'clearButton',
+      listbox: 'listBox',
+      groupHeading: 'groupHeading',
+      item: 'dropItem',
+      highlightedItem: 'highlightedItem'
+    }
 
-    useEffect(() => {
-        window.onclick = (event) => {
-          if (event.target.contains(refInput.current)
-            && event.target !== refInput.current) {     
-            console.log(`You clicked Outside the box!`);
-
-          } else {     
-            console.log(`You clicked Inside the box!`);
-          }
-        }
-    }, []);
+    // the variable above inside the function have given classname for css
 
 
+    const maxItems = 8
+
+
+    const listbox = {
+      // displayField: 'title',
+      searchType: 'startswith',
+      data: ['Peach', 'Pear', 'Pineapple', 'Plum', 'Pomegranate', 'Prune']
+    }
    
     //fitler all names from the api object array that has the 'text' u typed
     //appContext has a fetch product function for all pages 
@@ -50,13 +61,30 @@ export const SearchBar = () => {
     return(
     
     <>
-    <form className='parentOfInput justify-content-end' autoComplete='off'>
+    {/* <form className='parentOfInput justify-content-end' autoComplete='off'>
     <div className='d-flex w-100'  >
         <input placeholder='search' type='text' ref={refInput} value={text} onChange={(e) => filter(e.target.value) } id='search'></input>
     </div>
-    </form>
+    </form> */}
+
+    <Turnstone
+      styles={Inputstyles}
+      debounceWait={250}
+      id="search"
+      listbox={listbox}
+      listboxIsImmutable={true}
+      matchText={true}
+      maxItems={maxItems}
+      name="search"
+      autoFocus={true}
+      noItemsMessage="Not Found"
+      placeholder="Search Products"
+      typeahead={true}
+      clearButton={true} />
+
+
     
-    <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
+    {/* <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
         {filtered.length ? filtered.map((item, index) => {
             return(
                 <>
@@ -72,7 +100,7 @@ export const SearchBar = () => {
                 )
         }) : `$('#search').value('')`}
         
-    </div>
+    </div> */}
     </>
     )
 }

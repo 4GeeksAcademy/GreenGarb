@@ -25,6 +25,8 @@ export const EditProduct = () => {
   const [product, setProduct] = useState({})
   const [loading, setLoading] = useState(true)
   const [errorProduct, setErrorProduct] = useState(null)
+  const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
+
   const {id} = useParams();
 
   useEffect(() => {
@@ -182,6 +184,7 @@ export const EditProduct = () => {
               id="images"
               multiple
               accept="image/*"
+            //   value={product?.imageset?.image}
               onChange={(e) => setFiles(e.target.files)}
             />
           </div>

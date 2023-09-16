@@ -304,7 +304,7 @@ def update_profile():
         return  jsonify('all good'), 200
     
 
-@api.route('/products/<int:product_id>', methods=['PUT'])
+@api.route('/product/<int:product_id>', methods=['PUT'])
 @jwt_required()
 def update_product(product_id):
     product = Product.query.get(product_id)

@@ -1,7 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import ShopName from '../component/ShopName';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { update } from 'lodash';
 
 
 
@@ -19,6 +22,30 @@ export const EditProduct = () => {
   const [size, setSize] = useState('');
   const [files, setFiles] = useState([]);
   const navigate = useNavigate();
+  const [product, setProduct] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [errorProduct, setErrorProduct] = useState(null)
+  const {id} = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const productResponse = await axios.get(process.env.BACKEND_URL + `api/products/${id}`);
+            setProduct(productResponse.data);
+            setLoading(false);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setErrorProduct(error.message);
+            setLoading(false);
+        }
+    };
+
+    if (id) {
+        fetchData();
+    }
+}, [id]);
+
 
 
   const subCategories = {
@@ -26,21 +53,23 @@ export const EditProduct = () => {
     womens: ['Tops', 'Bottoms'],
     shoes: ['Sneakers', 'Boots', 'Sandals']
   };
+
+
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('description', description);
-      formData.append('price', price);
-      formData.append('color', color);
-      formData.append('category', category);
-      formData.append('sub_category', subCategory);
-      formData.append('material', material);
-      formData.append('quantity', quantity);
-      formData.append('condition', condition);
-      formData.append('color', color);
-      formData.append('size', size);
+      const formData = FormData();
+      formData.set('title', title);
+      formData.set('description', description);
+      formData.set('price', price);
+      formData.set('color', color);
+      formData.set('category', category);
+      formData.set('sub_category', subCategory);
+      formData.set('material', material);
+      formData.set('quantity', quantity);
+      formData.set('condition', condition);
+      formData.set('color', color);
+      formData.set('size', size);
 
       for (let i = 0; i < files.length; i++) {
         formData.append(`file`, files[i]);
@@ -73,10 +102,10 @@ export const EditProduct = () => {
           <div className="mb-3">
             <input
               type="text"
-              placeholder='Product name'
+              placeholder='Title'
               className="form-control "
               id="title"
-              value={title}
+              value={product.title}
               onChange={e => setTitle(e.target.value)}
               required
             />
@@ -87,7 +116,7 @@ export const EditProduct = () => {
               className="form-control"
               id="description"
               rows="6"
-              value={description}
+              value={product.description}
               onChange={e => setDescription(e.target.value)}
               required
             ></textarea>
@@ -101,7 +130,7 @@ export const EditProduct = () => {
               type="number"
               className="form-control"
               id="price"
-              value={price}
+              value={product.price}
               onChange={e => setPrice(e.target.value)}
               required
             />
@@ -115,7 +144,7 @@ export const EditProduct = () => {
               className="form-control"
               placeholder='1'
               id="quantity"
-              value={quantity}
+              value={product.quantity}
               onChange={e => setQuantity(e.target.value)}
               required
             />
@@ -126,7 +155,7 @@ export const EditProduct = () => {
               placeholder='Color'
               className="form-control"
               id="color"
-              value={color}
+              value={product.color}
               onChange={e => setColor(e.target.value)}
               required
             />
@@ -137,7 +166,7 @@ export const EditProduct = () => {
               placeholder='Size'
               className="form-control"
               id="size"
-              value={size}
+              value={product.size}
               onChange={e => setSize(e.target.value)}
               required
             />
@@ -160,7 +189,7 @@ export const EditProduct = () => {
             <select
               className="form-select"
               aria-label="Category"
-              value={category}
+              value={product.category}
               onChange={(e) => setCategory(e.target.value)}
               required
             >
@@ -174,7 +203,7 @@ export const EditProduct = () => {
             <select
               className="form-select"
               aria-label="Condition"
-              value={condition}
+              value={product.condition}
               onChange={e => setCondition(e.target.value)}
               required
             >
@@ -187,7 +216,7 @@ export const EditProduct = () => {
             <select
               className="form-select"
               aria-label="Subcategory"
-              value={subCategory}
+              value={product.subCategory}
               onChange={e => setSubCategory(e.target.value)}
               required
             >
@@ -204,7 +233,7 @@ export const EditProduct = () => {
               placeholder='Material'
               className="form-control"
               id="material"
-              value={material}
+              value={product.material}
               onChange={e => setMaterial(e.target.value)}
               required
             />
@@ -214,7 +243,7 @@ export const EditProduct = () => {
             type="submit"
             className="btn btn-success mb-3"
           >
-            Upload Product
+            Update Product
           </button>
           <button className="btn-secondary" type="button" onClick={handleGoBack}>
             Go Back

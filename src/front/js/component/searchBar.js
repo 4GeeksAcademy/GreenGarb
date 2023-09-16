@@ -29,21 +29,22 @@ export const SearchBar = () => {
         }
       }
 
-      // const handleClickInside = (event) => {
-      //   if(!refInput.current && refInput.current.contains(event.target)){
-      //     setShowDropdown(true)
-      //   }
-      // }
+      const handleClickInside = (event) => {
+        if(!refInput.current && refInput.current.contains(event.target)){
+          setShowDropdown(true)
+          filtered(text.length)
+        }
+      }
 
       if(document.addEventListener('mousedown', handleClickOutside))
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
 
-      // else if (document.addEventListener('mousedown', handleClickInside))
-      //   return () => {
-      //     document.addEventListener('mousedown', handleClickInside)
-      //   };
+      else if (document.addEventListener('mousedown', handleClickInside))
+        return () => {
+          document.addEventListener('mousedown', handleClickInside)
+        };
     }, [showDropdown]);
     
 
@@ -95,7 +96,7 @@ export const SearchBar = () => {
 
     
     <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
-        { showDropdown && filtered?.map((item, index) => {
+        { showDropdown && filtered?.length && filtered?.map((item, index) => {
             return(
                 <>
                 {console.log(item)}

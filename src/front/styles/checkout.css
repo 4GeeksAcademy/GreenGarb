@@ -1,14 +1,50 @@
-customer{
-    firstname Van                  
-    lastname Williams
-    email; 'van.doe@example.com'
+
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  shipping
-  {
-    name: 'Van Williams',
-    street: '123 Fake St',
-    town_city: 'Nashville',
-    county_state: 'TN',
-    postal_zip_code: '94103',
-    country: 'US',
+  
+ 
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
+  
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+ 
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+ 
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

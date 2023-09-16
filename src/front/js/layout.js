@@ -8,6 +8,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { AboutUs } from "./pages/aboutus";
+import { Favorites } from "./pages/favorites";
 import ProductUpload from "./pages/ProductUpload";
 import { SignUp } from "./pages/signup";
 import { Navbar } from "./component/navbar";
@@ -20,7 +21,10 @@ import { User } from "./pages/user";
 import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
-import { WomensCatalog } from "./pages/womensCatalog"
+import { WomensCatalog } from "./pages/womensCatalog";
+import { EditProduct } from "./pages/editProduct";
+import { MensCatalog } from "./pages/mensCatalog";
+import { ShoesCatalog } from "./pages/shoesCatalog";
 
 import CartPage from "./pages/cartpage";
 
@@ -58,6 +62,19 @@ const Layout = () => {
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />
                         <Route element={<Checkout />} path="/checkout" />
+                        <Route element={<Favorites/>} path="/favorites"/>
+
+                        <Route element={<Catalog />} path="/catalog" />
+                        <Route element={<WomensCatalog />} path="/catalog/:category" />
+                        {/* <Route element={<MensCatalog/>} path="/catalog/:category"/>
+                        <Route element={<ShoesCatalog/>} path="/catalog/:category"/> */}
+                        <Route element={<Product />} path="/products/:id" />
+                        <Route element={<EditProduct/>} path="/editproduct"/>
+
+                        <Route element={<SignUp />} path="/signup" />
+                        <Route element={<EditProfile />} path="/user/edit" />
+                        <Route element={<Seller />} path="/newstore" />
+<Route element={<Checkout />} path="/checkout" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

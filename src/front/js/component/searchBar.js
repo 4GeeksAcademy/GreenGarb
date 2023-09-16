@@ -1,75 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import { useParams,useNavigate } from 'react-router';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams,useNavigate, Link } from 'react-router-dom';
 import { Product } from '../pages/product';
+import { Context } from '../store/appContext';
+import { useRef } from 'react';
+
+
 
 
 export const SearchBar = () => {
+    const {store, actions} = useContext(Context)
     const [text, setText] = useState('');
-    const [data, setData] = useState([]);
-    const navigate = useNavigate();
+    const [filtered, setFiltered] = useState([])
+    const [theDefault, setTheDefault] = useState(true)
+    const refInput = useRef()
     console.log(text);
 
 
-    useEffect(() => { 
-    async function fetchProducts () {  //this is fetching the data for the input
-        let info = [];
-        const result = await fetch('https://fictional-space-meme-vgj9r5qpp4v26g4r-3001.app.github.dev/api/product');
-        const data = await result.json();
-        data.results.forEach(element => {
-            info.push(element)      //pushing the data into the info array
-        });
+    useEffect(() => {
+        window.onclick = (event) => {
+          if (event.target.contains(refInput.current)
+            && event.target !== refInput.current) {     
+            console.log(`You clicked Outside the box!`);
 
-        setData(info)
-        console.log(info, 'info')
+          } else {     
+            console.log(`You clicked Inside the box!`);
+          }
+        }
+    }, []);
 
-    }
-    
-        fetchProducts()
 
-    }, [])
-
-   console.log('data', data) 
-    //fitler all names from the api object array that has the 'text' u typed 
-   let filtered = data.filter(ProductTitle => {
-        return ProductTitle.title.includes(text)
+   
+    //fitler all names from the api object array that has the 'text' u typed
+    //appContext has a fetch product function for all pages 
+   
+   const filter = (value) => {
+        let filtered = store.products.filter(ProductTitle => {
+        return ProductTitle.title.toLowerCase().includes(value.toLowerCase())
    })
+        setText(value)
+        if(value.length == 0){
+            setFiltered([])
+        }
+        setFiltered(filtered)
+   }
+
+   console.log('text', text)
+
 
     return(
-    <div className='parentOfInput justify-content-end'>
-    <form autoComplete='off'>
-        <i class="fas fa-search me-2"></i>
-        <input placeholder='search' type='text' value={text} onChange={(e) => setText(e.target.value) }></input>
+    
+    <>
+    <form className='parentOfInput justify-content-end' autoComplete='off'>
+    <div className='d-flex w-100'  >
+        <input placeholder='search' type='text' ref={refInput} value={text} onChange={(e) => filter(e.target.value) } id='search'></input>
+    </div>
     </form>
     
-    <div className='dropdown'>
-        {text.length ? filtered.map((item, index) => {
+    <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
+        {filtered.length ? filtered.map((item, index) => {
             return(
                 <>
                 {console.log(item)}
 
-                <p onClick={() => {
-                    let url = item.url;
-                    let id = item.uid
-                    if(url.includes('people')){
-                        navigate(`/CharacterDescription/${id}`)
-                    }
-                    if(url.includes('planets')){
-                        navigate(`/PlanetDescription/${id}`)
-                    }
-                    if(url.includes('vehicles')){
-                        navigate(`/VehicleDescription/${id}`)
-                    }
-                    if(url.includes('product')){
-                        navigate('/product/' + index)
-                    }
-                }} >{item.name}</p>
+                <Link to={`/products/${item.id}`} style={{textDecoration: 'none'}}>
+                    <p className='dropResults'>
+                    {item.title}
+                    </p>
+                </Link>
                 
                 </>
-            )
-        }) : ''}
+                )
+        }) : `$('#search').value('')`}
         
     </div>
-    </div>
+    </>
     )
 }
 

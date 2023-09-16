@@ -3,7 +3,9 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import ShopName from '../component/ShopName';
 
-const ProductUpload = () => {
+
+
+export const EditProduct = () => {
   const { store, actions } = useContext(Context);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -63,21 +65,9 @@ const ProductUpload = () => {
 
   return (
     <div className="container ">
-      <h2 className="mb-4 text-center">Add Product</h2>
+      <h2 className="mb-4 text-center">Edit Product</h2>
       <div className="row row mb-3 p-3">
-        {/* <aside className="bd-sidebar mt-4 col-3">
-          <nav className="left-nav" role="navigation" aria-label="Secondary navigation">
-            <div className="group-hd mb-3"><strong>Store's Name</strong></div>
-            <div className="group-hd mb-3"><SellerShopName /></div>
-            <ul className='list-unstyled pb-3'>
-              <li className="mb-3">My Listing</li>
-              <li className="mb-3">Pending order</li>
-              <li className="mb-3">Selling History</li>
-              <li className="mb-3">Message</li>
-              <li className="mb-3">Go Back</li>
-            </ul>
-          </nav>
-        </aside> */}
+        
 
         <form className='row' onSubmit={handleUpload}> 
           <div className="mb-3">
@@ -235,4 +225,3 @@ const ProductUpload = () => {
 
   );
 };
-export default ProductUpload;

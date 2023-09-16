@@ -18,27 +18,23 @@ export const SignUp = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const name = `${firstName} ${lastName}`;
+    try {
+    const name = `${firstName},${lastName}`;
     await actions.signup(email, username, password, name);
-
-
-    //   if (result.status===200){
-    //     navigate("/login");
-    //   }else{
-    //     console.log(result.error)
-    //   }
-    // } catch(error){
-    //   console.error(error)
-    // }
-  };
+    navigate("/login");
+  } catch (error) {
+    // Handle errors here, such as displaying an error message to the user.
+    console.error(error);
+  }
+};
   return (
-    <div className="text-center">
-      <div className="container py-3 mb-5 h-100">
-        <div className="row d-flex justify-content-start align-items-center h-100 mb-5">
+    <div className="text-center ">
+      <div className="container py-3 mb-3 h-100 ">
+        <div className="row d-flex justify-content-start align-items-center h-100 mb-5  ">
           <h2><strong>Sign Up</strong></h2>
         </div>
         <form onSubmit={handleSignup}>
-          <div className="row d-flex justify-content-center">
+          <div className="row d-flex justify-content-center p-4  create-form">
             <div className="col-md-6">
               <div className="form-group">
                 <div className="row text-start">
@@ -52,6 +48,7 @@ export const SignUp = () => {
                       placeholder="First Name"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className="col ">
@@ -64,6 +61,7 @@ export const SignUp = () => {
                       placeholder="Last Name"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
@@ -78,6 +76,7 @@ export const SignUp = () => {
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group text-start">
@@ -91,6 +90,7 @@ export const SignUp = () => {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group text-start">
@@ -103,6 +103,7 @@ export const SignUp = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div class="d-grid">

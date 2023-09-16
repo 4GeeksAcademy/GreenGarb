@@ -8,7 +8,7 @@
 .cartpagerow {
   display: flex;
   gap: 1rem;
-}
+} */
 input, label{
   display: block;
 }
@@ -42,7 +42,7 @@ input, label{
 inputlabel{
   width: 100%;
   height: 30px;
-}
+} */
 .products{
   width: 90%;
   justify-content: center;

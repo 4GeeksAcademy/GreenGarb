@@ -22,6 +22,7 @@ import { Yourshop } from "./pages/yourshop";
 import { Login } from "./pages/login";
 import EditProfile from "./pages/EditProfile";
 import { WomensCatalog } from "./pages/womensCatalog";
+import { EditProduct } from "./pages/editProduct";
 import { MensCatalog } from "./pages/mensCatalog";
 import { ShoesCatalog } from "./pages/shoesCatalog";
 
@@ -55,6 +56,7 @@ const Layout = () => {
                         {/* <Route element={<MensCatalog/>} path="/catalog/:category"/>
                         <Route element={<ShoesCatalog/>} path="/catalog/:category"/> */}
                         <Route element={<Product />} path="/products/:id" />
+                        <Route element={<EditProduct/>} path="/editproduct"/>
 
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />

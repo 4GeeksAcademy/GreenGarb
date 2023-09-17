@@ -6,6 +6,7 @@ import shoes from "../../img/shoes.jpeg"
 import womensClothing from "../../img/womensClothes.jpeg"
 import mensClothes from "../../img/mensClothes.webp"
 import blankProfile from "../../img/blankProfile.png"
+import summer_banner from "../../img/summer-banner.jpg"
 import "../../styles/home.css";
 
 
@@ -50,8 +51,8 @@ export const Home = () => {
 
 			<div className="container banner mt-5">
 				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
-					<h1>Bootstrap big banner picture</h1>
-					<p className="homePtags">jumbotron home page banner with big picture</p>
+					
+					<p className="homePtags"></p>
 				</div>
 			</div>
 

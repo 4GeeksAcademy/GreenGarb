@@ -383,6 +383,7 @@ height: 70%;
     right: 3px;
     top: 3px;
     border-radius: 50%;
+    background: snow;
 }
 
 .trashButton {

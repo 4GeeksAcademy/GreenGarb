@@ -248,8 +248,11 @@ export const EditProduct = () => {
           >
             Update Product
           </button>
-          <button className="btn-secondary" type="button" onClick={handleGoBack}>
+          <button className="btn-secondary mb-3" type="button" onClick={handleGoBack}>
             Go Back
+          </button>
+          <button className="btn-danger" type="button" onClick={handleGoBack}>
+            DELETE
           </button>
         </form>
       </div>

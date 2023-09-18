@@ -79,7 +79,7 @@ export const Yourshop = () => {
                     <div className="card col-sm-3 d-flex mb-2" key={index}>
                         <div className="card-img-div">
                             <button className="editButton">
-                                <Link to={`/editproduct/${product.id}`}><i class="fas fa-pen"></i></Link>
+                                <Link to={`/editproduct/${product.id}`}><i class="fas fa-pen" style={{color: 'grey'}}></i></Link>
                             </button>
                             <Link to={'/products/' + product.id}>
                               <img className="card-img-top" src={cloudinaryUrl + product.imageset[0].image}/>

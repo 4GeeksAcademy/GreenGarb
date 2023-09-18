@@ -66,13 +66,21 @@
 
 
 
-@media only screen and (max-width: 600px){
+/* @media only screen and (max-width: 600px){
     .parentOfInput{
         border: solid red;
         flex-wrap: wrap;
     }
-}
+} */
 
+@media only screen and (max-width: 600px){
+.parentOfInput {
+    position: absolute;
+    top: 52px;
+    z-index: 1;
+    right: 0;
+    width: 19rem;
+}}
 
 .searchDropdown {
     position: absolute;

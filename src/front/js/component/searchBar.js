@@ -3,7 +3,6 @@ import { useParams,useNavigate, Link } from 'react-router-dom';
 import { Product } from '../pages/product';
 import { Context } from '../store/appContext';
 import { useRef } from 'react';
-import Turnstone from 'turnstone'
 
 
 
@@ -38,12 +37,12 @@ export const SearchBar = () => {
 
       if(document.addEventListener('mousedown', handleClickOutside))
       return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+        setShowDropdown(false)
       };
 
       else if (document.addEventListener('mousedown', handleClickInside))
         return () => {
-          document.addEventListener('mousedown', handleClickInside)
+          setShowDropdown(true)
         };
     }, [showDropdown]);
     
@@ -84,19 +83,19 @@ export const SearchBar = () => {
     return(
     
     <>
-   
-    <div className='d-flex parentOfInput justify-content-end'  >
+    
+    <div className='d-flex parentOfInput justify-content-center'  >
         <input placeholder='search' 
                type='text' ref={refInput} 
                value={text} 
                onChange={(e) => filter(e.target.value) } 
-               onClick={() => showDropdown(true)} 
+               onClick={() => setShowDropdown(true)} 
                id='search'></input>
-    </div> 
+    
 
     
-    <div className='searchDropdown' style={{width:filtered.length ? '-webkit-fill-available' : 0}}>
-        { showDropdown && filtered?.length && filtered?.map((item, index) => {
+    <div className='searchDropdown' >
+        { showDropdown && text.length > 0  && filtered?.length && filtered?.map((item, index) => {
             return(
                 <>
                 {console.log(item)}
@@ -112,6 +111,7 @@ export const SearchBar = () => {
         })}
         
     </div>
+    </div> 
     </>
     )
 }

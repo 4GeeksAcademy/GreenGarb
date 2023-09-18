@@ -79,11 +79,11 @@
     background-color: ghostwhite;
     left:0%;
     overflow: auto;
-    top: 30px;
+    top: 42px;
     z-index: 10;
-    width: -webkit-fill-available;
-    -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;
+    width: 20rem;
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-width: none;
 }     
 
 .searchDropdown::-webkit-scrollbar {

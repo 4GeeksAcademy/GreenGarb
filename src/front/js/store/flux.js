@@ -254,18 +254,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			  },
 			  
-			  fetchSeller: async () => {
-				try {
-				  const response = await axios.get(process.env.BACKEND_URL + 'api/sellers/<int:seller_id>');
-				  if (response.status === 200) {
-					const seller = response.data; // 
-					 return seller;
-				
-				  }
-				} catch (error) {
-				  console.error('Error fetching product:', error);
-				}
-			  },
+
 			  fetchSellers: async () => {
 				try {
 				  const response = await axios.get(process.env.BACKEND_URL + 'api/sellers');

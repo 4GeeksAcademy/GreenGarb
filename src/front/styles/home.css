@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 header {
@@ -13,6 +14,7 @@ header {
 
 main {
     padding: 2rem;
+    flex:1;
 }
 
 .contact-form {
@@ -28,6 +30,9 @@ label {
     display: block;
     margin-bottom: 0.5rem;
 }
+.content-container {
+    min-height: calc(70vh - 34px);
+  }
 
 input,
 textarea {
@@ -47,13 +52,16 @@ button {
     cursor: pointer;
 
 }
+.signup{
+    max-width: 1140px;
+}
 
 
             /* ----------home Page-------- */
 
 
 .banner {
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.womenfitness.net%2Fwp%2Fwp-content%2Fuploads%2F2016%2F10%2FEco-friendly-Fashion.jpg&f=1&nofb=1&ipt=0c36a35f1ba0804afa743d9c7e33846ff279d51076a4e2eafdf80a1dead57c50&ipo=images");
+    background-image: url('../img/summer-banner.jpg');
     background-size: cover;
     position: relative;
     background-position: center;
@@ -401,6 +409,8 @@ height: 70%;
     background-image: url('https://images.pexels.com/photos/1654255/pexels-photo-1654255.jpeg?auto=compress&cs=tinysrgb&w=600');
     background-repeat: no-repeat;
     background-position: center;
+   
+    
     
 }
 

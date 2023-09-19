@@ -42,8 +42,8 @@ export const Login = () => {
   return(
 
     
-    <div className="text-center mt-5">
-			<h1>Please Sign In </h1>
+    <div className="text-center mt-5 content-container">
+			<h1>Sign in </h1>
 			
 
 			<form className="container w-25 p-4 bg-light mb-5 login-form" onSubmit={(e) => submit(e)}>

@@ -62,7 +62,7 @@ export const Product = () => {
                 renderError(errorProduct || errorSeller)
             ) : (
                 // Render the product details once data is available
-                <div className="container d-flex">
+                <div className="container d-flex content-container">
                     <div className="row w-100 m-0 first-product-row">
                         <div className="product-img-div mb-3 col-sm-7">
                             <div id="carouselExample" className="carousel slide">

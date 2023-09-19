@@ -62,7 +62,7 @@ const ProductUpload = () => {
   };
 
   return (
-    <div className="container ">
+    <div className="container">
       <h2 className="mb-4 text-center">Add Product</h2>
       <div className="row row mb-3 p-3">
         {/* <aside className="bd-sidebar mt-4 col-3">

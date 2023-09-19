@@ -27,14 +27,17 @@ export const SignUp = () => {
     console.error(error);
   }
 };
+const handleGoBack = () => {
+  navigate(-1);
+};
   return (
-    <div className="text-center ">
-      <div className="container py-3 mb-3 h-100 ">
-        <div className="row d-flex justify-content-start align-items-center h-100 mb-5  ">
-          <h2><strong>Sign Up</strong></h2>
+    <div className="text-center py-4 content-container">
+      <div className="signup container mb-2 h-100 ">
+        <div className="row  justify-content-start  h-100 mb-2  ">
+          <h1>Sign up</h1>
         </div>
         <form onSubmit={handleSignup}>
-          <div className="row d-flex justify-content-center p-4  create-form">
+          <div className="row justify-content-center p-4  create-form">
             <div className="col-md-6">
               <div className="form-group">
                 <div className="row text-start">
@@ -107,7 +110,10 @@ export const SignUp = () => {
                 />
               </div>
               <div class="d-grid">
-                <button type="submit" className="btn btn-success">Sign Up</button>
+                <button type="submit" className="btn btn-success mb-3">Sign Up</button>
+                <button className="btn-secondary" type="button" onClick={handleGoBack}>
+            Go Back
+          </button>
               </div>
             </div>
           </div>

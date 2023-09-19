@@ -36,6 +36,7 @@ export const Home = () => {
 		return {
 			sellerName: seller.shop_name,
 			sellerImage: seller.img,
+			sellerId: seller.id,
 			featuredProduct: {
 				image: featuredProduct?.imageset[0]?.image || '', // Use the first image if available
 			},
@@ -51,8 +52,8 @@ export const Home = () => {
 
 			<div className="container banner mt-5">
 				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
-					
-					<p className="homePtags"></p>
+					Greengarb
+					<p className="homePtags">jumbotron home page banner with big picture</p>
 				</div>
 			</div>
 
@@ -134,26 +135,32 @@ export const Home = () => {
 						<div className=" featuredSellerCards mt-5 mb-3 p-2 col-12 col-md-6 col-lg-3" key={index}>
 
 							<div className=" rounded">
-								<img
-									className="featured-product-image mx-auto"
-									src={`${cloudinaryUrl}${seller.featuredProduct.image}`}
-									alt={`Featured Product ${index}`}
-									
-								/>
+								<Link to={'/shop/' + seller.sellerId}>
+									<img
+										className="featured-product-image mx-auto"
+										src={`${cloudinaryUrl}${seller.featuredProduct.image}`}
+										alt={`Featured Product ${index}`}
+
+									/>
+								</Link>
 							</div>
 							<div className="card-body text-center">
-							<div className="d-flex justify-content-center me-5  ">
-								<div className="seller-thumbnail me-2">
-									<img
-										src={`${cloudinaryUrl}${seller.sellerImage}`}
-										alt={`Seller ${seller.sellerName}`}
-									/>
-								</div>
-								<div className="shop-name  ">
-								<p><strong>{seller.sellerName}</strong></p>
-									
-								</div>
-								</div>
+								<Link to={'/shop/' + seller.sellerId}>
+									<div className="d-flex justify-content-center me-5  ">
+										<div className="seller-thumbnail me-2">
+											<img
+												src={`${cloudinaryUrl}${seller.sellerImage}`}
+												alt={`Seller ${seller.sellerName}`}
+											/>
+										</div>
+										<div className="shop-name  ">
+											<p><strong>{seller.sellerName}</strong></p>
+
+
+										</div>
+
+									</div>
+								</Link>
 							</div>
 
 

@@ -17,6 +17,10 @@ export const SearchBar = () => {
     const [showDropdown , setShowDropdown] = useState(true)
     console.log(text);
 
+    
+    
+    
+
 
 
 
@@ -34,10 +38,13 @@ export const SearchBar = () => {
           filtered(text.length)
         }
       }
+      
+      
+
 
       if(document.addEventListener('mousedown', handleClickOutside))
       return () => {
-        setShowDropdown(false)
+        onesecwait(setShowDropdown(false))
       };
 
       else if (document.addEventListener('mousedown', handleClickInside))
@@ -45,21 +52,7 @@ export const SearchBar = () => {
           setShowDropdown(true)
         };
     }, [showDropdown]);
-    
 
-
-    
-  
-
-
-    const handleItemClick = (item) => {
-      // Handle the item selection here (e.g., navigate to a page or perform an action)
-      console.log(`Selected item: ${item}`);
-      // Close the dropdown
-      setShowDropdown(false);
-      // Clear the search input
-      setText('');
-    };
 
 
     //fitler all names from the api object array that has the 'text' u typed
@@ -95,13 +88,13 @@ export const SearchBar = () => {
 
     
     <div className='searchDropdown' >
-        { showDropdown && text.length > 0  && filtered?.length && filtered?.map((item, index) => {
+        { showDropdown && text.length > 0 && filtered?.map((item, index) => {
             return(
                 <>
                 {console.log(item)}
 
                 <Link to={`/products/${item.id}`} style={{textDecoration: 'none'}}>
-                    <p className='dropResults'>
+                    <p className='dropResults' key = {index} ref={refInput} >
                     {item.title}
                     </p>
                 </Link>

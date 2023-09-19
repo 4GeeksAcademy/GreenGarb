@@ -48,12 +48,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			addFavorite: () => {
-				console.log('storeItem')
+			addFavorite: (addedFavorite) => {
+				setStore({
+					favorites:[ ...new Set([...getStore().favorites, addedFavorite])], //...new function removes duplicate within array
+					item: getStore().item,
+					description: getStore().description
+				})	
 			},
 
-			removeFavorite: () => {
-				console.log('removeMe')
+			removeFavorites: (yourFavorite) => {
+				setStore({
+					favorites:getStore().favorites.filter((unwantedFave) =>{
+						return unwantedFave != yourFavorite
+					}),
+					item: getStore().item,
+					description: getStore().description
+				})
 			},
 
 			//saves token for everytime u load any page so its not lost

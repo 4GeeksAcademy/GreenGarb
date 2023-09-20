@@ -126,7 +126,7 @@ export const Product = () => {
                             </div>
 
                             <div className="product-actions mb-3">
-                                <button className="product-button d-block"> Add to Cart</button>
+                                <button className="product-button d-block"onClick={() => {actions.addToCart(product)}}> Add to Cart</button>
                                 <button className="product-button d-block mt-3">Buy Now</button>
                             </div>
                         </div>

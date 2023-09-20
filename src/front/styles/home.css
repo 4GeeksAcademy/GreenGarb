@@ -293,6 +293,10 @@ height: 70%;
     
     position: relative;
 }
+
+.shopNameP {
+    margin-top: 5px;;
+}
 /* 
 @media only screen and (max-width: 576px) {
     .right-side-product-div {

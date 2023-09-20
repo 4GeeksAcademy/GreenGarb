@@ -44,7 +44,7 @@ export const SearchBar = () => {
 
       if(document.addEventListener('mousedown', handleClickOutside))
       return () => {
-        onesecwait(setShowDropdown(false))
+        (setShowDropdown(false))
       };
 
       else if (document.addEventListener('mousedown', handleClickInside))
@@ -90,8 +90,8 @@ export const SearchBar = () => {
     <div className='searchDropdown' >
         { showDropdown && text.length > 0 && filtered?.map((item, index) => {
             return(
-                <>
-                {console.log(item)}
+                // <>
+                // {console.log(item)}
 
                 <Link to={`/products/${item.id}`} style={{textDecoration: 'none'}}>
                     <p className='dropResults' key = {index} ref={refInput} >
@@ -99,7 +99,7 @@ export const SearchBar = () => {
                     </p>
                 </Link>
                 
-                </>
+                //{/* </> */}
                 )
         })}
         

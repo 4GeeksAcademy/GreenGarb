@@ -3,6 +3,8 @@ import axios from 'axios';
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			favorites: [],
+			cart: [],
 			token: null,
 			user: [
 				{
@@ -48,11 +50,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			addFavorite: (addedFavorite) => {
+			addToCart: (addedProduct) => {
+				setStore({
+					cart: [...new Set([...getStore().cart, addedProduct])],
+				})
+			},
+
+			removeFromCart: (cartItem) => {
+				setStore({
+					cart: getStore().cart.filter((unwantedItem) => {
+						return unwantedItem != cartItem
+					})
+				})
+			},
+
+			addFavorites: (addedFavorite) => {
 				setStore({
 					favorites:[ ...new Set([...getStore().favorites, addedFavorite])], //...new function removes duplicate within array
-					item: getStore().item,
-					description: getStore().description
 				})	
 			},
 
@@ -61,8 +75,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favorites:getStore().favorites.filter((unwantedFave) =>{
 						return unwantedFave != yourFavorite
 					}),
-					item: getStore().item,
-					description: getStore().description
 				})
 			},
 

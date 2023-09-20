@@ -104,8 +104,8 @@ export const Product = () => {
                                         alt="Seller"
                                     />
                                 </div>
-                                <div className="shop-name ms">
-                                    <p><strong>{seller.shop_name}</strong></p>
+                                <div className="shop-name ms ">
+                                    <p className="shopNameP"><strong>{seller.shop_name}</strong></p>
                                 </div>
                             </div>
                             <div className="product-specs">

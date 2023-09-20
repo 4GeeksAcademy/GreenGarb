@@ -9,10 +9,28 @@ import "../../styles/home.css";
 export const WomensCatalog = () => {
     const {store, actions} = useContext(Context)
     const cloudinaryUrl="https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
+    const [liked, setliked] = useState(false)
     let params = useParams()
     console.log(params, store.products[0]?.category)
     console.log(store.products)
 
+
+    //favorite button function
+    useEffect(() => {
+        if (
+            store.favorites.find((x) => {
+                for (let i in x) {
+                    if (store.products[i] && store.products[i].id === x[i].id) {
+                        return true;
+                    }
+                }
+            })
+        ) {
+            setliked(true);
+        } else {
+            setliked(false);
+        }
+    }, [store.favorites]);
 
 
 
@@ -90,7 +108,7 @@ export const WomensCatalog = () => {
                
                <div className="card col-sm-3 d-flex mb-2" key = {index}>
                 <div className="card-img-div">
-                    <button className="heart-button btn" >
+                    <button className="heart-button btn" onClick={() => {actions.addFavorites(product)}}>
                     <i class="far fa-heart" style={{color: 'red'}}></i>
                     </button>
                     <Link to={`/products/${product.id}`}>
@@ -109,7 +127,7 @@ export const WomensCatalog = () => {
                </div> 
                ))  }
 
-            {/* onClick={() => {actions.addFavorite(product.index)}} */}
+            
             </div>
 
 

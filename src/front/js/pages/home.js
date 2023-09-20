@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { useNavigate } from "react-router-dom";
+import { resolvePath, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import shoes from "../../img/shoes.jpeg"
 import womensClothing from "../../img/womensClothes.jpeg"
@@ -43,6 +43,14 @@ export const Home = () => {
 		};
 	}
 	const featuredSellers = sellers.slice(2, 5).map(extractProduct);
+	const myStyle = {
+		backgroundImage: `url(${summer_banner})`,
+		backgroundSize: 'cover',
+		position: 'relative',
+		backgroundPosition: 'center',
+		backgroundRepeat:'no-repeat', 
+		height: '380px',
+	};
 
 	// Get 4 random products
 	const randomProducts = getRandomProducts();
@@ -50,10 +58,10 @@ export const Home = () => {
 	return (
 		<div className="text-center">
 
-			<div className="container banner mt-5">
+			<div className="container banner mt-5" style={myStyle}>
 				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
-					Greengarb
-					<p className="homePtags">jumbotron home page banner with big picture</p>
+					
+					<p className="homePtags"></p>
 				</div>
 			</div>
 

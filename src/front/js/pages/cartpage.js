@@ -4,6 +4,7 @@ import "../../styles/cartpage.css";
 import { medium } from "@cloudinary/url-gen/qualifiers/fontHinting";
 import { Items } from "../component/items";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,13 +19,13 @@ const CartPage = () => {
 
 
     return (
-        <div>
+        <div style={{ width: "100%" }}>
             <form className="my-form">
                 <div className="form-header text-center">
                     <h1>My Cart</h1>
 
                 </div>
-                <div className="products gap-2 justify-content-end d-flex m-0">
+                <div className="products gap-2 justify-content-center d-flex m-0">
 
                     {items.map((tshirts, index) => {
                         return (
@@ -39,7 +40,9 @@ const CartPage = () => {
                         <ul className="list-group">
                             <li className="list-group-item col-6">subtotal $170.00 </li>
                             <li className="list-group-item col-6">total $190.40</li>
-                            <button type="button" class="btn btn-outline-success btn-sm col-6">Checkout</button>
+                            <Link to="/Checkout">
+                                <button type="button" class="btn btn-outline-success btn-sm col-6">Checkout</button>
+                            </Link>
 
 
 

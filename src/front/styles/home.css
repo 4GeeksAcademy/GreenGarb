@@ -61,7 +61,7 @@ button {
 
 
 .banner {
-    background-image: url('../img/summer-banner.jpg');
+    background-image: url('/workspaces/Team-equalities-final-project/public/summer-banner.jpg');
     background-size: cover;
     position: relative;
     background-position: center;

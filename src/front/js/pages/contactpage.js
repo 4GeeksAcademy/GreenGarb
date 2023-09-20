@@ -8,7 +8,7 @@ export function ContactPage(){
 
  
     return(
-        <div className="contact">
+        <div className="contact mb-5 content-container">
         
             
         

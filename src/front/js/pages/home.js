@@ -140,7 +140,7 @@ export const Home = () => {
 
 					{/* mapping happens here */}
 					{featuredSellers.map((seller, index) => (
-						<div className=" featuredSellerCards mt-5 mb-3 p-2 col-12 col-md-6 col-lg-3" key={index}>
+						<div className=" featuredSellerCards mb-3 p-2 col-12 col-md-6 col-lg-3" key={index}>
 
 							<div className=" rounded">
 								<Link to={'/shop/' + seller.sellerId}>

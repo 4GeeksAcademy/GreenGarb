@@ -9,7 +9,7 @@ export const AboutUs = (props) => {
   const params = useParams();
 
   return (
-    <div className="about-us">
+    <div className="about-us content-container">
       <div className="container">
         <div className="row">
           <div className="col-12">

@@ -33,8 +33,8 @@ export const User = () => {
 
         <>
             {sessionStorage.getItem('token') ? (
-                <div>
-                    <div className="user-header-div justify-content-center d-flex mb-3">
+                <div className='content-container'>
+                    <div className="user-header-div justify-content-center d-flex mb-3 ">
                         <div className="user-img-div-parent rounded-circle">
                         <img
                             className="user-img-div rounded-circle "

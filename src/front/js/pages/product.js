@@ -7,6 +7,7 @@ import Spinner from "../component/Spinner";
 
 
 export const Product = () => {
+    const {store, actions} = useContext(Context)
     const [seller, setSeller] = useState({});
     const [product, setProduct] = useState({});
     const [loadingProduct, setLoadingProduct] = useState(true);
@@ -92,7 +93,9 @@ export const Product = () => {
                                 )}
                             </div>
                             <div className="favorite-product">
-                                <p><i className="fas fa-heart heartIcon me-1"></i>Favorite Product</p>
+                                <button className="productPageHeartbtn" onClick={() => {actions.addFavorites(product)}}>
+                                <p style={{color: 'black'}}><i className="fas fa-heart heartIcon me-1"></i>Favorite Product</p>
+                                </button>
                             </div>
                         </div>
 

@@ -72,7 +72,7 @@ export const Login = () => {
 				</Link>
 			</div>
 			</form>
-{/* } */}
+
 
 		</div>
 	);

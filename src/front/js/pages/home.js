@@ -58,7 +58,7 @@ export const Home = () => {
 	return (
 		<div className="text-center">
 
-			<div className="container banner mt-5" style={myStyle}>
+			<div className="container banner mt-5 rounded" style={myStyle}>
 				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
 					
 					<p className="homePtags"></p>

@@ -36,7 +36,6 @@ label {
 
 input,
 textarea {
-    width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
@@ -260,6 +259,10 @@ height: 70%;
     position: absolute;
 }
 
+.likedHeart {
+    background-color: red;
+}
+
 
 .card-img-top {
     height: 100%;
@@ -353,6 +356,15 @@ height: 70%;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     color: red;
+}
+
+.productPageHeartbtn {
+    background: none;
+    height: 2rem;
+}
+
+.productPageHeartbtn:hover {
+    background-color: aliceblue;
 }
 
 .product-tags {

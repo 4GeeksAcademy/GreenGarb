@@ -48,8 +48,8 @@ export const WomensCatalog = () => {
 					<span>Filter <span className="fas fa-sliders-h"></span></span>
 				</button>
 
-				<div class="collapse navbar-collapse mb-1" id="catalogDropDown">
-					<ul class="navbar-nav">
+				<div className="collapse navbar-collapse mb-1" id="catalogDropDown">
+					<ul className="navbar-nav">
 
                         <div className="dropdown ms-5 me-1">
                         <button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,7 +109,7 @@ export const WomensCatalog = () => {
                <div className="card col-sm-3 d-flex mb-2" key = {index}>
                 <div className="card-img-div">
                     <button className="heart-button btn" onClick={() => {actions.addFavorites(product)} }>
-                    <i class="far fa-heart" style={{color: 'red'}} ></i>
+                    <i className="far fa-heart" style={{color: 'red'}} ></i>
                     </button>
                     <Link to={`/products/${product.id}`}>
                         <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]?.image} alt="Card image cap"></img>

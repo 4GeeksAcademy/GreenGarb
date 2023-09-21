@@ -56,12 +56,12 @@ export const Navbar = () => {
 
 			<nav className="navbar navbar-expand-lg  navbar-light bg-light lower-nav justify-content-start mb-5">
 				<div className="container">
-					<button class="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
+					<button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span className="navbar-toggler-icon"></span>
 					</button>
 
-					<div class="collapse navbar-collapse mb-1" id="navbarNavDropdown">
-						<ul class="navbar-nav">
+					<div className="collapse navbar-collapse mb-1" id="navbarNavDropdown">
+						<ul className="navbar-nav">
 
 							<div className="dropdown me-3">
 								<button className="btn btn-light border border-dark dropdown-toggle" type="button" id="MensDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

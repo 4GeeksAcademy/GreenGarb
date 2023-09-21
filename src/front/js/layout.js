@@ -52,13 +52,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<User />} path="/user" />
                         <Route element={<Yourshop />} path="/yourshop" />
-                        {/* <Route element={<Cart/>} path="/cart"/> */}
-                        {/* <Route element={<Favorites/>} path="/favorites"/> */}
-                        <Route element={<Catalog />} path="/catalog" />
-                        <Route element={<WomensCatalog />} path="catalog/womens" />
-                        <Route element={<Catalog />} path="/catalog/mens" />
-                        <Route element={<Catalog />} path="/catalog/shoes" />
-                        <Route element={<Product />} path="/product/:id" />
+                       
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />
@@ -76,7 +70,6 @@ const Layout = () => {
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<EditProfile />} path="/user/edit" />
                         <Route element={<Seller />} path="/newstore" />
-<Route element={<Checkout />} path="/checkout" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<ProductUpload />} path="/productupload" />
                         <Route element={<Single />} path="/single/:theid" />

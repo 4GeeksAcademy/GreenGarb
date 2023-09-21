@@ -15,7 +15,7 @@ export const Checkout = () => {
 
   return (
     <div className='checkout-container'>
-      <h2>Checkout</h2>
+      <h2 className='checkoutHeader'>Checkout</h2>
       <div className='p-1 justify-content-end d-flex m-0'>
 
         {/* <ul> */}
@@ -27,7 +27,7 @@ export const Checkout = () => {
       </div>
       <div>
         <h3>Shipping Address</h3>
-        <input
+        <input className='checkoutInput'
           type="text"
           name="shippingAddress"
           value={shippingAddress}

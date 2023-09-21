@@ -12,8 +12,8 @@ export function ContactPage(){
         
             
         
-            <form className= "page" action="submit_form.php" method="post">
-            <h2 className="mt-4 ps-5" > Get in Touch </h2>
+            <form className= "page justify-content-center" action="submit_form.php" method="post">
+            <h2 className="container mt-4 ps-5" > Get in Touch </h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" placeholder="Your Name" name="name" required/>
                 <label for="email">Email:</label>
@@ -21,7 +21,7 @@ export function ContactPage(){
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" placeholder="Write your message here" rows="4" required></textarea>
                 <div>
-                <button type="submit" className="send">Send</button>
+                <button type="submit" className="send btn btn-success">Send</button>
                 </div>
             </form>
        

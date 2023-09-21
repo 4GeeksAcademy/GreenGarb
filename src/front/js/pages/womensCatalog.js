@@ -108,8 +108,8 @@ export const WomensCatalog = () => {
                
                <div className="card col-sm-3 d-flex mb-2" key = {index}>
                 <div className="card-img-div">
-                    <button className="heart-button btn" onClick={() => {actions.addFavorites(product)}}>
-                    <i class="far fa-heart" style={{color: 'red'}}></i>
+                    <button className="heart-button btn" onClick={() => {actions.addFavorites(product)} }>
+                    <i class="far fa-heart" style={{color: 'red'}} ></i>
                     </button>
                     <Link to={`/products/${product.id}`}>
                         <img className="card-img-top" src={cloudinaryUrl+product.imageset[0]?.image} alt="Card image cap"></img>

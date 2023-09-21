@@ -76,7 +76,7 @@ export const Favorites = () => {
             </nav>
 
 
-            {/* sellers-listing */}
+            {/* favorites-listing */}
 
             <h1 className="text-center">Your Favorites</h1>
 

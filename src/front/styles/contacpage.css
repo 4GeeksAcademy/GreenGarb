@@ -22,11 +22,9 @@
     
 }
 .page{ 
-     background: rgb(2,215,77);
-    background: linear-gradient(90deg, rgba(2,215,77,1) 0%, rgba(68,121,9,1) 67%);
-    background-image: url("https://www.creativefabrica.com/wp-content/uploads/2021/03/09/Floral-Background-Graphics-9368657-1.jpg");
-    background-size: 500px 500px;
+    background-image: url('https://images.pexels.com/photos/1654255/pexels-photo-1654255.jpeg?auto=compress&cs=tinysrgb&w=600');
     background-repeat: no-repeat;
+    background-position: center;
     width: 500px; 
     height: 700px;
     padding-left: 100px;

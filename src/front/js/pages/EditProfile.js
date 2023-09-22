@@ -51,28 +51,30 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="container"> 
+    <div className="container content-container"> 
       <h2>Edit Profile</h2>
-      <form className='row mb-3 p-3' onSubmit={handleSubmit}>
+      <form className='row mb-3 p-3 gx-0' onSubmit={handleSubmit}>
       
-          <div className="row mb-3">
-                  <div className="col p-0">
+          <div className="row d-flex gx-0 mb-3">
+                  <div className="col-md-6 col-12 ps-0 pe-4">
                     <label htmlFor="first-name" >
                       First Name
                     </label>
                     <input
                       type="text"
+                      className="w-100"
                       placeholder="First Name"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
-                  <div className="col ps-3 pe-0">
+                  <div className="col-md-6 pe-4">
                     <label htmlFor="last-name" >
                       Last Name
                     </label>
                     <input
                       type="text"
+                      className="w-100"
                       placeholder="Last Name"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}/>

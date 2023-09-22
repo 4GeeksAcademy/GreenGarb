@@ -79,6 +79,7 @@ export const SearchBar = () => {
     
     <div className='d-flex parentOfInput justify-content-center'  >
         <input placeholder='search' 
+        className='w-100'
                type='text' ref={refInput} 
                value={text} 
                onChange={(e) => filter(e.target.value) } 

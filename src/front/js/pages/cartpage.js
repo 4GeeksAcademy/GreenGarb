@@ -22,7 +22,7 @@ const CartPage = () => {
 
 
     return (
-        <div className="cartContainer container mb-5">
+        <div className="cartContainer content-container container mb-5">
 
             {store.cart.map((item, index) => (
                 
@@ -34,10 +34,10 @@ const CartPage = () => {
                             </Link>
                         </div>
 
-                        <div className="cartProductDetail">
+                        <div className="cartProductDetail ms-5 ps-3">
                             <p className="ms-2">{item.title}</p>
-                            <p className="ms-2 fw-bold">${item.price}</p>
-                            <p className="ms-2">{item.size}</p>
+                            <p className="ms-2 fw-bold">Price: ${item.price}</p>
+                            <p className="ms-2">Size: {item.size}</p>
                             <button className="cartTrash btn" onClick={() => { actions.removeFromCart(item) }}>
                                 <i class="fas fa-trash-alt" style={{ color: 'red' }}></i>
                             </button>

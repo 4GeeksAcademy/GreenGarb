@@ -100,7 +100,7 @@ export const Catalog = () => {
                 </div>
                    <div className="card-body p-1">
                    <p className="card-title text-center mb-0">{product.title}</p>
-                   <p className="text-center">{product.price}</p>
+                   <p className="text-center">${product.price}</p>
                    <div className="d-flex justify-content-end mt-2">
                        
                        

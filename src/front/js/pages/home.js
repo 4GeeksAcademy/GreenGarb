@@ -48,7 +48,7 @@ export const Home = () => {
 		backgroundSize: 'cover',
 		position: 'relative',
 		backgroundPosition: 'center',
-		backgroundRepeat:'no-repeat', 
+		backgroundRepeat: 'no-repeat',
 		height: '380px',
 	};
 
@@ -57,14 +57,15 @@ export const Home = () => {
 
 	return (
 		<div className="text-center">
+			<Link
+				to={`/catalog`}>
+				<div className="container banner mt-5 rounded" style={myStyle}>
+					<div className="banner-text position-absolute bottom-0 end-0 pe-4">
 
-			<div className="container banner mt-5 rounded" style={myStyle}>
-				<div className="banner-text position-absolute bottom-0 end-0 pe-4">
-					
-					<p className="homePtags"></p>
+						<p className="homePtags"></p>
+					</div>
 				</div>
-			</div>
-
+			</Link>
 
 			{/* catalog */}
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 import axios from 'axios';
 import Spinner from "../component/Spinner";
@@ -8,6 +8,7 @@ import Spinner from "../component/Spinner";
 
 export const Product = () => {
     const {store, actions} = useContext(Context)
+    const navigate = useNavigate();
     const [seller, setSeller] = useState({});
     const [product, setProduct] = useState({});
     const [loadingProduct, setLoadingProduct] = useState(true);
@@ -53,6 +54,10 @@ export const Product = () => {
     );
     const activeIndex = 0;
     const numImages = product.imageset?.length || 0;
+    const handleBuyNow = () => {
+        actions.addToCart(product); 
+        navigate("/checkout"); 
+      };
 
     return (
         <div>
@@ -130,7 +135,7 @@ export const Product = () => {
 
                             <div className="product-actions mb-3">
                                 <button className="product-button d-block"onClick={() => {actions.addToCart(product)}}> Add to Cart</button>
-                                <button className="product-button d-block mt-3">Buy Now</button>
+                                <button className="product-button d-block mt-3" onClick={handleBuyNow}>Buy Now</button>
                             </div>
                         </div>
                     </div>

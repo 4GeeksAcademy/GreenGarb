@@ -31,7 +31,7 @@ label {
     margin-bottom: 0.5rem;
 }
 .content-container {
-    min-height: calc(70vh - 34px);
+    min-height: calc(75vh - 34px);
   }
 
 input,

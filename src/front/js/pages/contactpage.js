@@ -20,8 +20,8 @@ export function ContactPage(){
                 <input type="email" id="email" name="email"placeholder="Your email here" required/>
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" placeholder="Write your message here" rows="4" required></textarea>
-                <div>
-                <button type="submit" className="send btn btn-success">Send</button>
+                <div className="d-flex justify-content-end">
+                <button type="submit" className="send btn btn-success" >Send</button>
                 </div>
             </form>
        

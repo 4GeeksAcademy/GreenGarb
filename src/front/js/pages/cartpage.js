@@ -16,10 +16,9 @@ const CartPage = () => {
     const navigate = useNavigate()
     const cloudinaryUrl = "https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
-    // const cartTotal = (price) => {
-    //     let price = store.product.price
-
-    // }
+    const cartTotal = (price) => {
+        return price.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
 
 
     return (
@@ -49,11 +48,11 @@ const CartPage = () => {
             ))}
 
 
-            {(store.cart && store.cart !== null) ?
+            {(store.cart && store.cart.length > 0) ?
             <div className="cartTotal m-auto justify-content-center col-md-4">
                 <div className="border-bottom  border-2 d-flex justify-content-between">
                     <p>Item(s)</p>
-                    <p>price</p>
+                    <p>{store.cart.length}</p>
                 </div>
                 <div className="border-bottom  border-2 d-flex justify-content-between pt-1">
                     <p>Shipping</p>
@@ -61,18 +60,20 @@ const CartPage = () => {
                 </div>
                 <div className="fw-bold d-flex justify-content-between pt-1">
                     <p>Total</p>
-                    <p>Total</p>
+                    <p>${cartTotal(store.cart)}</p>
                 </div>
-                <button className="checkoutBtn btn btn-success">
-                  Checkout
-                </button>
+                <Link to={'/checkout'}>
+                    <button className="checkoutBtn btn btn-success">
+                        Checkout
+                    </button>
+                </Link> 
             </div>
-             : nothing }
-
-            <div>  
+             : <div>  
                 <h2 className="m-auto text-center fw-bold">Your Cart is Empty</h2>
                 <div className="emptyCart"></div>
-            </div>
+            </div> }
+
+            
         </div>
     )
 

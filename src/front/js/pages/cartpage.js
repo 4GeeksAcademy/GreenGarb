@@ -1,65 +1,78 @@
 import react from "react";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/cartpage.css";
 import { medium } from "@cloudinary/url-gen/qualifiers/fontHinting";
 import { Items } from "../component/items";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 
 
 
 
 const CartPage = () => {
-    // ...
-    const items = [{ name: "$30", size: "Mens Greengarb Cotton T", image: "https://cdni.llbean.net/is/image/wim/224547_7101_41?hei=1092&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2" },
-    { name: "$45", size: "Women's Brushed Plaid Jacket", image: "https://cdni.llbean.net/is/image/wim/520825_0_44?hei=1092&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2" },
-    { name: "$95", size: "Women's Navy and Blue Hoodie", image: "https://cdni.llbean.net/is/image/wim/520372_0_46?hei=1092&wid=950&resMode=sharp2&defaultImage=llbprod/A0211793_2" }]
+    const { actions, store } = useContext(Context)
+    const navigate = useNavigate()
+    const cloudinaryUrl = "https://res.cloudinary.com/dujqhnnvn/image/upload/v1693592186/"
 
+    // const cartTotal = (price) => {
+    //     let price = store.product.price
+
+    // }
 
 
     return (
-        <div style={{ width: "100%" }}>
-            <form className="my-form">
-                <div className="form-header text-center">
-                    <h1>My Cart</h1>
+        <div className="cartContainer container mb-5">
 
-                </div>
-                <div className="products gap-2 justify-content-center d-flex m-0">
-
-                    {items.map((tshirts, index) => {
-                        return (
-                            <Items key={index} item={tshirts} />
-                        )
-                    }
-                    )}
-                </div>
-                <div className="d-flex justify-content-center">
-
-                    <div className="card checkout">
-                        <ul className="list-group">
-                            <li className="list-group-item col-6">subtotal $170.00 </li>
-                            <li className="list-group-item col-6">total $190.40</li>
-                            <Link to="/Checkout">
-                                <button type="button" class="btn btn-outline-success btn-sm col-6">Checkout</button>
+            {store.cart.map((item, index) => (
+                
+                <div className="cartRows d-flex justify-content-between col-md-6 mb-2 border border-light border-2 rounded">
+                    <div className="leftSideCart d-flex">
+                        <div className="cartProductImg">
+                            <Link to={`/products/${item.id}`}>
+                                <img className="card-img-top" src={cloudinaryUrl + item.imageset[0].image} />
                             </Link>
+                        </div>
 
-
-
-                        </ul>
-
-
+                        <div className="cartProductDetail">
+                            <p className="ms-2">{item.title}</p>
+                            <p className="ms-2 fw-bold">${item.price}</p>
+                            <p className="ms-2">{item.size}</p>
+                            <button className="cartTrash btn" onClick={() => { actions.removeFromCart(item) }}>
+                                <i class="fas fa-trash-alt" style={{ color: 'red' }}></i>
+                            </button>
+                        </div>
                     </div>
+                </div>   
+
+            ))}
+
+
+            {(store.cart && store.cart !== null) ?
+            <div className="cartTotal m-auto justify-content-center col-md-4">
+                <div className="border-bottom  border-2 d-flex justify-content-between">
+                    <p>Item(s)</p>
+                    <p>price</p>
                 </div>
+                <div className="border-bottom  border-2 d-flex justify-content-between pt-1">
+                    <p>Shipping</p>
+                    <p>FREE</p>
+                </div>
+                <div className="fw-bold d-flex justify-content-between pt-1">
+                    <p>Total</p>
+                    <p>Total</p>
+                </div>
+                <button className="checkoutBtn btn btn-success">
+                  Checkout
+                </button>
+            </div>
+             : nothing }
 
-
-
-
-
-
-            </form>
-
-
+            <div>  
+                <h2 className="m-auto text-center fw-bold">Your Cart is Empty</h2>
+                <div className="emptyCart"></div>
+            </div>
         </div>
     )
 

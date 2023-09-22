@@ -1,74 +1,44 @@
 
-/* body{
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-.cartpagerow {
-  display: flex;
-  gap: 1rem;
-} */
-input, label{
-  display: block;
+.cartRows {
+  height: 240px;
 }
 
-.my-form{
- 
-  width: 100%;
-  border-radius: 0.356rem;
-  background-color: rgb(201, 238, 144);
+.cartProductImg {
+  height: 100%;
+  width: 200px;
 }
-.form-header{
-  background-color: rgb(201, 238, 144);
-  height: 80%;
-  padding: 0rem 1rem;
-}
-.form-body{
-  padding: 1rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  background-color: white;
-}
-.form-footer{
-  background-color: grey;
-  display: flex;
-  justify-content:flex-end ;
-  padding: 1rem;
-}
-.item{
-  flex-grow: 1;
-}
-inputlabel{
-  width: 100%;
-  height: 30px;
-} */
-.products{
-  width: 90%;
-  justify-content: center;
-  display: flex;
-}
-.checkout {
-  display: flex;
-  justify-content: center;
- 
-  width:  365px;
-  height: 132px;;
-  text-align: center;
 
+.leftSideCart {
+  border: green;
 }
-/* .last-row{
-  justify-content: space-between;
- 
-  width: auto;
-  height: auto;
- 
-} */
-/* .cancelbutton{
-  background-color: rgb(201, 238, 144);
-  color: rgb(14, 11, 1);
+
+@media only screen and (min-width: 600px) {
+.cartTotal {
+  position: absolute;
+  top: 170px;
+  right: 70px;
+}}
+
+.checkoutBtn {
+  width: 100%;
 }
-.sendbutton{
-  background-color: rgb(201, 238, 144);
-  color: rgb(14, 11, 1);
-} */
+
+.emptyCart {
+  height: 300px;
+  background-size: contain;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&w=600");
+}
+
+.emptyCartH1 {
+  margin: auto;
+  width: 330px;
+}
+
+
+.shippingFee {
+  position: absolute;
+  margin-right: 5px;
+}

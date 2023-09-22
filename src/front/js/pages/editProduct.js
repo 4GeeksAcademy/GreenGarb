@@ -180,7 +180,7 @@ export const EditProduct = () => {
             </label>
             <input
               type="file"
-              className="file-loading"
+              className="file-loading w-100"
               id="images"
               multiple
               accept="image/*"

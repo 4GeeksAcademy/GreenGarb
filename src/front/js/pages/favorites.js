@@ -36,9 +36,10 @@ export const Favorites = () => {
     return (
 
         <>
-            <div className="user-header-div justify-content-center d-flex mb-3">
-                <div className="user-img-div-parent rounded-circle">
-                    <img className="user-img-div rounded-circle"
+        <div className='content-container '>
+            <div className=" user-header-div  justify-content-center row mb-3">
+                <div className="user-img-div-parent  rounded-circle">
+                    <img className="user-img-div  "
                         src={sellerData && sellerData.img ? cloudinaryUrl + sellerData.img : blankProfile}
                         alt="Profile"
                     />
@@ -93,6 +94,7 @@ export const Favorites = () => {
                         </div>
                     </div>
                 ))}
+            </div>
             </div>
         </>
     )

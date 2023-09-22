@@ -64,7 +64,7 @@ const ProductUpload = () => {
   return (
     <div className="container">
       <h2 className="mb-4 text-center">Add Product</h2>
-      <div className="row row mb-3 p-3">
+      <div className="row  mb-3 p-3">
         {/* <aside className="bd-sidebar mt-4 col-3">
           <nav className="left-nav" role="navigation" aria-label="Secondary navigation">
             <div className="group-hd mb-3"><strong>Store's Name</strong></div>
@@ -159,7 +159,7 @@ const ProductUpload = () => {
             </label>
             <input
               type="file"
-              className="file-loading"
+              className="file-loading w-100"
               id="images"
               multiple
               accept="image/*"

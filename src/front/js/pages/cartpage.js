@@ -22,7 +22,7 @@ const CartPage = () => {
 
 
     return (
-        <div className="cartContainer container mb-5">
+        <div className="cartContainer content-container container mb-5">
 
             {store.cart.map((item, index) => (
                 

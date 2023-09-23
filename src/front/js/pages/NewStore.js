@@ -53,7 +53,7 @@ function Seller() {
   };
 
   return (
-    <div className="seller-container container">
+    <div className="seller-container container content-container">
       <h2>Create Seller</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="seller-form row mb-3 p-3">
@@ -62,6 +62,7 @@ function Seller() {
           <input
             type="text"
             id="shop_name"
+            className="w-100"
             name="shop_name"
             value={formData.shop_name}
             onChange={handleInputChange}
@@ -73,6 +74,7 @@ function Seller() {
           <textarea
             id="description"
             name="description"
+            className="w-100"
             value={formData.description}
             onChange={handleInputChange}
             rows="4"
@@ -84,6 +86,7 @@ function Seller() {
           <input
             type="email"
             id="email"
+            className="w-100"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
@@ -93,6 +96,7 @@ function Seller() {
         <div className="form mb-3">
           <label>Profile Image</label>
           <input
+          className="w-100"
             type="file"
             onChange={handleImageChange}
             

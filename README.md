@@ -82,3 +82,6 @@ pipenv run start (for the backend)
 
 Create a user at the register page and login
 You can add a shop and products into the markteplace
+![greenGarbMobile](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/fb6feb6c-6de5-4c52-bc4c-49593749b72a)
+![greenGarbProductPage](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/a232f4c5-c512-47a7-975d-417c6457e20f)
+![greenGarbMobile2](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/efe79668-6f3a-4568-8ee3-77dfbc6e8f74)

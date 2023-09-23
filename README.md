@@ -14,7 +14,8 @@ All the data is fetched from the local database and is unique per codespace.
 
 ![greenGarbMobile](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/fb6feb6c-6de5-4c52-bc4c-49593749b72a)  ![greenGarbMobile2](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/efe79668-6f3a-4568-8ee3-77dfbc6e8f74)
 
-![greenGarbProductPage](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/a232f4c5-c512-47a7-975d-417c6457e20f)
+![greenGarbProductPage](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/a232f4c5-c512-47a7-975d-417c6457e20f) ![Screenshot (154)](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/bfe16f9f-a36a-4617-9423-a29ea3e03787)
+
 
 # WebApp boilerplate with React JS and Flask API
 

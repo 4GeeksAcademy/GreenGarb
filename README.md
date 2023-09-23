@@ -1,3 +1,21 @@
+# To run the backend:
+- install axios: npm install axios
+- install flask jwt extended: pip install flask-jwt-extended
+- intall flask bcrypt: pip install Flask-Bcrypt
+
+# Enter these 2 command into the terminal:
+- npm run start (to render the website)
+- pipenv run start (for the backend)
+
+# Create a user at the register page and login
+You can add a shop and products into the markteplace after creating a user. You can create multiple users and creative product descriptions to make GreenGarb look full.
+All the data is fetched from the local database and is unique per codespace.
+
+
+![greenGarbMobile](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/fb6feb6c-6de5-4c52-bc4c-49593749b72a)  ![greenGarbMobile2](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/efe79668-6f3a-4568-8ee3-77dfbc6e8f74)
+
+![greenGarbProductPage](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/a232f4c5-c512-47a7-975d-417c6457e20f)
+
 # WebApp boilerplate with React JS and Flask API
 
 Build web applications using React.js for the front end and python/flask for your backend API.
@@ -71,17 +89,4 @@ This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://
 You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
 
 
-To run the backend:
-install axios: npm install axios
-install flask jwt extended: pip install flask-jwt-extended
-intall flask bcrypt: pip install Flask-Bcrypt
 
-Enter these 2 command into the terminal:
-npm run start (to render the website)
-pipenv run start (for the backend)
-
-Create a user at the register page and login
-You can add a shop and products into the markteplace
-![greenGarbMobile](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/fb6feb6c-6de5-4c52-bc4c-49593749b72a)
-![greenGarbProductPage](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/a232f4c5-c512-47a7-975d-417c6457e20f)
-![greenGarbMobile2](https://github.com/4GeeksAcademy/GreenGarb/assets/39809411/efe79668-6f3a-4568-8ee3-77dfbc6e8f74)

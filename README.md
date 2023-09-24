@@ -1,7 +1,11 @@
 # To run the backend:
+-  pipenv install
 - install axios: npm install axios
 - install flask jwt extended: pip install flask-jwt-extended
 - intall flask bcrypt: pip install Flask-Bcrypt
+
+  # For the front End:
+- npm install
 
 # Enter these 2 command into the terminal:
 - npm run start (to render the website)

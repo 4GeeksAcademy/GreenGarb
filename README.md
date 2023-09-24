@@ -5,6 +5,7 @@
 - intall flask bcrypt: pip install Flask-Bcrypt
 
   # For the front End:
+- Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
 - npm install
 
 # Enter these 2 command into the terminal:
@@ -76,12 +77,6 @@ And you will see the following message:
 
 To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
 
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
 
 ## Publish your website!
 
